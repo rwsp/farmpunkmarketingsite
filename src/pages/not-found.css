@@ -9,36 +9,36 @@
   isolation: isolate;
 }
 
-/* ── The seizure notice — corporate paper ─────────────────────── */
+/* ── The seizure notice — corporate dossier ──────────────────── */
 .fp-404__notice {
   position: relative;
-  background-color: var(--fp-bone-paper);
+  background-color: var(--fp-rotted-brown);
   background-image:
     /* faint serial-number watermark grid */
     repeating-linear-gradient(
       0deg,
       transparent 0 28px,
-      rgba(74, 51, 38, 0.05) 28px 29px
+      rgba(255, 255, 255, 0.04) 28px 29px
     ),
     /* grain */
-    radial-gradient(rgba(74, 51, 38, 0.08) 1px, transparent 1px),
-    radial-gradient(rgba(74, 51, 38, 0.05) 1.5px, transparent 1.5px);
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.025) 1.5px, transparent 1.5px);
   background-size: auto, 4px 4px, 9px 9px;
-  color: var(--fp-ink-black);
+  color: var(--fp-bone-paper);
   padding: var(--space-6) var(--space-6) var(--space-5);
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.4),
     0 24px 50px rgba(0, 0, 0, 0.7);
   transform: rotate(-1.4deg);
 }
 
-/* corner pinned look — black tick marks at the four corners */
+/* corner pinned look — paper-tone tick marks at the four corners */
 .fp-404__notice-corner {
   position: absolute;
   width: 18px;
   height: 18px;
-  border: 2px solid var(--fp-ink-black);
+  border: 2px solid rgba(216, 208, 184, 0.45);
 }
 .fp-404__notice-corner--tl { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
 .fp-404__notice-corner--tr { top: 8px; right: 8px; border-left: 0; border-bottom: 0; }
@@ -47,7 +47,7 @@
 
 .fp-404__notice-head {
   text-align: center;
-  border-bottom: 4px double var(--fp-ink-black);
+  border-bottom: 4px double rgba(216, 208, 184, 0.30);
   padding-bottom: var(--space-4);
   margin-bottom: var(--space-4);
 }
@@ -58,16 +58,16 @@
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   padding: 4px 10px;
-  border: 1px solid var(--fp-ink-black);
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--fp-ink-black);
+  border: 1px solid rgba(216, 208, 184, 0.45);
+  background: rgba(0, 0, 0, 0.30);
+  color: var(--fp-bone-paper);
 }
 
 .fp-404__notice-title {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   margin: var(--space-3) 0 var(--space-2);
-  color: var(--fp-ink-black);
+  color: var(--fp-bone-paper);
   letter-spacing: 0.06em;
 }
 
@@ -75,7 +75,7 @@
   font-family: var(--font-stamp);
   font-size: 0.86rem;
   margin: 0;
-  color: var(--fp-rotted-brown);
+  color: var(--fp-bone-paper);
   letter-spacing: 0.04em;
 }
 
@@ -91,7 +91,7 @@
   grid-template-columns: 200px 1fr;
   gap: var(--space-4);
   padding: 8px 4px;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+  border-bottom: 1px dashed rgba(216, 208, 184, 0.20);
 }
 .fp-404__notice-fields > div:last-child { border-bottom: 0; }
 
@@ -104,7 +104,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--fp-rotted-brown);
+  color: var(--fp-warning-yellow);
 }
 
 .fp-404__notice-fields dd {
@@ -112,28 +112,29 @@
   font-family: var(--font-display);
   font-size: 1rem;
   letter-spacing: 0.04em;
-  color: var(--fp-ink-black);
+  color: var(--fp-flash-white);
   word-break: break-all;
 }
 .fp-404__notice-fields dd.fp-mono {
   font-family: var(--font-mono);
   font-size: 0.92rem;
-  background: rgba(0, 0, 0, 0.06);
+  background: var(--fp-ink-black);
   padding: 4px 8px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: var(--fp-acid-green);
   letter-spacing: 0;
 }
 .fp-404__notice-fields dd.fp-stamp {
   font-family: var(--font-stamp);
   font-size: 0.92rem;
   letter-spacing: 0.06em;
-  color: var(--fp-rotted-brown);
+  color: var(--fp-bone-paper);
 }
 
 .fp-404__notice-foot {
   margin-top: var(--space-4);
   padding-top: var(--space-3);
-  border-top: 2px solid var(--fp-ink-black);
+  border-top: 2px solid rgba(216, 208, 184, 0.25);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -141,7 +142,7 @@
   font-family: var(--font-stamp);
   font-size: 0.78rem;
   letter-spacing: 0.1em;
-  color: var(--fp-rotted-brown);
+  color: var(--fp-bone-paper);
 }
 
 .fp-404__signature { font-style: italic; }
@@ -159,7 +160,7 @@
   border: 5px solid var(--fp-danger-red);
   padding: 8px 18px 10px;
   transform: rotate(-14deg);
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(199, 53, 36, 0.12);
   /* uneven ink edge */
   text-shadow:
     0 0 1px rgba(199, 53, 36, 0.8),

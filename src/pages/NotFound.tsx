@@ -1,4 +1,4 @@
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Button } from '../components/ui/Button';
 import { GraffitiTag } from '../components/ui/GraffitiTag';
@@ -101,18 +101,11 @@ export function NotFound() {
           <p className="fp-404__recovery-body">
             This URL isn't on file. Maybe it never was. Maybe the Cartel
             reorganized the directory. Either way — there's nothing here to
-            seize. Try one of these instead:
+            seize.
           </p>
           <div className="fp-404__ctas">
             <Button to="/" variant="primary">Return to base</Button>
-            <Button to="/field-manual" variant="rebel">Open Field Manual</Button>
-            <Button to="/quick-reference" variant="ghost">Quick Reference</Button>
-            <Button to="/calculators" variant="rust">Calculators</Button>
           </div>
-          <p className="fp-404__legal">
-            <Link to="/console">Or browse every console command</Link>{' '}
-            — the registry the Cartel can't lock down.
-          </p>
         </div>
       </div>
     </article>

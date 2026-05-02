@@ -28,16 +28,16 @@
 /* ── The card itself — laminated field card feel ───────────────── */
 .fp-qr__card {
   position: relative;
-  background-color: var(--fp-bone-paper);
+  background-color: var(--fp-rotted-brown);
   background-image:
-    radial-gradient(rgba(74, 51, 38, 0.07) 1px, transparent 1px),
-    radial-gradient(rgba(74, 51, 38, 0.05) 1.5px, transparent 1.5px);
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.025) 1.5px, transparent 1.5px);
   background-size: 4px 4px, 9px 9px;
-  color: var(--fp-ink-black);
+  color: var(--fp-bone-paper);
   padding: var(--space-6) var(--space-6) var(--space-5);
   border: 3px solid var(--fp-blacksoil);
   box-shadow:
-    0 0 0 6px rgba(244, 241, 220, 0.07),
+    0 0 0 6px rgba(0, 0, 0, 0.35),
     0 18px 36px rgba(0, 0, 0, 0.55);
 }
 
@@ -50,7 +50,7 @@
 }
 .fp-qr__card::before {
   width: 110px; height: 110px;
-  border: 5px solid rgba(74, 51, 38, 0.18);
+  border: 5px solid rgba(216, 208, 184, 0.12);
   border-radius: 50%;
   top: -30px; right: 60px;
   transform: rotate(8deg);
@@ -66,7 +66,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-4);
-  border-bottom: 3px double var(--fp-blacksoil);
+  border-bottom: 3px double rgba(216, 208, 184, 0.30);
   padding-bottom: var(--space-4);
   margin-bottom: var(--space-5);
 }
@@ -75,14 +75,14 @@
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2.2rem);
   margin: 0;
-  color: var(--fp-ink-black);
+  color: var(--fp-bone-paper);
   letter-spacing: 0.08em;
 }
 
 .fp-qr__card-sub {
   margin: 6px 0 0;
   font-family: var(--font-stamp);
-  color: var(--fp-rotted-brown);
+  color: var(--fp-bone-paper);
   letter-spacing: 0.04em;
 }
 
@@ -111,8 +111,8 @@
 .fp-qr__block {
   position: relative;
   padding: var(--space-3) var(--space-4) var(--space-4);
-  border: 2px solid var(--fp-ink-black);
-  background: rgba(244, 241, 220, 0.5);
+  border: 2px solid rgba(216, 208, 184, 0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .fp-qr__block--wide { grid-column: 1 / -1; }
@@ -125,7 +125,7 @@
   margin: -3px -4px var(--space-3);
   padding: 6px 10px 7px;
   display: inline-block;
-  border: 2px solid var(--fp-ink-black);
+  border: 2px solid var(--fp-blacksoil);
   background: var(--fp-warning-yellow);
   position: relative;
   top: -16px;
@@ -146,13 +146,13 @@
   gap: 4px;
 }
 .fp-qr__block-body code {
-  background: rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  color: var(--fp-rotted-brown);
+  background: var(--fp-ink-black);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: var(--fp-acid-green);
   padding: 0 4px;
   font-size: 0.86em;
 }
-.fp-qr__block-body b { color: var(--fp-spray-purple); }
+.fp-qr__block-body b { color: var(--fp-warning-yellow); }
 
 .fp-qr__cmd-grid {
   display: grid;
@@ -169,10 +169,10 @@
   gap: var(--space-3);
   margin-top: var(--space-5);
   padding-top: var(--space-3);
-  border-top: 2px solid var(--fp-blacksoil);
+  border-top: 2px solid rgba(216, 208, 184, 0.25);
   font-family: var(--font-stamp);
   font-size: 0.82rem;
-  color: var(--fp-rotted-brown);
+  color: var(--fp-bone-paper);
 }
 
 /* ── Print-friendly mode (toggle) and actual print ─────────────── */

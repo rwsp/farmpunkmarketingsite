@@ -40,17 +40,6 @@
   transform: rotate(calc(var(--tilt, 0deg) - 0.5deg)) translateY(-2px);
 }
 
-.fp-dossier--paper {
-  background-color: var(--fp-bone-paper);
-  color: var(--fp-ink-black);
-}
-.fp-dossier--paper a { color: var(--fp-spray-purple); }
-
-.fp-dossier--manila {
-  background-color: #b9a371;
-  color: var(--fp-ink-black);
-}
-
 .fp-dossier__body { position: relative; z-index: 1; }
 
 .fp-dossier__badge {
@@ -144,34 +133,34 @@
 }
 .fp-callout--note .fp-callout__title { color: var(--fp-weathered-gray); }
 
-/* ── PaperPanel — readable surface for wiki/quick ref ──────────── */
+/* ── PaperPanel — readable dark surface for wiki / info bodies ─── */
 .fp-paper {
-  background-color: var(--fp-bone-paper);
-  color: var(--fp-ink-black);
+  background-color: var(--fp-rotted-brown);
+  color: var(--fp-bone-paper);
   padding: var(--space-6) var(--space-6);
-  border: 1px solid rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   box-shadow: var(--shadow-card);
   position: relative;
   background-image:
-    radial-gradient(rgba(74, 51, 38, 0.08) 1px, transparent 1px),
-    radial-gradient(rgba(74, 51, 38, 0.05) 1px, transparent 1px);
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 4px 4px, 9px 9px;
 }
 .fp-paper::after {
-  /* coffee ring stain — subtle */
+  /* coffee ring stain — subtle, paper-tone on dark */
   content: "";
   position: absolute;
   width: 120px; height: 120px;
   right: -20px; top: -30px;
-  border: 6px solid rgba(74, 51, 38, 0.18);
+  border: 6px solid rgba(216, 208, 184, 0.10);
   border-radius: 50%;
   filter: blur(0.5px);
   pointer-events: none;
 }
-.fp-paper h1, .fp-paper h2, .fp-paper h3, .fp-paper h4 { color: var(--fp-ink-black); }
-.fp-paper a { color: var(--fp-spray-purple); }
+.fp-paper h1, .fp-paper h2, .fp-paper h3, .fp-paper h4 { color: var(--fp-bone-paper); }
+.fp-paper a { color: var(--fp-warning-yellow); }
 .fp-paper code {
-  background: rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  color: var(--fp-rotted-brown);
+  background: var(--fp-ink-black);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--fp-acid-green);
 }

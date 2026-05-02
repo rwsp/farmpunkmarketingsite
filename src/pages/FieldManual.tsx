@@ -89,7 +89,6 @@ function CatalogCard({ entry, category }: { entry: CatalogEntry; category: Categ
   return (
     <Link to={href} className="fp-fm__link">
       <DossierCard
-        tone={entry.status === 'live' ? 'paper' : 'wood'}
         badge={category.toUpperCase()}
         tilt={0}
       >

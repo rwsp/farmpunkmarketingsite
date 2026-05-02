@@ -6,7 +6,6 @@ type DossierProps = {
   stamp?: string;
   badge?: string;
   tilt?: number;
-  tone?: 'wood' | 'paper' | 'manila';
   className?: string;
 };
 
@@ -19,12 +18,11 @@ export function DossierCard({
   stamp,
   badge,
   tilt = 0,
-  tone = 'wood',
   className = ''
 }: DossierProps) {
   const style = { ['--tilt' as string]: `${tilt}deg` };
   return (
-    <article className={`fp-dossier fp-dossier--${tone} ${className}`} style={style}>
+    <article className={`fp-dossier ${className}`} style={style}>
       {badge && <span className="fp-dossier__badge">{badge}</span>}
       {stamp && <span className="fp-dossier__stamp">{stamp}</span>}
       <div className="fp-dossier__body">{children}</div>

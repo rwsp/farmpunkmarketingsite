@@ -86,21 +86,21 @@ export function EarlyAccess() {
         </Callout>
 
         <div className="fp-ea-page__cols">
-          <DossierCard tone="paper" badge="✓ COMPLETE" stamp={`${SHIPPED.length} SYSTEMS`}>
+          <DossierCard badge="✓ COMPLETE" stamp={`${SHIPPED.length} SYSTEMS`}>
             <h3>Shipped & Live</h3>
             <ul className="fp-ea-page__list">
               {SHIPPED.map(s => <li key={s}>{s}</li>)}
             </ul>
           </DossierCard>
 
-          <DossierCard tone="manila" badge="📋 PLANNED" stamp="IN FLIGHT">
+          <DossierCard badge="📋 PLANNED" stamp="IN FLIGHT">
             <h3>In Flight</h3>
             <ul className="fp-ea-page__list">
               {PLANNED.map(s => <li key={s}>{s}</li>)}
             </ul>
           </DossierCard>
 
-          <DossierCard tone="wood" badge="◯ POSTPONED" stamp="ICEBOX">
+          <DossierCard badge="◯ POSTPONED" stamp="ICEBOX">
             <h3>Icebox</h3>
             <ul className="fp-ea-page__list">
               {POSTPONED.map(s => <li key={s}>{s}</li>)}

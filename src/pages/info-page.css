@@ -31,7 +31,7 @@
   margin-top: var(--space-5);
   margin-bottom: var(--space-3);
   padding-bottom: 6px;
-  border-bottom: 2px solid var(--fp-rotted-brown);
+  border-bottom: 2px solid rgba(216, 208, 184, 0.25);
 }
 .fp-info .fp-paper h2:first-child { margin-top: 0; }
 

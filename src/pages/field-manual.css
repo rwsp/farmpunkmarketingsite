@@ -77,18 +77,6 @@
   border-color: var(--fp-warning-yellow);
   background: rgba(242, 194, 48, 0.06);
 }
-/* lede chips render against dark; paper-tone card foot needs a darker text color */
-.fp-dossier--paper .fp-fm__chip--live {
-  color: var(--fp-rotted-brown);
-  border-color: var(--fp-rotted-brown);
-  background: rgba(124, 255, 43, 0.18);
-}
-.fp-dossier--paper .fp-fm__chip--pending {
-  color: var(--fp-rotted-brown);
-  border-color: var(--fp-rotted-brown);
-  background: rgba(242, 194, 48, 0.22);
-}
-
 .fp-fm__card-foot {
   display: flex;
   justify-content: space-between;
@@ -98,9 +86,6 @@
 }
 .fp-fm__card-cta {
   font-size: 0.78rem;
-  color: var(--fp-rotted-brown);
-}
-.fp-dossier--wood .fp-fm__card-cta {
   color: var(--fp-bone-paper);
 }
 
@@ -161,7 +146,7 @@
   font-size: 1.4rem;
   margin-bottom: var(--space-3);
   padding-bottom: 6px;
-  border-bottom: 2px solid var(--fp-rotted-brown);
+  border-bottom: 2px solid rgba(216, 208, 184, 0.25);
 }
 
 .fp-mech__section ul,
@@ -178,14 +163,14 @@
   gap: 6px var(--space-4);
   font-family: var(--font-mono);
   font-size: 0.92rem;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: var(--space-3) var(--space-4);
 }
-.fp-mech__numbers dt { color: var(--fp-rotted-brown); }
+.fp-mech__numbers dt { color: var(--fp-warning-yellow); }
 .fp-mech__numbers dd {
   margin: 0;
-  color: var(--fp-ink-black);
+  color: var(--fp-flash-white);
   font-weight: 700;
   text-align: right;
   overflow-wrap: anywhere;
@@ -215,16 +200,16 @@
 }
 .fp-mech__cmd-note {
   font-size: 0.92rem;
-  color: var(--fp-rotted-brown);
+  color: var(--fp-bone-paper);
 }
 
 .fp-mech__field-note {
   font-family: var(--font-graffiti);
   font-size: 1.4rem;
   line-height: 1.4;
-  color: var(--fp-spray-purple);
-  border-top: 2px dashed var(--fp-rotted-brown);
-  border-bottom: 2px dashed var(--fp-rotted-brown);
+  color: var(--fp-hot-magenta);
+  border-top: 2px dashed rgba(216, 208, 184, 0.30);
+  border-bottom: 2px dashed rgba(216, 208, 184, 0.30);
   padding: var(--space-4) 0;
   letter-spacing: 0;
 }
