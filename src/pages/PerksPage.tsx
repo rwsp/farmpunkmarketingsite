@@ -1,15 +1,20 @@
 import { Link } from 'react-router-dom';
 import { GraffitiTag } from '../components/ui/GraffitiTag';
 import { PaperPanel, Callout } from '../components/ui/Card';
+import { RelatedSystemsCard } from '../components/ui/RelatedSystems';
 import { PERKS, generateSchedule } from '../data/perks';
+import { findEntry } from '../data/mechanics';
 import './family-page.css';
+import './field-manual.css';
 
 const FULL_SCHEDULE = generateSchedule(100);
 
 export function PerksPage() {
+  const entry = findEntry('perks');
   return (
-    <article className="fp-fam">
-      <div className="fp-content">
+    <article className="fp-fam fp-mech">
+      <div className="fp-content fp-mech__layout">
+        <div>
         <p className="fp-fam__crumbs">
           <Link to="/field-manual">Field Manual</Link>
           {' / '}
@@ -132,6 +137,11 @@ export function PerksPage() {
             ))}
           </div>
         </section>
+        </div>
+
+        <aside className="fp-mech__sidebar">
+          <RelatedSystemsCard relations={entry?.related ?? []} />
+        </aside>
       </div>
     </article>
   );

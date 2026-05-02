@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
 import { GraffitiTag } from '../components/ui/GraffitiTag';
 import { PaperPanel, Callout } from '../components/ui/Card';
+import { RelatedSystemsCard } from '../components/ui/RelatedSystems';
 import { CARTEL_ATTACKS } from '../data/cartelAttacks';
+import { findEntry } from '../data/mechanics';
 import './family-page.css';
+import './field-manual.css';
 
 export function CartelAttacksPage() {
+  const entry = findEntry('cartel-attacks');
   return (
-    <article className="fp-fam">
-      <div className="fp-content">
+    <article className="fp-fam fp-mech">
+      <div className="fp-content fp-mech__layout">
+        <div>
         <p className="fp-fam__crumbs">
           <Link to="/field-manual">Field Manual</Link>
           {' / '}
@@ -103,6 +108,11 @@ export function CartelAttacksPage() {
           all. Funding the Warchest isn't optional once you start buying
           shares — it's how you stay alive.
         </Callout>
+        </div>
+
+        <aside className="fp-mech__sidebar">
+          <RelatedSystemsCard relations={entry?.related ?? []} />
+        </aside>
       </div>
     </article>
   );

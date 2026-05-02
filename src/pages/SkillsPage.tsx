@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GraffitiTag } from '../components/ui/GraffitiTag';
 import { PaperPanel, Callout } from '../components/ui/Card';
+import { RelatedSystemsCard } from '../components/ui/RelatedSystems';
 import {
   SKILLS_BY_GROUP,
   GROUP_BLURB,
@@ -8,12 +9,16 @@ import {
   SCRIP_COST,
   TOTAL_TO_L10
 } from '../data/skills';
+import { findEntry } from '../data/mechanics';
 import './family-page.css';
+import './field-manual.css';
 
 export function SkillsPage() {
+  const entry = findEntry('skills');
   return (
-    <article className="fp-fam">
-      <div className="fp-content">
+    <article className="fp-fam fp-mech">
+      <div className="fp-content fp-mech__layout">
+        <div>
         <p className="fp-fam__crumbs">
           <Link to="/field-manual">Field Manual</Link>
           {' / '}
@@ -113,6 +118,11 @@ export function SkillsPage() {
           losing crops to spoilage and weather (Resilience), or running out
           of silo space (Storage).
         </Callout>
+        </div>
+
+        <aside className="fp-mech__sidebar">
+          <RelatedSystemsCard relations={entry?.related ?? []} />
+        </aside>
       </div>
     </article>
   );

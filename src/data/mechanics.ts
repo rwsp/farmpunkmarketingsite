@@ -1,14 +1,14 @@
 /**
  * Catalog of every FarmPunk system.
  *
- * Three tiers:
- *   - MECHANICS — full wiki dossiers with the standard 9-section schema.
- *     These render at /field-manual/:slug.
- *   - FAMILIES  — collapsed catalogs that have their own dedicated page
- *     (Skills, Perks, Cartel Attacks, Black Markets).
- *   - STUBS     — known shipped systems whose deep wiki page hasn't been
- *     written yet. They render as simple stub pages with a "DOCS PENDING"
- *     callout and a linked related-systems sidebar.
+ *   - MECHANICS — full wiki dossiers with the standard 9-section schema,
+ *     rendered at /field-manual/:slug.
+ *   - CUSTOM_PAGES — live systems with their own dedicated page (Skills,
+ *     Perks, Cartel Attacks, Black Markets). Each has unique content that
+ *     doesn't fit the standard 9-section dossier, but renders in the same
+ *     dossier shell with a Related Systems sidebar.
+ *   - STUBS — shipped systems whose deep dossier hasn't been written yet.
+ *     Render as a "DOCS PENDING" page with the related-systems sidebar.
  *
  * Every entry carries a `related: { slug, note }[]` graph pointing to its
  * neighbors. Each note explains *how* the two systems interact, so the
@@ -26,10 +26,8 @@ export type CatalogEntry = {
   title: string;
   oneLiner: string;
   category: Category;
-  status: Status;        // live = has dedicated page; pending = stub
+  status: Status;        // live = has a dedicated page; pending = stub
   href?: string;         // present iff status === 'live'
-  count?: string;        // family page count badge ("17 skills")
-  isFamily?: boolean;    // family vs single-mechanic visual treatment
   version?: string;      // ships-in version string
   related?: Relation[];  // graph of related entries (for the sidebar)
 };
@@ -207,8 +205,8 @@ export const MECHANICS: Mechanic[] = [
   }
 ];
 
-// ── Family pages (their own dedicated route) ────────────────────
-export const FAMILIES: CatalogEntry[] = [
+// ── Live systems with custom-rendered pages ─────────────────────
+export const CUSTOM_PAGES: CatalogEntry[] = [
   {
     slug: 'skills',
     category: 'RPG',
@@ -216,8 +214,6 @@ export const FAMILIES: CatalogEntry[] = [
     oneLiner: '17 scrip-purchased skills × 10 levels each. Yield, sale price, vehicle stats, finance, resilience.',
     status: 'live',
     href: '/field-manual/skills',
-    count: '17 skills',
-    isFamily: true,
     version: VERSION,
     related: [
       { slug: 'perks', note: "Different progression track — perks are passive grants from prestige, skills are active scrip purchases." },
@@ -237,8 +233,6 @@ export const FAMILIES: CatalogEntry[] = [
     oneLiner: 'A 12-perk rotation that fires as Farmer Prestige climbs. Each lap through the rotation gets one level slower than the last.',
     status: 'live',
     href: '/field-manual/perks',
-    count: '12 perks',
-    isFamily: true,
     version: VERSION,
     related: [
       { slug: 'farmer-prestige', note: 'Perks unlock automatically as Prestige levels up.' },
@@ -263,8 +257,6 @@ export const FAMILIES: CatalogEntry[] = [
     oneLiner: 'Ten distinct retaliations. Pressure score (shares minus Warchest defense) drives how many activate per year.',
     status: 'live',
     href: '/field-manual/cartel-attacks',
-    count: '10 attacks',
-    isFamily: true,
     version: VERSION,
     related: [
       { slug: 'shares', note: 'Buying shares makes the Cartel angrier — pressure scales linearly with share count.' },
@@ -285,8 +277,6 @@ export const FAMILIES: CatalogEntry[] = [
     oneLiner: '5-tier underground buyer roster. Refreshes annually. Interactive simulator included.',
     status: 'live',
     href: '/black-markets',
-    count: '5 tiers',
-    isFamily: true,
     version: VERSION,
     related: [
       { slug: 'crop-mastery', note: 'Higher tier markets gate on per-crop mastery levels.' },
@@ -541,7 +531,12 @@ export const STUBS: CatalogEntry[] = [
 ];
 
 // ── Combined catalog for the Field Manual index ─────────────────
-export const ALL_CATALOG: CatalogEntry[] = [...MECHANICS, ...FAMILIES, ...STUBS];
+export const ALL_CATALOG: CatalogEntry[] = [...MECHANICS, ...CUSTOM_PAGES, ...STUBS];
+
+const CUSTOM_PAGE_SLUGS = new Set(CUSTOM_PAGES.map(c => c.slug));
+export function isCustomPage(slug: string): boolean {
+  return CUSTOM_PAGE_SLUGS.has(slug);
+}
 
 export const CATALOG_BY_CATEGORY = ALL_CATALOG.reduce<Record<Category, CatalogEntry[]>>(
   (acc, entry) => {
@@ -571,4 +566,4 @@ export const TOTAL_SHIPPED_SYSTEMS = ALL_CATALOG.length; // top-level systems
 // Counting individual skills (17), perks (12), and cartel attacks (10) as
 // distinct shipped behaviours, plus every other catalog entry once:
 export const TOTAL_SHIPPED_BEHAVIOURS =
-  17 + 12 + 10 + ALL_CATALOG.filter(e => !e.isFamily).length;
+  17 + 12 + 10 + ALL_CATALOG.filter(e => !CUSTOM_PAGE_SLUGS.has(e.slug)).length;

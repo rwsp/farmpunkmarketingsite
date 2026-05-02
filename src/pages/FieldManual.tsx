@@ -56,7 +56,7 @@ export function FieldManual() {
           const entries = CATALOG_BY_CATEGORY[cat] ?? [];
           if (entries.length === 0) return null;
 
-          // sort: families first, then dossiers, then stubs
+          // sort: live dossiers first, pending stubs last
           const sorted = [...entries].sort((a, b) => sortPriority(a) - sortPriority(b));
 
           return (
@@ -80,21 +80,17 @@ export function FieldManual() {
 }
 
 function sortPriority(entry: CatalogEntry): number {
-  if (entry.isFamily) return 0;
-  if (entry.status === 'live') return 1;
-  return 2; // pending stubs last
+  return entry.status === 'live' ? 0 : 1;
 }
 
 function CatalogCard({ entry, category }: { entry: CatalogEntry; category: Category }) {
-  // Every entry has a destination now — full dossiers, family pages, AND stub pages.
   const href = entry.href ?? `/field-manual/${entry.slug}`;
 
   return (
     <Link to={href} className="fp-fm__link">
       <DossierCard
-        tone={entry.isFamily ? 'manila' : entry.status === 'live' ? 'paper' : 'wood'}
-        badge={entry.isFamily ? `FAMILY · ${entry.count ?? ''}`.trim() : category.toUpperCase()}
-        stamp={entry.isFamily ? 'OVERVIEW' : undefined}
+        tone={entry.status === 'live' ? 'paper' : 'wood'}
+        badge={category.toUpperCase()}
         tilt={0}
       >
         <h3>{entry.title}</h3>

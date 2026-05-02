@@ -2,12 +2,12 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import {
   MECHANICS,
   STUBS,
-  resolveRelated,
   type CatalogEntry,
-  type Mechanic,
-  type Relation
+  type Mechanic
 } from '../data/mechanics';
 import { PaperPanel, Callout } from '../components/ui/Card';
+import { RelatedSystemsCard } from '../components/ui/RelatedSystems';
+import { GraffitiTitle } from '../components/ui/GraffitiTitle';
 import './field-manual.css';
 
 /**
@@ -42,7 +42,7 @@ function MechanicView({ mechanic: m }: { mechanic: Mechanic }) {
           </p>
 
           <header className="fp-mech__head">
-            <h1>{m.title}</h1>
+            <h1><GraffitiTitle title={m.title} /></h1>
             <p className="fp-mech__oneliner">{m.oneLiner}</p>
           </header>
 
@@ -130,7 +130,7 @@ function StubView({ stub }: { stub: CatalogEntry }) {
           </p>
 
           <header className="fp-mech__head">
-            <h1>{stub.title}</h1>
+            <h1><GraffitiTitle title={stub.title} /></h1>
             <p className="fp-mech__oneliner">{stub.oneLiner}</p>
           </header>
 
@@ -158,38 +158,3 @@ function StubView({ stub }: { stub: CatalogEntry }) {
   );
 }
 
-// ── Shared sidebar widget ────────────────────────────────────────
-function RelatedSystemsCard({ relations }: { relations: Relation[] }) {
-  const items = relations
-    .map(r => {
-      const resolved = resolveRelated(r.slug);
-      return resolved ? { ...resolved, note: r.note } : null;
-    })
-    .filter((x): x is { title: string; href: string; note: string } => x !== null);
-
-  if (items.length === 0) {
-    return (
-      <div className="fp-mech__sidebar-card">
-        <h4>Related Systems</h4>
-        <p className="fp-mech__related-empty">
-          This system stands on its own — nothing else in the catalog directly
-          interacts with it.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="fp-mech__sidebar-card">
-      <h4>Related Systems</h4>
-      <ul className="fp-mech__related">
-        {items.map(item => (
-          <li key={item.href}>
-            <Link to={item.href} className="fp-mech__related-link">{item.title}</Link>
-            <p className="fp-mech__related-note">{item.note}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}

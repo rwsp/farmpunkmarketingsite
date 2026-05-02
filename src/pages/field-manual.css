@@ -78,14 +78,12 @@
   background: rgba(242, 194, 48, 0.06);
 }
 /* lede chips render against dark; paper-tone card foot needs a darker text color */
-.fp-dossier--paper .fp-fm__chip--live,
-.fp-dossier--manila .fp-fm__chip--live {
+.fp-dossier--paper .fp-fm__chip--live {
   color: var(--fp-rotted-brown);
   border-color: var(--fp-rotted-brown);
   background: rgba(124, 255, 43, 0.18);
 }
-.fp-dossier--paper .fp-fm__chip--pending,
-.fp-dossier--manila .fp-fm__chip--pending {
+.fp-dossier--paper .fp-fm__chip--pending {
   color: var(--fp-rotted-brown);
   border-color: var(--fp-rotted-brown);
   background: rgba(242, 194, 48, 0.22);
