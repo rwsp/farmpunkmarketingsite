@@ -117,19 +117,21 @@ export const MECHANICS: Mechanic[] = [
       { slug: 'credit-rating', note: 'A franchise fee that pushes your balance negative triggers a credit downgrade.' }
     ],
     summary:
-      "You lost the farm. You're leasing it back via franchise agreement. The fee is the Cartel's cut for letting you keep working your own land.",
+      "Once a year the Cartel mails you a bill for the privilege of farming land they say you lease from them. The fee scales up with every dollar that crossed your scales that year, and the only thing that ever brings it down is owning a piece of the same company that's collecting it. Pay it long enough and you're paying them rent on your own dirt. Buy enough shares and the bill still arrives — stamped zero. The Cartel never stops sending it. You just stop owing it.",
     whatItDoes: [
-      'Fires once per year at period 12 (February).',
-      "Progressive on annual revenue, US-tax-bracket style — each bracket's rate applies only to the portion of revenue inside it.",
-      'Each share you own reduces the gross fee by 1% (linear). At 100 shares the fee is zero.',
-      'Reduction is `min(1, sharesOwned × 0.01)`. Net fee is deducted as expenditure.'
+      "Hits once a year, every February. A big red HUD card shows the breakdown: how much you took in, what the bill would have been, how much your shares saved you, and the final amount the Cartel takes out of your farm cash. There's no payment plan and no negotiating — it comes out in one lump sum.",
+      "The fee is based on every dollar that came into your farm that year — crop sales, contracts, dividends, all of it. It is NOT based on profit. The Cartel doesn't care what you spent on seed, diesel, or a new tractor. They only care what your scales weighed.",
+      "Bigger years cost more per dollar, not just more dollars. The fee uses brackets, the same way income tax does: your first $50,000 of revenue is untaxed, then each chunk above that is charged at a higher rate. Only the dollars sitting inside a higher bracket pay the higher rate — the dollars below stay at the lower rate. The exact brackets are in the Important Numbers section.",
+      "Every share you own knocks 1% off the final bill, forever. Five shares = 5% off. Fifty shares = half off. A hundred shares = the bill arrives at zero, every year, no matter how much you earned. Shares are the only thing in the entire game that reduces this fee.",
+      "The fee comes out of farm cash and counts as a business expense for the year. If it pushes your balance below zero, your credit rating takes a downgrade hit — the same way any other transaction would if it left you in the red."
     ],
     whyItMatters:
       "This is the biggest single expense in the game. It's also the only meaningful reason to buy shares — every share you own is a permanent cut to the bill, forever. The fee scales faster than revenue, so the more you grow, the harder the Cartel squeezes.",
     howYouProgress: [
-      'Drive revenue up so you can afford the bill.',
-      'Drive shares up so the bill shrinks.',
-      'Sequence them — go a few years of high revenue, take the hit, save scrip, then unlock the next eligibility tier.'
+      "Earn enough to survive the bill before it arrives. The fee isn't going away — your job in the early years is to make sure you have cash on hand in February. You can preview the exact bill at any point in the year from the console (see below) so it never catches you off guard.",
+      "Buy shares to make the bill smaller forever. Each share bought with scrip permanently knocks 1% off every future fee. There is no perk, skill, or clever trick that does the same thing — shares are the only escape valve.",
+      "You can only buy a few shares per year, and how many depends on your three-year average revenue. Big years unlock the right to buy more shares the following year, even though those big years also mean a bigger fee. You're trading short-term pain for permanent relief. Grow the farm → unlock the next tier → buy shares → next year's bite is a little smaller. That's the loop.",
+      "The closer you get to 100 shares, the angrier the Cartel gets and the harder they hit you with attacks. Fill the Reclamation Warchest as you climb — it's your only defense against the harassment that comes with reclaiming the farm."
     ],
     importantNumbers: [
       { label: '< $50,000', value: '0% (untaxed)' },
@@ -142,9 +144,10 @@ export const MECHANICS: Mechanic[] = [
       { label: 'Worked example @ $6M', value: '$890k gross · $0 net @ 100 shares' }
     ],
     beginnerAdvice: [
-      'Plan your year-end balance to absorb the hit. The CRITICAL HUD card at period 12 is not a surprise — preview it any time with `farmPunkFranchiseFee`.',
-      'Dividends pay in farm cash. They fire right after the fee. A solid dividend tier softens the blow.',
-      'The fee scales with revenue, not profit. Buying expensive equipment to "lower profit" does NOT lower this fee.'
+      "This is the single biggest expense in the game. Plan your year so you have cash on hand in February — don't drain your account on a shiny new combine in January and find out you can't pay the Cartel.",
+      "The fee is based on revenue, not profit. Buying expensive gear to make your books look smaller does nothing here. The Cartel sees what your scales weighed, not what you spent. Don't try to outsmart the bill — save for it.",
+      "Dividends pay in farm cash and land in the same February tick, right after the fee. A solid dividend tier softens the blow — the Cartel ends up paying you back through the same paperwork they used to bill you. See the Dividends page for the details.",
+      "Don't be surprised. You can preview exactly what the bill will be at any time from the console (see below). Check it before any big purchase, and check it again before the year flips."
     ],
     consoleCommands: [
       { cmd: 'farmPunkFranchiseFee', note: "Preview the current year's fee with bracket-by-bracket breakdown. Read-only." },
@@ -152,7 +155,7 @@ export const MECHANICS: Mechanic[] = [
       { cmd: 'farmPunkForceFranchiseFund <delta>', note: 'Testing — bump lifetime fees to unlock a dividend tier.' }
     ],
     fieldNote:
-      "The Cartel's books record every dollar they tried to take. The longer that ledger gets, the more dividends they're forced to cough up. Buying out doesn't soft-lock the dividend tier — the cartel keeps assessing the fee, you just don't owe any of it. That's the joke."
+      "Funny thing about the Cartel's franchise fee: at first they charge you for breathing, then later the same paperwork proves they owe you for the air."
   },
   {
     slug: 'crop-mastery',
