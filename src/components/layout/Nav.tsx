@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import farmpunkStamp from '../../assets/farmpunk-icon@small.webp';
 import './nav.css';
 
 const LINKS = [
@@ -26,7 +27,10 @@ export function Nav() {
   return (
     <header className={`fp-nav ${scrolled ? 'fp-nav--scrolled' : ''}`}>
       <div className="fp-nav__inner fp-content">
-        <NavLink to="/" className="fp-nav__brand" onClick={() => setOpen(false)}>
+        <NavLink to="/" className="fp-nav__brand" onClick={() => setOpen(false)} aria-label="FarmPunk — home">
+          <span className="fp-nav__stamp" aria-hidden="true">
+            <img src={farmpunkStamp} alt="" width={44} height={44} loading="eager" decoding="async" />
+          </span>
           <span className="fp-nav__brand-farm">FARM</span>
           <span className="fp-nav__brand-slash">/</span>
           <span className="fp-nav__brand-punk">PUNK</span>

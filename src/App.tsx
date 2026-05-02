@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
 import { Features } from './pages/Features';
@@ -8,6 +8,7 @@ import { QuickReference } from './pages/QuickReference';
 import { Endgame } from './pages/Endgame';
 import { ConsoleCommands } from './pages/ConsoleCommands';
 import { EarlyAccess } from './pages/EarlyAccess';
+import { NotFound } from './pages/NotFound';
 import { useScrollToTop } from './hooks/useScrollToTop';
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
         <Route path="/endgame" element={<Endgame />} />
         <Route path="/console" element={<ConsoleCommands />} />
         <Route path="/early-access" element={<EarlyAccess />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   );

@@ -1,0 +1,231 @@
+.fp-404 {
+  padding: var(--space-7) 0 var(--space-8);
+}
+
+.fp-404__stage {
+  position: relative;
+  margin: var(--space-5) auto var(--space-6);
+  max-width: 720px;
+  isolation: isolate;
+}
+
+/* ── The seizure notice — corporate paper ─────────────────────── */
+.fp-404__notice {
+  position: relative;
+  background-color: var(--fp-bone-paper);
+  background-image:
+    /* faint serial-number watermark grid */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 28px,
+      rgba(74, 51, 38, 0.05) 28px 29px
+    ),
+    /* grain */
+    radial-gradient(rgba(74, 51, 38, 0.08) 1px, transparent 1px),
+    radial-gradient(rgba(74, 51, 38, 0.05) 1.5px, transparent 1.5px);
+  background-size: auto, 4px 4px, 9px 9px;
+  color: var(--fp-ink-black);
+  padding: var(--space-6) var(--space-6) var(--space-5);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.15),
+    0 24px 50px rgba(0, 0, 0, 0.7);
+  transform: rotate(-1.4deg);
+}
+
+/* corner pinned look — black tick marks at the four corners */
+.fp-404__notice-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--fp-ink-black);
+}
+.fp-404__notice-corner--tl { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
+.fp-404__notice-corner--tr { top: 8px; right: 8px; border-left: 0; border-bottom: 0; }
+.fp-404__notice-corner--bl { bottom: 8px; left: 8px; border-right: 0; border-top: 0; }
+.fp-404__notice-corner--br { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
+
+.fp-404__notice-head {
+  text-align: center;
+  border-bottom: 4px double var(--fp-ink-black);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.fp-404__notice-seal {
+  display: inline-block;
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  padding: 4px 10px;
+  border: 1px solid var(--fp-ink-black);
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--fp-ink-black);
+}
+
+.fp-404__notice-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--fp-ink-black);
+  letter-spacing: 0.06em;
+}
+
+.fp-404__notice-sub {
+  font-family: var(--font-stamp);
+  font-size: 0.86rem;
+  margin: 0;
+  color: var(--fp-rotted-brown);
+  letter-spacing: 0.04em;
+}
+
+/* the field rows look like an inventory ledger */
+.fp-404__notice-fields {
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+
+.fp-404__notice-fields > div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-4);
+  padding: 8px 4px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+}
+.fp-404__notice-fields > div:last-child { border-bottom: 0; }
+
+@media (max-width: 540px) {
+  .fp-404__notice-fields > div { grid-template-columns: 1fr; gap: 2px; }
+}
+
+.fp-404__notice-fields dt {
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fp-rotted-brown);
+}
+
+.fp-404__notice-fields dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--fp-ink-black);
+  word-break: break-all;
+}
+.fp-404__notice-fields dd.fp-mono {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 4px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  letter-spacing: 0;
+}
+.fp-404__notice-fields dd.fp-stamp {
+  font-family: var(--font-stamp);
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  color: var(--fp-rotted-brown);
+}
+
+.fp-404__notice-foot {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--fp-ink-black);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--fp-rotted-brown);
+}
+
+.fp-404__signature { font-style: italic; }
+.fp-404__seal-no { font-family: var(--font-mono); }
+
+/* The big REPOSSESSED red stamp pressed over the notice */
+.fp-404__stamp {
+  position: absolute;
+  top: 38%;
+  right: -6%;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+  letter-spacing: 0.18em;
+  color: var(--fp-danger-red);
+  border: 5px solid var(--fp-danger-red);
+  padding: 8px 18px 10px;
+  transform: rotate(-14deg);
+  background: rgba(255, 255, 255, 0.4);
+  /* uneven ink edge */
+  text-shadow:
+    0 0 1px rgba(199, 53, 36, 0.8),
+    1px 0 0 rgba(199, 53, 36, 0.4);
+  box-shadow:
+    inset 0 0 4px rgba(199, 53, 36, 0.4);
+  opacity: 0.92;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Graffiti — spray-painted OVER the corporate notice ───────── */
+.fp-404__graffiti {
+  position: absolute;
+  left: -4%;
+  top: -8%;
+  z-index: 3;
+  pointer-events: none;
+  /* the 404 itself is huge and dripping over everything */
+  font-size: clamp(6rem, 16vw, 12rem) !important;
+  filter:
+    drop-shadow(4px 6px 0 rgba(0, 0, 0, 0.7))
+    drop-shadow(0 0 30px rgba(124, 255, 43, 0.4));
+}
+.fp-404__graffiti .fp-tag--lg {
+  font-size: inherit !important;
+}
+
+.fp-404__graffiti-tag {
+  position: absolute;
+  bottom: -10%;
+  right: 4%;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.6));
+}
+
+/* ── Recovery — clear navigation back ─────────────────────────── */
+.fp-404__recovery {
+  text-align: center;
+  max-width: 640px;
+  margin: var(--space-7) auto 0;
+}
+
+.fp-404__recovery-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: var(--space-3);
+}
+
+.fp-404__recovery-body {
+  color: var(--fp-bone-paper);
+  margin-bottom: var(--space-5);
+}
+
+.fp-404__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.fp-404__legal {
+  font-family: var(--font-stamp);
+  font-size: 0.85rem;
+  color: var(--fp-weathered-gray);
+  letter-spacing: 0.02em;
+}

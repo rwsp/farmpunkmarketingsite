@@ -24,8 +24,8 @@
 
 .fp-nav__brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 4px;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-display);
   text-transform: uppercase;
   font-size: 1.6rem;
@@ -33,6 +33,57 @@
   text-decoration: none;
   position: relative;
   padding-right: var(--space-5);
+}
+
+/* Stamped circle — the ModHub icon as a wax seal / ink stamp */
+.fp-nav__stamp {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--fp-blacksoil);
+  /* outer ring = stamp impression, inner ring = paper darkening */
+  box-shadow:
+    0 0 0 2px var(--fp-acid-green),
+    0 0 0 3px rgba(0, 0, 0, 0.7),
+    0 4px 10px rgba(0, 0, 0, 0.55),
+    inset 0 0 8px rgba(0, 0, 0, 0.5);
+  transform: rotate(-6deg);
+  overflow: hidden;
+  transition: transform 0.18s var(--ease-snap), box-shadow 0.18s var(--ease-snap);
+}
+
+.fp-nav__stamp::after {
+  /* ink-on-paper unevenness — hides the perfectly round edge */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 35%, transparent 55%, rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.fp-nav__stamp img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* boost contrast so the small graffiti reads at 44px */
+  filter: contrast(1.18) saturate(1.2);
+  display: block;
+}
+
+.fp-nav__brand:hover .fp-nav__stamp {
+  transform: rotate(2deg) scale(1.05);
+  box-shadow:
+    0 0 0 2px var(--fp-hot-magenta),
+    0 0 0 3px rgba(0, 0, 0, 0.7),
+    0 6px 14px rgba(255, 47, 163, 0.35),
+    inset 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .fp-nav__brand-farm { color: var(--fp-flash-white); }
