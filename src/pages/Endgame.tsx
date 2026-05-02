@@ -307,7 +307,7 @@ export function Endgame() {
           <div className="fp-eg__final-flash" aria-hidden="true" />
           <div className="fp-content fp-eg__final-inner">
             <span className="fp-eyebrow" style={{ borderColor: 'var(--fp-acid-green)', color: 'var(--fp-acid-green)' }}>
-              Win Condition Satisfied · Both Endgames Complete
+              Valley Liberation Achieved · Both Endgames Complete
             </span>
 
             {/* The mod's actual ModHub icon, sprayed over the page like a tag */}

@@ -48,23 +48,23 @@ const VERSION = '0.0.34';
 // ── Full dossier mechanics ──────────────────────────────────────
 export const MECHANICS: Mechanic[] = [
   {
-    slug: 'win-condition',
+    slug: 'valley-liberation',
     category: 'RPG',
-    title: 'Win Condition',
+    title: 'Valley Liberation',
     oneLiner:
       "FarmPunk has two endgame requirements. Buy back all 100 of the Cartel's shares to break their grip on your farm. Fill the Reclamation Warchest with $1 billion to bankroll the rest of the valley's fight. They're designed to pressure each other into balance, and you'll need both to win.",
     status: 'live',
-    href: '/field-manual/win-condition',
+    href: '/field-manual/valley-liberation',
     version: VERSION,
     related: [
-      { slug: 'shares', note: 'One half of the win condition. 100 shares = 100% off the franchise fee.' },
+      { slug: 'shares', note: 'One half of Valley Liberation. 100 shares = 100% off the franchise fee.' },
       { slug: 'reclamation-warchest', note: 'The other half. $1B in the Warchest = the valley is funded.' },
       { slug: 'cartel-franchise-fee', note: 'Shares exist to escape this. 100 shares zeros it out.' },
       { slug: 'cartel-attacks', note: 'More shares = angrier Cartel. The Warchest is the counterweight.' },
       { slug: 'farmer-prestige', note: "Doesn't directly affect the win, but unlocks vehicles and perks that help you reach it." }
     ],
     summary:
-      "FarmPunk isn't about getting rich. It's about taking back what was stolen. The Cartel didn't beat your family with one weapon — they used debt, contracts, taxes, franchise fees, market control, and fear. Reclaiming the valley means beating them on both fronts: ownership and resistance. The win condition has two halves. You need both.",
+      "FarmPunk isn't about getting rich. It's about taking back what was stolen. The Cartel didn't beat your family with one weapon — they used debt, contracts, taxes, franchise fees, market control, and fear. Reclaiming the valley means beating them on both fronts: ownership and resistance. Valley Liberation has two halves. You need both.",
     whatItDoes: [
       "Tracks two independent endgame goals: shares owned (out of 100) and Reclamation Warchest balance (out of $1,000,000,000).",
       "When you hit both, the game fires a CRITICAL HUD card declaring the valley reclaimed.",
@@ -89,7 +89,7 @@ export const MECHANICS: Mechanic[] = [
       { label: 'Win condition state at 100 shares + $1B Warchest', value: 'Reclamation. Game complete.' }
     ],
     beginnerAdvice: [
-      "Don't panic about the win condition early. The first 5–10 in-game years are about surviving and growing. Shares come on the table once your 3-year average revenue hits $50,000.",
+      "Don't panic about Valley Liberation early. The first 5–10 in-game years are about surviving and growing. Shares come on the table once your 3-year average revenue hits $50,000.",
       "Plan deposits around the year flip (March). The Cartel rolls its annual attacks at that moment — a fat Warchest dampens that roll for the year.",
       "When you're approaching 100 shares, don't let the Warchest go empty or you'll be eaten alive."
     ],
@@ -220,14 +220,14 @@ export const MECHANICS: Mechanic[] = [
     category: 'Resistance',
     title: 'Reclamation Warchest',
     oneLiner:
-      "The Reclamation Warchest is a one-way fund for the valley’s fight, bankrolling the people and networks pushing back against the Cartel’s grip. Filling it is half the win condition, and every dollar sabotages their hostilities.",
+      "The Reclamation Warchest is a one-way fund for the valley’s fight, bankrolling the people and networks pushing back against the Cartel’s grip. Filling it is half of Valley Liberation, and every dollar sabotages their hostilities.",
     status: 'live',
     href: '/field-manual/reclamation-warchest',
     version: VERSION,
     related: [
       { slug: 'cartel-attacks', note: "Every $10M in the Warchest cancels one share's worth of Cartel anger." },
-      { slug: 'shares', note: 'The other half of the win condition. Shares + Warchest = reclamation.' },
-      { slug: 'win-condition', note: 'Filling the Warchest to $1B is half of how you win FarmPunk.' },
+      { slug: 'shares', note: 'The other half of Valley Liberation. Shares + Warchest = reclamation.' },
+      { slug: 'valley-liberation', note: 'Filling the Warchest to $1B is half of Valley Liberation.' },
       { slug: 'profit-tracking', note: "Deposits are intentionally invisible to your annual P&L — they don't count as expenditure." }
     ],
     summary:
@@ -239,14 +239,14 @@ export const MECHANICS: Mechanic[] = [
       "Every $10 million in the Warchest cancels one share's worth of Cartel anger. The fuller it gets, the less the Cartel attacks you. (See Cartel Attacks for the math.)"
     ],
     whyItMatters:
-      "The Warchest does two big jobs. First, it's your only real defense against the Cartel as you start buying back shares — without it, owning 100 shares means peak harassment, four attacks a year on average. Second, filling it to $1 billion is one of the two endgame win conditions (the other is owning all 100 shares). You can't win FarmPunk without it.",
+      "The Warchest does two big jobs. First, it's your only real defense against the Cartel as you start buying back shares — without it, owning 100 shares means peak harassment, four attacks a year on average. Second, filling it to $1 billion is one of the two halves of Valley Liberation (the other is owning all 100 shares). You can't win FarmPunk without it.",
     howYouProgress: [
       "Deposit whenever the farm has spare cash. There's no minimum, no maximum, no schedule.",
       "Try to deposit before each March (the year flip), since that's when the Cartel rolls its annual attacks. A bigger Warchest at that moment means fewer attacks for the year.",
-      "Hitting $1 billion fires a big CRITICAL win-condition card. If you also own all 100 shares, you've reclaimed the valley."
+      "Hitting $1 billion fires a big CRITICAL Valley Liberation card. If you also own all 100 shares, you've reclaimed the valley."
     ],
     importantNumbers: [
-      { label: 'Cap (the win condition)', value: '$1,000,000,000' },
+      { label: 'Cap (Valley Liberation)', value: '$1,000,000,000' },
       { label: 'Cancels Cartel anger at', value: '1 share per $10 million' },
       { label: 'Withdrawals', value: 'None. Ever.' },
       { label: 'Effect on profit / scrip bonus', value: 'None. Invisible to the books.' }
@@ -276,9 +276,8 @@ export const MECHANICS: Mechanic[] = [
       { slug: 'crop-mastery', note: 'Both grow per liter sold. Prestige is global, mastery is per-crop.' },
       { slug: 'rebel-supply-chain', note: 'Reward vehicles unlock at preset prestige levels.' },
       { slug: 'perks', note: 'Perks unlock automatically as prestige climbs.' },
-      { slug: 'farmer-titles', note: 'Title is derived from current prestige level.' },
       { slug: 'black-markets', note: 'Higher tier markets gate on prestige.' },
-      { slug: 'win-condition', note: "Doesn't directly affect the win, but unlocks the perks + rewards that help you reach it." }
+      { slug: 'valley-liberation', note: "Doesn't directly affect the win, but unlocks the perks + rewards that help you reach it." }
     ],
     summary:
       "Prestige is a single global reputation level that climbs every time you sell crops. It is the line under your name in the valley's quiet ledger — every liter through the scales counts, no matter what crop, what station, or what year. Mastery is per-crop. Prestige is everywhere. The number does not go down, does not reset between years or saves, and has no ceiling. It is the slow background measure of how serious a farmer you have become.",
@@ -286,7 +285,8 @@ export const MECHANICS: Mechanic[] = [
       "Tracks one global level driven by total liters sold across every harvestable crop. One liter sold = one point of Prestige fame, regardless of which crop, which station, or which year.",
       "Levels up automatically as you cross fame thresholds. The first level takes 24,000 liters; each level after that costs 10% more fame than the last.",
       "Has no level cap and never resets. Prestige keeps climbing across years and across saves — once you have earned a level, it is yours.",
-      "Drives three downstream systems: Farmer Titles (the honorific the valley uses for you), the Rebel Supply Chain (machines, parts, and trailers quietly redirected onto your dealer's pad as the valley starts betting on you), and Farmer Prestige Perks (a rotating set of recurring bonuses unlocked on every level-up).",
+      "Drives two downstream systems: the Rebel Supply Chain (machines, parts, and trailers quietly redirected onto your dealer's pad as the valley starts betting on you) and Farmer Prestige Perks (a rotating set of recurring bonuses unlocked on every level-up).",
+      "Also assigns you a title that updates as your level climbs — Field Serf at L0–9, Debt Farmer at L10–19, Dirt Owner at L20–29, Farm Operator at L30–39, Land Boss at L40–49, Rebel Baron from L50 on. The title is pure flavor: it shows up in your stats line and on the perks summary, but does not change yields, prices, fees, or Cartel pressure.",
       "Unlocks the higher-tier Black Markets — the deeper-cash buyers will not deal with someone the valley has not heard of yet. Black Market completions also pay direct Prestige fame on top of cash and scrip."
     ],
     whyItMatters:
@@ -303,7 +303,7 @@ export const MECHANICS: Mechanic[] = [
       { label: 'Curve', value: 'Each level costs 10% more fame than the last (geometric, growth 1.10)' },
       { label: 'Level cap', value: 'None' },
       { label: 'Counter resets', value: 'Never. Persists across years and saves.' },
-      { label: 'Title bands', value: 'L0 / L10 / L20 / L30 / L40 / L50 — six titles' },
+      { label: 'Titles by level', value: 'L0–9 Field Serf · L10–19 Debt Farmer · L20–29 Dirt Owner · L30–39 Farm Operator · L40–49 Land Boss · L50+ Rebel Baron' },
       { label: 'Reward levels (free vehicles)', value: 'L3, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100' },
       { label: 'Black Market unlocks', value: 'Backroad 0 · Off-Book 10 · Underground 20 · Insurgent 30 · Liberating 40' }
     ],
@@ -350,7 +350,6 @@ export const MECHANICS: Mechanic[] = [
     howYouProgress: [
       "Climb Prestige. The reward levels are 3, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, and 100 — every level on that list delivers something.",
       "After a level-up, walk to the dealer's spawn pad. The reward will already be there, fully configured, registered to your farm. The HUD card on level-up tells you what was delivered.",
-      "Do not sell what you cannot replace. Reward vehicles cannot be unloaded — once they arrive, they are part of your collection until the end of the save.",
       "Treat bundled rewards as bundles. Some levels deliver a harvester paired with its specific header (L20, L100). Selling them apart is not an option anyway — the museum rule covers reward vehicles too."
     ],
     importantNumbers: [
@@ -385,62 +384,13 @@ export const MECHANICS: Mechanic[] = [
       "The Cartel mails you bills. The valley sends you a tractor."
   },
   {
-    slug: 'farmer-titles',
+    slug: 'rust-and-raiders',
     category: 'RPG',
-    title: 'Farmer Titles',
-    oneLiner:
-      "Farmer Titles are what the valley calls you as your reputation grows, from another operator in the dirt to a name the Cartel cannot ignore. They do not change the math — they mark how far you have climbed in a world that was built to keep you small.",
-    status: 'live',
-    href: '/field-manual/farmer-titles',
-    version: VERSION,
-    related: [
-      { slug: 'farmer-prestige', note: 'Title is purely a derived display from your current prestige level.' }
-    ],
-    summary:
-      "Titles are the names the valley uses for you as your Prestige climbs. They do not change yields, prices, or fees — they are flavor, not bonus. But they mark how far you have come in a world built to keep you small, and they are how anyone reading your save's stats line knows whether you are a debt farmer holding on or a rebel baron the Cartel can no longer ignore.",
-    whatItDoes: [
-      "Assigns one of six titles based on your current Prestige level. The title updates the moment you cross a band threshold.",
-      "Has no mechanical effect — yields, prices, taxes, and Cartel pressure ignore the title entirely. Titles do not grant perks; perks do that on their own track.",
-      "Surfaces in the farmer stats summary line. As of this version, that is the title's primary appearance — future surfaces will pull from the same source.",
-      "Recomputed on the fly from your live Prestige level. There is no separate ledger to corrupt and no migration needed when the bands are retuned in a future update."
-    ],
-    whyItMatters:
-      "Most progression in FarmPunk comes with a number attached — yield, price, fame, scrip, dollars saved on a tax bill. Titles are deliberately not that. They are the long-term mood meter of the run, the marker that turns a save from 'a small farm trying to survive' into 'the operation in the corner of the map that the Cartel is starting to take seriously.' Crossing into a new title is also a rough proxy for which Black Markets have opened, which perks have likely fired, and which reward vehicles are already in your shed — the band thresholds line up with the major shifts in what your farm can do.",
-    howYouProgress: [
-      "Climb Prestige. There is no other input — every title is a direct read off the current Prestige level.",
-      "Do not farm for the title itself. The title appears the instant you cross the band threshold; chasing the band only makes sense as a side effect of chasing the perks and rewards on those levels.",
-      "Use the band as a planning rule of thumb. Field Serf is the survival window. Debt Farmer is when the valley starts noticing. Dirt Owner means you have a real operation. Farm Operator is high-mid game. Land Boss is endgame approach. Rebel Baron is everything past L50, including the L75 and L100 rewards."
-    ],
-    importantNumbers: [
-      { label: 'L0 – L9', value: 'Field Serf' },
-      { label: 'L10 – L19', value: 'Debt Farmer' },
-      { label: 'L20 – L29', value: 'Dirt Owner' },
-      { label: 'L30 – L39', value: 'Farm Operator' },
-      { label: 'L40 – L49', value: 'Land Boss' },
-      { label: 'L50+', value: 'Rebel Baron' },
-      { label: 'Mechanical effect', value: 'None. Pure honorific.' },
-      { label: 'Persisted state', value: 'None. Recomputed live from Prestige.' }
-    ],
-    beginnerAdvice: [
-      "Field Serf is not an insult — it is the first ten levels of every save. Almost every farmer who ever ran the valley started here.",
-      "When you cross into Debt Farmer (L10), the Off-Book Black Market tier opens up. The title and the unlock land at the same Prestige level, which is part of the design.",
-      "If you load a save and the title does not match what you expected, check `farmPunkMastery` for your real Prestige level — the title is just a read-off, so the level is the truth."
-    ],
-    consoleCommands: [
-      { cmd: 'farmPunkStats', note: 'Read-only. Prints your current title plus year-over-year revenue, expenditure, profit, and 3-year average.' },
-      { cmd: 'farmPunkMastery', note: 'Read-only. Shows the Prestige level your title is derived from, plus per-crop mastery.' }
-    ],
-    fieldNote:
-      "Field Serf was the line on the Cartel's intake form. Rebel Baron is the line they refuse to write."
-  },
-  {
-    slug: 'vehicle-storage',
-    category: 'RPG',
-    title: 'Vehicle Storage Enforcement',
+    title: 'Rust and Raiders',
     oneLiner:
       'The weather is cruel, the nights are worse, and exposed gear does not stay untouched for long. Store vehicles in sheds or garages to protect them from damage, vandals, and thieves looking to turn your machinery into someone else’s payday.',
     status: 'live',
-    href: '/field-manual/vehicle-storage',
+    href: '/field-manual/rust-and-raiders',
     version: VERSION,
     related: [
       { slug: 'cartel-attacks', note: "Goon Visit wrecks one tractor regardless of shelter — the only attack that ignores storage." },
@@ -533,9 +483,8 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
     related: [
       { slug: 'farmer-prestige', note: 'Perks unlock automatically as Prestige levels up.' },
       { slug: 'rebel-supply-chain', note: "Reward levels are skipped by perk cadence — they're free 'rest' levels." },
-      { slug: 'farmer-titles', note: 'Both derive from prestige levels.' },
       { slug: 'crop-mastery', note: 'Mastery Catalyst perk speeds up per-crop fame gain.' },
-      { slug: 'vehicle-storage', note: 'Insurance Policy + Guard Dogs perks reduce theft and vandal pain.' },
+      { slug: 'rust-and-raiders', note: 'Insurance Policy + Guard Dogs perks reduce theft and vandal pain.' },
       { slug: 'credit-rating', note: 'Credit Indemnity perk widens the negative-balance floor before downgrade fires.' },
       { slug: 'debt-cap', note: 'Generous Banker perk boosts both debt-cap multipliers.' },
       { slug: 'farmland-surcharge', note: 'Negotiator perk cuts the surcharge by up to 30%.' },
@@ -561,9 +510,9 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
       { slug: 'crop-novelty', note: 'Smear Campaign zeros out novelty bonuses for the year.' },
       { slug: 'crop-spoilage', note: 'Crop Poisoning is a one-shot silo grain raid — separate from natural spoilage.' },
       { slug: 'annual-taxes', note: 'Cartel Audit fires from inside the year-end tax block.' },
-      { slug: 'vehicle-storage', note: "Goon Visit wrecks one tractor regardless of shelter — it's the only attack storage can't block." },
+      { slug: 'rust-and-raiders', note: "Goon Visit wrecks one tractor regardless of shelter — it's the only attack storage can't block." },
       { slug: 'mandatory-financing', note: 'Loan Rate Hike adds +3% to new loans for the active year.' },
-      { slug: 'win-condition', note: 'Owning all 100 shares with no Warchest = peak harassment.' }
+      { slug: 'valley-liberation', note: 'Owning all 100 shares with no Warchest = peak harassment.' }
     ]
   },
   {
@@ -596,7 +545,7 @@ export const STUBS: CatalogEntry[] = [
       { slug: 'dividends', note: 'Each share earns annual dividends in farm cash.' },
       { slug: 'cartel-attacks', note: 'Buying shares makes the Cartel angrier — pressure scales linearly.' },
       { slug: 'reclamation-warchest', note: 'Owning shares without funding the Warchest = peak harassment.' },
-      { slug: 'win-condition', note: 'Owning all 100 = half the win.' }
+      { slug: 'valley-liberation', note: 'Owning all 100 = half the win.' }
     ]
   },
   {
@@ -651,7 +600,7 @@ export const STUBS: CatalogEntry[] = [
       { slug: 'crop-spoilage', note: 'Weather modifier adds to the monthly spoilage rate.' },
       { slug: 'skills', note: 'Weather Shield skill absorbs negative weather mods on yield.' },
       { slug: 'perks', note: 'Forecasting Leveraging perk amplifies the favorable side of every weather mod.' },
-      { slug: 'vehicle-storage', note: 'Weather modifier applies to per-period exposure damage.' }
+      { slug: 'rust-and-raiders', note: 'Weather modifier applies to per-period exposure damage.' }
     ]
   },
 

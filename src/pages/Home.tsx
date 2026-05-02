@@ -35,7 +35,7 @@ const KEY_FEATURES = [
   {
     badge: 'OPS-04',
     stamp: 'WATCHED',
-    title: 'Storage Enforcement',
+    title: 'Rust and Raiders',
     body:
       'Park outside and the Cartel sends vandals (10%) or thieves (5%) every month. Build a shed or watch your fleet vanish into someone else\'s ledger.',
     rule: 'Insurance Policy perk claws back part of the loss.'
@@ -53,7 +53,7 @@ const KEY_FEATURES = [
     stamp: 'GOAL',
     title: 'Reclamation Warchest',
     body:
-      'A one-way fund that frees the valley. Cap is $1B. Combined with all 100 shares, this is the win condition. The money never comes back.',
+      'A one-way fund that frees the valley. Cap is $1B. Combined with all 100 shares, this is Valley Liberation. The money never comes back.',
     rule: 'You do not inherit freedom. You buy it back.'
   }
 ];
@@ -201,11 +201,11 @@ export function Home() {
         </div>
       </section>
 
-      {/* ── WIN CONDITION ──────────────────────────────────────── */}
+      {/* ── VALLEY LIBERATION ──────────────────────────────────── */}
       <section className="fp-section fp-win">
         <div className="fp-content fp-win__inner">
           <div>
-            <span className="fp-eyebrow">Win Condition</span>
+            <span className="fp-eyebrow">Valley Liberation</span>
             <h2>Two endgames. One reclamation.</h2>
             <p>
               FarmPunk is not about getting rich. It is about taking back what

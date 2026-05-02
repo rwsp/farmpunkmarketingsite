@@ -22,14 +22,13 @@ const SHIPPED = [
   'Rebel Supply Chain',
   'Crop Spoilage',
   'Shelter Detection',
-  'Vehicle Storage Enforcement',
+  'Rust and Raiders',
   'Weather System (45 entries)',
   'Asset Sell Block (museum doctrine)',
   'No Generators',
   'Reclamation Warchest',
   'Opposition Events (10 retaliations)',
   'Black Markets (5-tier roster)',
-  'Farmer Titles',
   'Debug HUD'
 ];
 
