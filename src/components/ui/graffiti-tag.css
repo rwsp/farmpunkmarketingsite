@@ -1,0 +1,43 @@
+.fp-tag {
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-graffiti);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  transform: rotate(var(--rot, -3deg));
+  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.55));
+}
+
+.fp-tag__shadow,
+.fp-tag__paint {
+  display: block;
+}
+
+.fp-tag__shadow {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  color: rgba(0, 0, 0, 0.65);
+  filter: blur(1.5px);
+  z-index: 0;
+}
+
+.fp-tag__paint {
+  position: relative;
+  z-index: 1;
+  /* irregular drip-paint clip — uneven edges */
+  -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────── */
+.fp-tag--sm { font-size: clamp(1.25rem, 2vw, 1.6rem); }
+.fp-tag--md { font-size: clamp(2.25rem, 5vw, 3.5rem); }
+.fp-tag--lg { font-size: clamp(4rem, 12vw, 9rem); }
+
+/* ── Colors ─────────────────────────────────────────────────── */
+.fp-tag--acid { color: var(--fp-acid-green); }
+.fp-tag--magenta { color: var(--fp-hot-magenta); }
+.fp-tag--purple { color: var(--fp-spray-purple); }
+.fp-tag--yellow { color: var(--fp-warning-yellow); }

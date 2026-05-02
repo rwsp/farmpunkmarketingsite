@@ -1,0 +1,79 @@
+.fp-btn {
+  --btn-bg: var(--fp-bone-paper);
+  --btn-fg: var(--fp-ink-black);
+  --btn-edge: var(--fp-blacksoil);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px 17px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 2px solid var(--btn-edge);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  box-shadow: 0 4px 0 var(--btn-edge), 0 6px 14px rgba(0, 0, 0, 0.55);
+  transition: transform 0.12s var(--ease-snap), box-shadow 0.12s var(--ease-snap);
+  clip-path: polygon(
+    1% 0%, 99% 1%, 100% 50%, 99% 99%, 50% 100%, 1% 99%, 0% 50%
+  );
+}
+
+.fp-btn::before {
+  /* duct-taped corner — diagonal stripe overlay */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 8px,
+    rgba(0, 0, 0, 0.08) 8px 9px
+  );
+  pointer-events: none;
+}
+
+.fp-btn__label { position: relative; z-index: 1; white-space: nowrap; }
+
+.fp-btn:hover {
+  transform: translateY(-1px) rotate(-0.4deg);
+  box-shadow: 0 5px 0 var(--btn-edge), 0 10px 22px rgba(0, 0, 0, 0.7);
+}
+.fp-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-edge), 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.fp-btn--block { display: flex; width: 100%; }
+
+/* ── Variants ───────────────────────────────────────────────── */
+.fp-btn--primary {
+  --btn-bg: var(--fp-acid-green);
+  --btn-fg: var(--fp-ink-black);
+  --btn-edge: var(--fp-blacksoil);
+}
+
+.fp-btn--rebel {
+  --btn-bg: var(--fp-hot-magenta);
+  --btn-fg: var(--fp-flash-white);
+  --btn-edge: var(--fp-spray-purple);
+}
+
+.fp-btn--rust {
+  --btn-bg: var(--fp-rust);
+  --btn-fg: var(--fp-flash-white);
+  --btn-edge: var(--fp-blacksoil);
+}
+
+.fp-btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--fp-flash-white);
+  --btn-edge: var(--fp-weathered-gray);
+  box-shadow: 0 0 0 transparent;
+}
+.fp-btn--ghost:hover { background: rgba(255, 255, 255, 0.05); }

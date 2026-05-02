@@ -1,0 +1,72 @@
+/*
+ * FarmPunk design tokens — Barn-Door Rebellion theme.
+ * Palette taken straight from the brand brief; everything else
+ * (fonts, spacing, shadows, grime overlays) is derived from this file.
+ */
+
+:root {
+  /* ── Core palette ───────────────────────────────────────────── */
+  --fp-blacksoil: #10100E;
+  --fp-barnwood: #2A211C;
+  --fp-rotted-brown: #4A3326;
+  --fp-rust: #A34F22;
+  --fp-dried-mud: #6B5946;
+  --fp-weathered-gray: #8A8A7C;
+  --fp-bone-paper: #D8D0B8;
+  --fp-acid-green: #7CFF2B;
+  --fp-hot-magenta: #FF2FA3;
+  --fp-spray-purple: #6B2C83;
+  --fp-warning-yellow: #F2C230;
+  --fp-flash-white: #F4F1DC;
+  --fp-danger-red: #C73524;
+  --fp-ink-black: #050505;
+
+  /* ── Semantic tokens ────────────────────────────────────────── */
+  --bg-page: var(--fp-blacksoil);
+  --bg-panel: var(--fp-barnwood);
+  --bg-paper: var(--fp-bone-paper);
+  --ink-on-paper: var(--fp-ink-black);
+  --ink-on-dark: var(--fp-flash-white);
+  --ink-muted: var(--fp-weathered-gray);
+  --accent-spray: var(--fp-acid-green);
+  --accent-rebel: var(--fp-hot-magenta);
+  --accent-rust: var(--fp-rust);
+  --warn: var(--fp-warning-yellow);
+  --danger: var(--fp-danger-red);
+
+  /* ── Type ───────────────────────────────────────────────────── */
+  --font-display: 'Anton', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', 'Menlo', monospace;
+  --font-graffiti: 'Permanent Marker', 'Brush Script MT', cursive;
+  --font-stamp: 'Special Elite', 'Courier New', monospace;
+
+  /* ── Scale ──────────────────────────────────────────────────── */
+  --radius-card: 2px; /* sharp corners — nothing in this world is rounded */
+  --radius-button: 0;
+  --radius-tag: 0;
+
+  --shadow-card: 0 2px 0 rgba(0, 0, 0, 0.6), 0 8px 18px rgba(0, 0, 0, 0.45);
+  --shadow-press: inset 0 -3px 0 rgba(0, 0, 0, 0.55);
+
+  --grain-opacity: 0.18;
+  --vignette-opacity: 0.55;
+
+  /* ── Spacing ────────────────────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 112px;
+
+  /* ── Layout ─────────────────────────────────────────────────── */
+  --content-max: 1200px;
+  --reading-max: 760px;
+
+  /* ── Motion ─────────────────────────────────────────────────── */
+  --ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
+}

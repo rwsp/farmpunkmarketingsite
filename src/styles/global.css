@@ -1,0 +1,168 @@
+/* ── Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--ink-on-dark);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── The grimy backdrop ───────────────────────────────────────── */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* film grain — fake flip-phone sensor noise */
+body::before {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.18) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+}
+
+/* corner vignette — bad lens, dark corners */
+body::after {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.85) 110%
+  );
+  opacity: var(--vignette-opacity);
+}
+
+/* the body itself wears a layered barnwood + dirt texture */
+body {
+  background-color: var(--fp-blacksoil);
+  background-image:
+    /* horizontal plank lines */
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.35) 0px,
+      rgba(0, 0, 0, 0.35) 1px,
+      transparent 1px,
+      transparent 96px
+    ),
+    /* vertical wood-grain streaks */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.012) 0px,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    /* base dirt blob */
+    radial-gradient(ellipse at 20% 10%, rgba(74, 51, 38, 0.6), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(74, 51, 38, 0.45), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* ── Headings ─────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin: 0;
+  color: var(--ink-on-dark);
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
+h4 { font-size: 1.05rem; letter-spacing: 0.06em; }
+
+p { margin: 0 0 var(--space-4); }
+
+a {
+  color: var(--accent-spray);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color 0.15s var(--ease-snap);
+}
+a:hover { color: var(--fp-flash-white); text-decoration: underline; }
+
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 1px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--fp-acid-green);
+}
+
+::selection {
+  background: var(--fp-hot-magenta);
+  color: var(--fp-ink-black);
+}
+
+/* ── Utility classes ──────────────────────────────────────────── */
+.fp-content {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.fp-reading {
+  max-width: var(--reading-max);
+}
+
+.fp-mono { font-family: var(--font-mono); }
+.fp-stamp { font-family: var(--font-stamp); }
+.fp-graffiti { font-family: var(--font-graffiti); }
+.fp-display { font-family: var(--font-display); text-transform: uppercase; }
+
+.fp-rule {
+  border: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--fp-weathered-gray) 0 8px,
+    transparent 8px 14px
+  );
+  margin: var(--space-6) 0;
+  opacity: 0.55;
+}
+
+.fp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-stamp);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--fp-warning-yellow);
+  border-top: 1px solid var(--fp-warning-yellow);
+  border-bottom: 1px solid var(--fp-warning-yellow);
+  padding: 4px 8px;
+  margin-bottom: var(--space-3);
+}
+
+/* ── Print mode hooks (Quick Reference) ───────────────────────── */
+@media print {
+  body { background: white !important; color: black !important; }
+  body::before, body::after { display: none !important; }
+  .fp-no-print { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

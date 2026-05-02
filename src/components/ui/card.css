@@ -1,0 +1,177 @@
+/* ── Dossier card — dirty system file ──────────────────────────── */
+.fp-dossier {
+  position: relative;
+  padding: var(--space-5) var(--space-5) var(--space-5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: var(--fp-rotted-brown);
+  color: var(--fp-flash-white);
+  box-shadow: var(--shadow-card);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.18s var(--ease-snap);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.fp-dossier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 6px,
+      rgba(255, 255, 255, 0.02) 6px 7px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fp-dossier::after {
+  /* peeled-corner hint */
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 26px; height: 26px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.55) 50%);
+  pointer-events: none;
+}
+
+.fp-dossier:hover {
+  transform: rotate(calc(var(--tilt, 0deg) - 0.5deg)) translateY(-2px);
+}
+
+.fp-dossier--paper {
+  background-color: var(--fp-bone-paper);
+  color: var(--fp-ink-black);
+}
+.fp-dossier--paper a { color: var(--fp-spray-purple); }
+
+.fp-dossier--manila {
+  background-color: #b9a371;
+  color: var(--fp-ink-black);
+}
+
+.fp-dossier__body { position: relative; z-index: 1; }
+
+.fp-dossier__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: var(--font-stamp);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  background: var(--fp-warning-yellow);
+  color: var(--fp-ink-black);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.fp-dossier__stamp {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fp-danger-red);
+  border: 2px solid var(--fp-danger-red);
+  padding: 3px 8px;
+  transform: rotate(8deg);
+  opacity: 0.85;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.fp-dossier h3 { margin-top: var(--space-4); margin-bottom: var(--space-2); }
+.fp-dossier p { margin-bottom: var(--space-3); }
+
+/* ── Callouts ──────────────────────────────────────────────────── */
+.fp-callout {
+  position: relative;
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-5) 0;
+  border-left: 6px solid var(--warn);
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--fp-flash-white);
+}
+
+.fp-callout__title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  margin-bottom: var(--space-2);
+  color: var(--warn);
+}
+
+.fp-callout__body p:last-child { margin-bottom: 0; }
+
+/* corporate threat notice */
+.fp-callout--warning {
+  border-color: var(--warn);
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(242, 194, 48, 0.06) 0 12px,
+      rgba(0, 0, 0, 0.0) 12px 24px
+    ),
+    rgba(0, 0, 0, 0.55);
+}
+.fp-callout--warning .fp-callout__title::before {
+  content: "▲ NOTICE — ";
+  color: var(--warn);
+}
+
+/* defaced note from the valley */
+.fp-callout--rebellion {
+  border-color: var(--accent-rebel);
+  background: rgba(107, 44, 131, 0.18);
+  font-family: var(--font-stamp);
+}
+.fp-callout--rebellion .fp-callout__title {
+  color: var(--accent-rebel);
+  font-family: var(--font-graffiti);
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
+.fp-callout--note {
+  border-color: var(--fp-weathered-gray);
+  background: rgba(255, 255, 255, 0.04);
+}
+.fp-callout--note .fp-callout__title { color: var(--fp-weathered-gray); }
+
+/* ── PaperPanel — readable surface for wiki/quick ref ──────────── */
+.fp-paper {
+  background-color: var(--fp-bone-paper);
+  color: var(--fp-ink-black);
+  padding: var(--space-6) var(--space-6);
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  background-image:
+    radial-gradient(rgba(74, 51, 38, 0.08) 1px, transparent 1px),
+    radial-gradient(rgba(74, 51, 38, 0.05) 1px, transparent 1px);
+  background-size: 4px 4px, 9px 9px;
+}
+.fp-paper::after {
+  /* coffee ring stain — subtle */
+  content: "";
+  position: absolute;
+  width: 120px; height: 120px;
+  right: -20px; top: -30px;
+  border: 6px solid rgba(74, 51, 38, 0.18);
+  border-radius: 50%;
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+.fp-paper h1, .fp-paper h2, .fp-paper h3, .fp-paper h4 { color: var(--fp-ink-black); }
+.fp-paper a { color: var(--fp-spray-purple); }
+.fp-paper code {
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: var(--fp-rotted-brown);
+}

@@ -1,0 +1,202 @@
+.fp-fm {
+  padding: var(--space-6) 0 var(--space-8);
+}
+
+.fp-fm__head {
+  padding: var(--space-7) 0 var(--space-6);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4) 0 1px,
+      transparent 1px 80px
+    );
+  border-bottom: 1px dashed var(--fp-weathered-gray);
+  margin-bottom: var(--space-6);
+}
+
+.fp-fm__head h1 {
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.fp-fm__lede {
+  max-width: 760px;
+  color: var(--fp-bone-paper);
+  font-size: 1.05rem;
+}
+
+.fp-fm__cat { margin-bottom: var(--space-8); }
+.fp-fm__cat header { margin-bottom: var(--space-5); }
+.fp-fm__cat h2 { margin: var(--space-2) 0 var(--space-2); }
+
+.fp-fm__cat-blurb {
+  color: var(--fp-weathered-gray);
+  font-family: var(--font-stamp);
+  letter-spacing: 0.04em;
+}
+
+.fp-fm__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-4);
+}
+
+.fp-fm__link {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.fp-fm__link:hover .fp-dossier {
+  outline: 2px solid var(--fp-acid-green);
+  outline-offset: 4px;
+}
+
+.fp-fm__placeholder {
+  font-family: var(--font-stamp);
+  color: var(--fp-weathered-gray);
+  letter-spacing: 0.04em;
+  padding: var(--space-4);
+  border: 1px dashed var(--fp-weathered-gray);
+}
+
+/* ── Mechanic detail page ──────────────────────────────────────── */
+.fp-mech {
+  padding: var(--space-7) 0 var(--space-8);
+}
+
+.fp-mech__crumbs {
+  font-family: var(--font-stamp);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--fp-weathered-gray);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+.fp-mech__crumbs a { color: var(--fp-warning-yellow); }
+
+.fp-mech__head {
+  margin-bottom: var(--space-6);
+}
+.fp-mech__head h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: var(--space-3);
+}
+.fp-mech__oneliner {
+  font-family: var(--font-stamp);
+  font-size: 1.1rem;
+  color: var(--fp-bone-paper);
+  letter-spacing: 0.02em;
+  border-left: 4px solid var(--fp-acid-green);
+  padding-left: var(--space-4);
+}
+
+.fp-mech__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: var(--space-6);
+}
+@media (max-width: 920px) { .fp-mech__layout { grid-template-columns: 1fr; } }
+
+.fp-mech__paper {
+  /* the .fp-paper class is applied alongside this */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.fp-mech__section h2 {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-3);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--fp-rotted-brown);
+}
+
+.fp-mech__section ul,
+.fp-mech__section ol {
+  margin: 0;
+  padding-left: var(--space-5);
+  display: grid;
+  gap: 6px;
+}
+
+.fp-mech__numbers {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: var(--space-3) var(--space-4);
+}
+.fp-mech__numbers dt { color: var(--fp-rotted-brown); }
+.fp-mech__numbers dd { margin: 0; color: var(--fp-ink-black); font-weight: 700; text-align: right; }
+
+.fp-mech__cmds {
+  display: grid;
+  gap: var(--space-3);
+}
+.fp-mech__cmd {
+  display: grid;
+  grid-template-columns: minmax(220px, auto) 1fr;
+  gap: var(--space-3);
+  align-items: start;
+}
+.fp-mech__cmd code {
+  font-family: var(--font-mono);
+  background: var(--fp-ink-black);
+  color: var(--fp-acid-green);
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+.fp-mech__cmd-note {
+  font-size: 0.92rem;
+  color: var(--fp-rotted-brown);
+}
+
+.fp-mech__field-note {
+  font-family: var(--font-graffiti);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: var(--fp-spray-purple);
+  border-top: 2px dashed var(--fp-rotted-brown);
+  border-bottom: 2px dashed var(--fp-rotted-brown);
+  padding: var(--space-4) 0;
+  letter-spacing: 0;
+}
+
+.fp-mech__related {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.fp-mech__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: sticky;
+  top: 88px;
+  align-self: start;
+}
+@media (max-width: 920px) {
+  .fp-mech__sidebar { position: static; }
+}
+
+.fp-mech__sidebar-card {
+  background: var(--fp-barnwood);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: var(--space-4);
+  color: var(--fp-flash-white);
+  box-shadow: var(--shadow-card);
+}
+.fp-mech__sidebar-card h4 {
+  color: var(--fp-warning-yellow);
+  font-family: var(--font-display);
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+}

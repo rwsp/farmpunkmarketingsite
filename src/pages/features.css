@@ -1,0 +1,26 @@
+.fp-feat { padding: var(--space-7) 0 var(--space-8); }
+.fp-feat__head { margin-bottom: var(--space-7); }
+.fp-feat__head h1 { margin: var(--space-3) 0 var(--space-4); }
+.fp-feat__lede { color: var(--fp-bone-paper); max-width: 720px; }
+
+.fp-feat__group { margin-bottom: var(--space-7); }
+.fp-feat__group h2 {
+  border-bottom: 4px double var(--fp-warning-yellow);
+  padding-bottom: 8px;
+  margin-bottom: var(--space-5);
+  color: var(--fp-warning-yellow);
+}
+
+.fp-feat__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.fp-feat__cta {
+  margin-top: var(--space-7);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}
