@@ -15,7 +15,6 @@ export function Footer() {
           <div>
             <h4>The Mod</h4>
             <ul>
-              <li><a href="/features">Features</a></li>
               <li><a href="/field-manual">Field Manual</a></li>
               <li><a href="/black-markets">Black Markets</a></li>
               <li><a href="/console">Console Commands</a></li>
@@ -33,6 +32,8 @@ export function Footer() {
           <div>
             <h4>Distribution</h4>
             <ul>
+              <li><a href="/install">Install</a></li>
+              <li><a href="/feedback">Feedback</a></li>
               <li>
                 <a href="https://www.farming-simulator.com/mods.php" target="_blank" rel="noreferrer">
                   ModHub →

@@ -51,6 +51,61 @@
   outline-offset: 4px;
 }
 
+/* Pending cards have slightly less ink to communicate "docs incomplete" without disabling them. */
+.fp-fm__link .fp-dossier:has(.fp-fm__chip--pending) {
+  opacity: 0.92;
+}
+
+/* Status chip — used in lede + on each card foot */
+.fp-fm__chip {
+  display: inline-block;
+  font-family: var(--font-stamp);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.fp-fm__chip--live {
+  color: var(--fp-acid-green);
+  border-color: var(--fp-acid-green);
+  background: rgba(124, 255, 43, 0.08);
+}
+.fp-fm__chip--pending {
+  color: var(--fp-warning-yellow);
+  border-color: var(--fp-warning-yellow);
+  background: rgba(242, 194, 48, 0.06);
+}
+/* lede chips render against dark; paper-tone card foot needs a darker text color */
+.fp-dossier--paper .fp-fm__chip--live,
+.fp-dossier--manila .fp-fm__chip--live {
+  color: var(--fp-rotted-brown);
+  border-color: var(--fp-rotted-brown);
+  background: rgba(124, 255, 43, 0.18);
+}
+.fp-dossier--paper .fp-fm__chip--pending,
+.fp-dossier--manila .fp-fm__chip--pending {
+  color: var(--fp-rotted-brown);
+  border-color: var(--fp-rotted-brown);
+  background: rgba(242, 194, 48, 0.22);
+}
+
+.fp-fm__card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.fp-fm__card-cta {
+  font-size: 0.78rem;
+  color: var(--fp-rotted-brown);
+}
+.fp-dossier--wood .fp-fm__card-cta {
+  color: var(--fp-bone-paper);
+}
+
 .fp-fm__placeholder {
   font-family: var(--font-stamp);
   color: var(--fp-weathered-gray);
@@ -171,7 +226,45 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 6px;
+  gap: var(--space-3);
+}
+.fp-mech__related li {
+  padding-left: 12px;
+  border-left: 2px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.12s var(--ease-snap);
+}
+.fp-mech__related li:hover {
+  border-left-color: var(--fp-acid-green);
+}
+.fp-mech__related-link {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--fp-flash-white);
+  text-decoration: none;
+  transition: color 0.12s var(--ease-snap);
+  text-transform: uppercase;
+}
+.fp-mech__related-link:hover {
+  color: var(--fp-acid-green);
+  text-decoration: none;
+}
+.fp-mech__related-note {
+  margin: 4px 0 0;
+  font-family: var(--font-stamp);
+  font-size: 0.82rem;
+  color: var(--fp-bone-paper);
+  letter-spacing: 0.01em;
+  line-height: 1.45;
+}
+.fp-mech__related-empty {
+  margin: 0;
+  font-family: var(--font-stamp);
+  font-size: 0.86rem;
+  color: var(--fp-weathered-gray);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
 }
 
 .fp-mech__sidebar {

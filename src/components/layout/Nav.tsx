@@ -4,13 +4,9 @@ import farmpunkStamp from '../../assets/farmpunk-icon@small.webp';
 import './nav.css';
 
 const LINKS = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/features', label: 'Features' },
-  { to: '/quick-reference', label: 'Quick Reference' },
   { to: '/field-manual', label: 'Field Manual' },
+  { to: '/quick-reference', label: 'Quick Reference' },
   { to: '/endgame', label: 'Endgame' },
-  { to: '/console', label: 'Console' },
-  { to: '/early-access', label: 'Early Access' },
 ];
 
 export function Nav() {
@@ -34,7 +30,7 @@ export function Nav() {
           <span className="fp-nav__brand-farm">FARM</span>
           <span className="fp-nav__brand-slash">/</span>
           <span className="fp-nav__brand-punk">PUNK</span>
-          <span className="fp-nav__brand-tag">EA · FS25 OVERHAUL</span>
+          <span className="fp-nav__brand-tag">EA · v0.0.34</span>
         </NavLink>
 
         <button
@@ -51,7 +47,6 @@ export function Nav() {
             <NavLink
               key={link.to}
               to={link.to}
-              end={link.end}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 `fp-nav__link${isActive ? ' fp-nav__link--active' : ''}`

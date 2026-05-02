@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { GraffitiTag } from '../components/ui/GraffitiTag';
 import { DossierCard, Callout } from '../components/ui/Card';
+import { TOTAL_SHIPPED_BEHAVIOURS } from '../data/mechanics';
 import farmpunkIconSmall from '../assets/farmpunk-icon@small.webp';
 import farmpunkIcon from '../assets/farmpunk-icon.png';
 import './home.css';
@@ -123,7 +124,7 @@ export function Home() {
               </div>
 
               <ul className="fp-hero__stats">
-                <li><span>17</span> Skills</li>
+                <li><span>{TOTAL_SHIPPED_BEHAVIOURS}+</span> Systems &amp; skills</li>
                 <li><span>100</span> Shares</li>
                 <li><span>$1B</span> Warchest cap</li>
                 <li><span>10</span> Cartel retaliations</li>
@@ -171,10 +172,11 @@ export function Home() {
         <div className="fp-content">
           <header className="fp-section__head">
             <span className="fp-eyebrow">Field Dossiers</span>
-            <h2>Six systems pushing back at once.</h2>
+            <h2>{TOTAL_SHIPPED_BEHAVIOURS}+ systems. Six you&rsquo;ll feel first.</h2>
             <p className="fp-section__lede">
               Every FarmPunk system is documented, modeled, and tunable.
-              Here are the six you'll feel first. The full list lives in the{' '}
+              These are the six that will hit you the hardest, the soonest.
+              The full catalog lives in the{' '}
               <Link to="/field-manual">Field Manual</Link>.
             </p>
           </header>

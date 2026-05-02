@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import { GraffitiTag } from '../components/ui/GraffitiTag';
 import { Button } from '../components/ui/Button';
-import { DossierCard, Callout, PaperPanel } from '../components/ui/Card';
+import { DossierCard, Callout } from '../components/ui/Card';
 import './early-access.css';
 
 const SHIPPED = [
@@ -108,21 +109,16 @@ export function EarlyAccess() {
           </DossierCard>
         </div>
 
-        <PaperPanel>
-          <h2>How to install</h2>
-          <ol>
-            <li>Download the latest <code>FarmPunk_x.x.x.zip</code> from ModHub or the source repo.</li>
-            <li>Drop it into <code>%USERPROFILE%/Documents/My Games/FarmingSimulator2025/mods/</code>.</li>
-            <li>Launch FS25, create a new save, enable the mod in the mod list.</li>
-            <li>(Optional) Open the in-game console (<code>~</code>) and run <code>farmPunkStats</code> to confirm the mod is live.</li>
-          </ol>
-          <h2>How to give feedback</h2>
-          <ul>
-            <li>Bug reports: include the FarmPunk version, FS25 version, and the contents of <code>log.txt</code>.</li>
-            <li>Balance feedback: please include your save year, share count, Warchest balance, and a one-line description of the moment that felt off.</li>
-            <li>Feature requests for systems already in the README's Postponed section will be filed but probably not shipped.</li>
-          </ul>
-        </PaperPanel>
+        <div className="fp-ea-page__quick-links">
+          <Link to="/install" className="fp-ea-page__quick-link">
+            <h3>Install →</h3>
+            <p>Two-minute setup. Drop the .zip into your FS25 mods folder and you're going.</p>
+          </Link>
+          <Link to="/feedback" className="fp-ea-page__quick-link">
+            <h3>Give Feedback →</h3>
+            <p>Bug reports, balance notes, feature requests — what to send and where.</p>
+          </Link>
+        </div>
       </div>
     </article>
   );

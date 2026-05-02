@@ -1,19 +1,36 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { MECHANICS } from '../data/mechanics';
+import {
+  MECHANICS,
+  STUBS,
+  resolveRelated,
+  type CatalogEntry,
+  type Mechanic,
+  type Relation
+} from '../data/mechanics';
 import { PaperPanel, Callout } from '../components/ui/Card';
-import { Button } from '../components/ui/Button';
 import './field-manual.css';
 
+/**
+ * Single dispatcher for /field-manual/:slug.
+ * - If the slug matches a full Mechanic, render the deep dossier.
+ * - If it matches a stub entry, render the stub view.
+ * - Otherwise, redirect to the Field Manual index.
+ */
 export function MechanicPage() {
   const { slug } = useParams();
+  if (!slug) return <Navigate to="/field-manual" replace />;
+
   const mechanic = MECHANICS.find(m => m.slug === slug);
+  if (mechanic) return <MechanicView mechanic={mechanic} />;
 
-  if (!mechanic) {
-    return <Navigate to="/field-manual" replace />;
-  }
+  const stub = STUBS.find(s => s.slug === slug);
+  if (stub) return <StubView stub={stub} />;
 
-  const m = mechanic;
+  return <Navigate to="/field-manual" replace />;
+}
 
+// ── Full dossier view ─────────────────────────────────────────────
+function MechanicView({ mechanic: m }: { mechanic: Mechanic }) {
   return (
     <article className="fp-mech">
       <div className="fp-content fp-mech__layout">
@@ -38,9 +55,7 @@ export function MechanicPage() {
             <section className="fp-mech__section">
               <h2>What It Does</h2>
               <ul>
-                {m.whatItDoes.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
+                {m.whatItDoes.map((item, i) => <li key={i}>{item}</li>)}
               </ul>
             </section>
 
@@ -52,9 +67,7 @@ export function MechanicPage() {
             <section className="fp-mech__section">
               <h2>How You Progress</h2>
               <ol>
-                {m.howYouProgress.map((step, i) => (
-                  <li key={i}>{step}</li>
-                ))}
+                {m.howYouProgress.map((step, i) => <li key={i}>{step}</li>)}
               </ol>
             </section>
 
@@ -73,9 +86,7 @@ export function MechanicPage() {
             <section className="fp-mech__section">
               <h2>Beginner Advice</h2>
               <ul>
-                {m.beginnerAdvice.map((tip, i) => (
-                  <li key={i}>{tip}</li>
-                ))}
+                {m.beginnerAdvice.map((tip, i) => <li key={i}>{tip}</li>)}
               </ul>
             </section>
 
@@ -99,32 +110,86 @@ export function MechanicPage() {
         </div>
 
         <aside className="fp-mech__sidebar">
-          <div className="fp-mech__sidebar-card">
-            <h4>Related Systems</h4>
-            <ul className="fp-mech__related">
-              {m.relatedSystems.map((r, i) => (
-                <li key={i}>· {r}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="fp-mech__sidebar-card">
-            <h4>Cross-References</h4>
-            <Button to="/quick-reference" variant="ghost" block>Quick Reference</Button>
-            <div style={{ height: 8 }} />
-            <Button to="/console" variant="ghost" block>All Console Commands</Button>
-            <div style={{ height: 8 }} />
-            <Button to="/endgame" variant="ghost" block>Endgame Sequence</Button>
-          </div>
-
-          <Callout kind="warning" title="Reading the numbers">
-            All formulas are pulled from the live mod source. Numbers are
-            current as of <code>v0.0.34</code>. If your save shows different
-            values, run the relevant <code>farmPunk*</code> console command
-            to confirm.
-          </Callout>
+          <RelatedSystemsCard relations={m.related ?? []} />
         </aside>
       </div>
     </article>
+  );
+}
+
+// ── Stub view ─────────────────────────────────────────────────────
+function StubView({ stub }: { stub: CatalogEntry }) {
+  return (
+    <article className="fp-mech">
+      <div className="fp-content fp-mech__layout">
+        <div>
+          <p className="fp-mech__crumbs">
+            <Link to="/field-manual">Field Manual</Link>
+            {' / '}
+            <span>{stub.category}</span>
+          </p>
+
+          <header className="fp-mech__head">
+            <h1>{stub.title}</h1>
+            <p className="fp-mech__oneliner">{stub.oneLiner}</p>
+          </header>
+
+          <PaperPanel className="fp-mech__paper">
+            <Callout kind="warning" title="Documentation pending">
+              <p>
+                This system ships in <code>v{stub.version}</code> of the mod
+                and works in-game. The full dossier (formulas, exact numbers,
+                console commands, beginner advice) is still being written.
+              </p>
+              <p style={{ marginTop: 'var(--space-3)', marginBottom: 0 }}>
+                In the meantime, see <strong>Related Systems</strong> in the
+                sidebar for neighboring documentation, or{' '}
+                <Link to="/feedback">help us write this page</Link>.
+              </p>
+            </Callout>
+          </PaperPanel>
+        </div>
+
+        <aside className="fp-mech__sidebar">
+          <RelatedSystemsCard relations={stub.related ?? []} />
+        </aside>
+      </div>
+    </article>
+  );
+}
+
+// ── Shared sidebar widget ────────────────────────────────────────
+function RelatedSystemsCard({ relations }: { relations: Relation[] }) {
+  const items = relations
+    .map(r => {
+      const resolved = resolveRelated(r.slug);
+      return resolved ? { ...resolved, note: r.note } : null;
+    })
+    .filter((x): x is { title: string; href: string; note: string } => x !== null);
+
+  if (items.length === 0) {
+    return (
+      <div className="fp-mech__sidebar-card">
+        <h4>Related Systems</h4>
+        <p className="fp-mech__related-empty">
+          This system stands on its own — nothing else in the catalog directly
+          interacts with it.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="fp-mech__sidebar-card">
+      <h4>Related Systems</h4>
+      <ul className="fp-mech__related">
+        {items.map(item => (
+          <li key={item.href}>
+            <Link to={item.href} className="fp-mech__related-link">{item.title}</Link>
+            <p className="fp-mech__related-note">{item.note}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

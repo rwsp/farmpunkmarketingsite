@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
-import { Features } from './pages/Features';
 import { FieldManual } from './pages/FieldManual';
 import { MechanicPage } from './pages/MechanicPage';
 import { SkillsPage } from './pages/SkillsPage';
@@ -13,6 +12,8 @@ import { Endgame } from './pages/Endgame';
 import { BlackMarkets } from './pages/BlackMarkets';
 import { ConsoleCommands } from './pages/ConsoleCommands';
 import { EarlyAccess } from './pages/EarlyAccess';
+import { Install } from './pages/Install';
+import { Feedback } from './pages/Feedback';
 import { NotFound } from './pages/NotFound';
 import { useScrollToTop } from './hooks/useScrollToTop';
 
@@ -47,7 +48,6 @@ function MainSite() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/features" element={<Features />} />
         <Route path="/field-manual" element={<FieldManual />} />
         <Route path="/field-manual/skills" element={<SkillsPage />} />
         <Route path="/field-manual/perks" element={<PerksPage />} />
@@ -58,6 +58,8 @@ function MainSite() {
         <Route path="/black-markets" element={<BlackMarkets />} />
         <Route path="/console" element={<ConsoleCommands />} />
         <Route path="/early-access" element={<EarlyAccess />} />
+        <Route path="/install" element={<Install />} />
+        <Route path="/feedback" element={<Feedback />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
