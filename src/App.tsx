@@ -4,6 +4,9 @@ import { Home } from './pages/Home';
 import { Features } from './pages/Features';
 import { FieldManual } from './pages/FieldManual';
 import { MechanicPage } from './pages/MechanicPage';
+import { SkillsPage } from './pages/SkillsPage';
+import { PerksPage } from './pages/PerksPage';
+import { CartelAttacksPage } from './pages/CartelAttacksPage';
 import { QuickReference } from './pages/QuickReference';
 import { Endgame } from './pages/Endgame';
 import { BlackMarkets } from './pages/BlackMarkets';
@@ -20,6 +23,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/features" element={<Features />} />
         <Route path="/field-manual" element={<FieldManual />} />
+        <Route path="/field-manual/skills" element={<SkillsPage />} />
+        <Route path="/field-manual/perks" element={<PerksPage />} />
+        <Route path="/field-manual/cartel-attacks" element={<CartelAttacksPage />} />
         <Route path="/field-manual/:slug" element={<MechanicPage />} />
         <Route path="/quick-reference" element={<QuickReference />} />
         <Route path="/endgame" element={<Endgame />} />

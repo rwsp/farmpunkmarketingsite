@@ -1,0 +1,421 @@
+/*
+ * Shared layout for "family" wiki pages — Skills, Perks, Cartel Attacks.
+ * These pages list many small entries instead of deep-diving one mechanic.
+ */
+
+.fp-fam { padding: var(--space-7) 0 var(--space-8); }
+
+.fp-fam__crumbs {
+  font-family: var(--font-stamp);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--fp-weathered-gray);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+.fp-fam__crumbs a { color: var(--fp-warning-yellow); }
+
+.fp-fam__head { margin-bottom: var(--space-5); }
+.fp-fam__head h1 { margin-bottom: var(--space-3); font-size: clamp(2rem, 5vw, 3.5rem); }
+.fp-fam__oneliner {
+  font-family: var(--font-stamp);
+  font-size: 1.05rem;
+  color: var(--fp-bone-paper);
+  letter-spacing: 0.02em;
+  border-left: 4px solid var(--fp-acid-green);
+  padding-left: var(--space-4);
+  max-width: 760px;
+}
+
+.fp-fam__section-title {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-3);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--fp-rotted-brown);
+}
+
+/* ── Cost ladder table (Skills) ───────────────────────────────── */
+.fp-fam__cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  margin: var(--space-3) 0 var(--space-4);
+}
+.fp-fam__cost-table th,
+.fp-fam__cost-table td {
+  text-align: center;
+  padding: 8px 4px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.fp-fam__cost-table th {
+  background: var(--fp-rotted-brown);
+  color: var(--fp-flash-white);
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+.fp-fam__cost-table td {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--fp-ink-black);
+  font-weight: 700;
+}
+
+/* ── Group section ────────────────────────────────────────────── */
+.fp-fam__group {
+  margin-top: var(--space-7);
+}
+.fp-fam__group-head {
+  margin-bottom: var(--space-4);
+}
+.fp-fam__group-head h2 {
+  border-bottom: 4px double var(--fp-warning-yellow);
+  padding-bottom: 8px;
+  color: var(--fp-warning-yellow);
+  font-size: 1.7rem;
+}
+.fp-fam__group-head p {
+  font-family: var(--font-stamp);
+  color: var(--fp-weathered-gray);
+  letter-spacing: 0.04em;
+  margin: var(--space-2) 0 0;
+}
+
+.fp-fam__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 460px));
+  gap: var(--space-4);
+}
+
+/* ── Generic family card ──────────────────────────────────────── */
+.fp-fam__card {
+  position: relative;
+  padding: var(--space-4);
+  background: var(--fp-barnwood);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-card);
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.fp-fam__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 6px,
+    rgba(255, 255, 255, 0.02) 6px 7px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+.fp-fam__card > * { position: relative; z-index: 1; }
+
+.fp-fam__card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+  padding-bottom: 6px;
+}
+.fp-fam__card-head h3 {
+  font-size: 1.2rem;
+  color: var(--fp-flash-white);
+  margin: 0;
+}
+.fp-fam__card-head code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--fp-acid-green);
+  background: var(--fp-ink-black);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.fp-fam__card-blurb {
+  margin: 0;
+  color: var(--fp-bone-paper);
+  font-size: 0.92rem;
+}
+
+.fp-fam__kv {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid var(--fp-warning-yellow);
+}
+.fp-fam__kv > div {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: var(--space-3);
+  font-size: 0.86rem;
+}
+.fp-fam__kv dt {
+  font-family: var(--font-stamp);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--fp-warning-yellow);
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+.fp-fam__kv dd {
+  margin: 0;
+  color: var(--fp-flash-white);
+}
+
+.fp-fam__card-notes {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--fp-weathered-gray);
+  font-family: var(--font-stamp);
+  letter-spacing: 0.02em;
+}
+.fp-fam__card-notes .fp-stamp {
+  color: var(--fp-warning-yellow);
+  font-weight: bold;
+}
+
+/* ── Perks rotation list ──────────────────────────────────────── */
+.fp-fam__perks {
+  display: grid;
+  gap: var(--space-3);
+  counter-reset: perk;
+}
+
+.fp-fam__perk {
+  position: relative;
+  padding: var(--space-4) var(--space-4) var(--space-4) 70px;
+  background: var(--fp-barnwood);
+  border-left: 6px solid var(--fp-acid-green);
+  box-shadow: var(--shadow-card);
+  counter-increment: perk;
+}
+
+.fp-fam__perk::before {
+  content: counter(perk);
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-4);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--fp-ink-black);
+  background: var(--fp-warning-yellow);
+  border: 2px solid var(--fp-ink-black);
+  box-shadow: 0 3px 0 var(--fp-ink-black);
+}
+
+.fp-fam__perk--uncapped { border-left-color: var(--fp-hot-magenta); }
+
+.fp-fam__perk-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.fp-fam__perk-name { font-size: 1.2rem; color: var(--fp-flash-white); margin: 0; }
+.fp-fam__perk-cap {
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--fp-acid-green);
+  color: var(--fp-acid-green);
+  padding: 2px 8px;
+}
+.fp-fam__perk--uncapped .fp-fam__perk-cap {
+  border-color: var(--fp-hot-magenta);
+  color: var(--fp-hot-magenta);
+}
+
+.fp-fam__perk-effect { margin: 0; color: var(--fp-bone-paper); font-size: 0.94rem; }
+.fp-fam__perk-notes {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-stamp);
+  font-size: 0.82rem;
+  color: var(--fp-weathered-gray);
+}
+
+/* ── Cartel Attack cards ──────────────────────────────────────── */
+.fp-fam__attacks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--space-4);
+}
+
+.fp-fam__attack {
+  position: relative;
+  padding: var(--space-4);
+  background: var(--fp-bone-paper);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 22px,
+      rgba(74, 51, 38, 0.08) 22px 23px
+    ),
+    radial-gradient(rgba(74, 51, 38, 0.06) 1px, transparent 1px);
+  background-size: auto, 4px 4px;
+  color: var(--fp-ink-black);
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+  transform: rotate(-0.6deg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.fp-fam__attack:nth-child(2n) { transform: rotate(0.6deg); }
+.fp-fam__attack:nth-child(3n) { transform: rotate(-1.1deg); }
+
+.fp-fam__attack-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+  border-bottom: 3px double var(--fp-ink-black);
+  padding-bottom: 6px;
+}
+.fp-fam__attack-head h3 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--fp-ink-black);
+}
+
+.fp-fam__attack-type {
+  font-family: var(--font-stamp);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fp-flash-white);
+  background: var(--fp-danger-red);
+  border: 1px solid var(--fp-ink-black);
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+.fp-fam__attack-type--continuous { background: var(--fp-danger-red); }
+.fp-fam__attack-type--monthly    { background: var(--fp-rust); }
+.fp-fam__attack-type--oneshot    { background: var(--fp-spray-purple); color: var(--fp-flash-white); }
+.fp-fam__attack-type--deferred   { background: var(--fp-warning-yellow); color: var(--fp-ink-black); }
+
+.fp-fam__attack-effect {
+  margin: 0;
+  color: var(--fp-rotted-brown);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.fp-fam__attack-mit {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  border-top: 1px dashed rgba(0, 0, 0, 0.3);
+  padding-top: var(--space-2);
+  font-size: 0.86rem;
+  color: var(--fp-ink-black);
+}
+.fp-fam__attack-mit-label {
+  font-family: var(--font-stamp);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--fp-spray-purple);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── Perks full schedule ──────────────────────────────────────── */
+.fp-fam__schedule {
+  display: grid;
+  gap: 2px;
+  background: var(--fp-blacksoil);
+  border: 2px solid var(--fp-rotted-brown);
+  padding: 2px;
+}
+
+.fp-fam__sched-row {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--fp-barnwood);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--fp-flash-white);
+}
+
+.fp-fam__sched-lvl {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--fp-warning-yellow);
+}
+
+.fp-fam__sched-label { color: var(--fp-bone-paper); }
+
+.fp-fam__sched-cycle {
+  font-family: var(--font-stamp);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--fp-weathered-gray);
+  text-transform: uppercase;
+}
+
+/* perk rows — strong */
+.fp-fam__sched-row--perk {
+  border-left: 4px solid var(--fp-acid-green);
+}
+.fp-fam__sched-row--perk .fp-fam__sched-label {
+  color: var(--fp-flash-white);
+  font-weight: 500;
+}
+
+/* highlight = first earn or capped final earn */
+.fp-fam__sched-row--highlight {
+  background: rgba(124, 255, 43, 0.08);
+  border-left-color: var(--fp-hot-magenta);
+}
+.fp-fam__sched-row--highlight .fp-fam__sched-label {
+  color: var(--fp-acid-green);
+}
+
+/* reward rows — yellow */
+.fp-fam__sched-row--reward {
+  border-left: 4px solid var(--fp-warning-yellow);
+  background: rgba(242, 194, 48, 0.08);
+}
+.fp-fam__sched-row--reward .fp-fam__sched-label {
+  color: var(--fp-warning-yellow);
+}
+
+/* skip rows — quiet */
+.fp-fam__sched-row--skip {
+  border-left: 4px solid var(--fp-rotted-brown);
+  opacity: 0.6;
+}
+.fp-fam__sched-row--skip .fp-fam__sched-label {
+  font-style: italic;
+  color: var(--fp-weathered-gray);
+}
+
+/* ── Pressure formula box ─────────────────────────────────────── */
+.fp-fam__pressure {
+  padding: var(--space-4) var(--space-5);
+  background: var(--fp-ink-black);
+  border: 2px solid var(--fp-acid-green);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--fp-acid-green);
+  margin: var(--space-3) 0 var(--space-4);
+  white-space: pre-line;
+  line-height: 1.6;
+}
