@@ -1304,6 +1304,170 @@ export const MECHANICS: Mechanic[] = [
     ],
     fieldNote:
       "The Cartel will refuse a deal you can technically afford. Then they'll refuse the next one too. The line they draw isn't to keep you safe — it's to make sure that when you finally fail, the failure is theirs to collect on."
+  },
+  {
+    slug: 'farmland-surcharge',
+    category: 'Money',
+    title: 'Farmland Surcharge',
+    oneLiner: "The Farmland Surcharge is the Cartel's anti-expansion tax, climbing from 2% on your first plot to 40% as your acreage grows. Your first field is tolerated; your tenth is punished. The Cartel does not want farmers consolidating land, and every acre you reclaim makes the next one more expensive.",
+    status: 'live',
+    href: '/field-manual/farmland-surcharge',
+    version: VERSION,
+    related: [
+      { slug: 'mandatory-financing', note: 'Land buys run through the same financing flow plus this surcharge.' },
+      { slug: 'cash-reserve', note: 'The reserve check on land buys includes the surcharge in its math.' },
+      { slug: 'perks', note: 'Negotiator perk reduces the surcharge by up to 30%.' },
+      { slug: 'skills', note: 'Land BOGO skill discounts land prices, applied before the surcharge calc.' }
+    ],
+    summary:
+      "The Farmland Surcharge is the Cartel's penalty on consolidation: a one-shot fee charged upfront every time you buy a new parcel, scaled to how much land you already own. Your first plot is barely taxed. By the time you've assembled a serious farm, the surcharge has climbed to almost half the price of every new acre. The Cartel writes it as a routine acquisition fee. In practice it's a hand on your shoulder telling you to stop growing.",
+    whatItDoes: [
+      "Charged upfront the moment you sign for a new parcel of land. The fee comes out of farm cash directly — it does not go onto the loan, does not get amortized over three years, and does not show up as a future monthly bill. You pay it on the spot, in full.",
+      "Scales with how much land you already own at the moment of purchase, not with the price of the parcel. The bracket is read off your existing acreage before the new parcel is added, so the same parcel can cost wildly different surcharges to two different farms.",
+      "The brackets climb in steps: 2% under 25 acres, 4% from 25 to 49, 7% from 50 to 99, 11% from 100 to 249, 16% from 250 to 499, 22% from 500 to 999, 30% from 1,000 to 1,999, and 40% at 2,000 acres and above. A new farmer pays a small toll. A serious operation pays a small fortune.",
+      "The land confirmation dialog shows the surcharge as its own line item alongside price, down payment, total upfront, and loan amount. Nothing is hidden — the full bill is on screen before you click Buy.",
+      "The Minimum Cash Reserve gate folds the surcharge into its math. The check on a land buy asks whether your balance, minus the down payment, minus the surcharge, would still clear the reserve. The surcharge can be the reason a deal fails the gate even when the parcel itself is comfortably affordable.",
+      "The Negotiator perk on the Farmer Prestige rotation reduces the surcharge directly. Each occurrence cuts 3% off the fee; at cap (ten occurrences) the surcharge is 30% smaller across every bracket.",
+      "The Land BOGO skill discounts the land price before the surcharge is computed, so a discounted purchase pays surcharge on the smaller price — both savings stack on the same parcel."
+    ],
+    whyItMatters:
+      "Land is the slowest-moving piece of FarmPunk's economy, and the surcharge is what makes it stay slow. The Cartel doesn't want farmers consolidating territory — a hundred small operations are easier to pressure than one big one. The bracket structure punishes scale specifically: every milestone you cross makes the next acre more expensive. By the time you're at 2,000 acres, every parcel costs you 40 percent more in cash up front than the same parcel costs a starter farm. The pressure is real and it doesn't go away. Expansion is supposed to be a fight.",
+    howYouProgress: [
+      "Read the bracket before you buy. The surcharge reads your acreage before the new parcel is added, so a single purchase that takes you across a bracket boundary still pays the lower rate on that parcel — the bracket above only kicks in on the next purchase. Plan the order of large buys with the boundaries in mind.",
+      "Stack cash before any major land buy. The surcharge comes out of your balance directly, not the loan, so a parcel the lender will happily finance can still leave a real hole in your account. The reserve check is going to demand that hole stay above the floor.",
+      "Pour scrip into the Land BOGO skill if expansion is a priority. Every other land purchase is discounted; at L10 the discount is 50% off the price before the surcharge is calculated, so a maxed-BOGO purchase pays the surcharge on a half-price parcel — two savings on the same deal.",
+      "Pick up Negotiator on the perk rotation when expansion is in your sights. Every occurrence shaves 3% off the fee. At cap, that's 30% across every bracket — meaningful at 2% and life-changing at 40%."
+    ],
+    importantNumbers: [
+      { label: 'Bracket: < 25 acres', value: '2%' },
+      { label: 'Bracket: 25–49 acres', value: '4%' },
+      { label: 'Bracket: 50–99 acres', value: '7%' },
+      { label: 'Bracket: 100–249 acres', value: '11%' },
+      { label: 'Bracket: 250–499 acres', value: '16%' },
+      { label: 'Bracket: 500–999 acres', value: '22%' },
+      { label: 'Bracket: 1,000–1,999 acres', value: '30%' },
+      { label: 'Bracket: 2,000+ acres', value: '40%' },
+      { label: 'Bracket reading', value: 'Acres owned BEFORE the new parcel is added' },
+      { label: 'Formula', value: 'surcharge = floor(land price × rate)' },
+      { label: 'Payment channel', value: 'Cash up front. NOT financed. NOT added to the loan.' },
+      { label: 'Counts toward Minimum Cash Reserve check', value: 'Yes. Land check is balance − (down payment + surcharge) ≥ reserve.' },
+      { label: 'Negotiator perk (per occurrence)', value: '-3% off the surcharge' },
+      { label: 'Negotiator perk cap', value: '10 occurrences — surcharge cut 30% across every bracket' },
+      { label: 'Land BOGO skill', value: 'Discounts land price before the surcharge is computed (L10: 50% off every other land purchase)' }
+    ],
+    beginnerAdvice: [
+      "Read the confirmation dialog before clicking Buy. The surcharge line is part of the standard breakdown — price, down payment, surcharge, total upfront, loan amount. Nothing is hidden, but it's worth slowing down to actually look.",
+      "Don't be surprised by a refused land deal. The reserve check on land includes the surcharge, so a parcel you can afford on paper can still bounce off the gate because the surcharge plus the down payment together push you under the floor.",
+      "The bracket is sticky. Once you've crossed into a higher tier, every subsequent parcel pays at that tier — and the museum rule means you can't easily sell off acres to drop back. Crossing a bracket is a long-term commitment to a higher fee.",
+      "If you're sitting at 99 acres and a single parcel would put you over 100, the surcharge on that parcel is still 7% (the 50–99 bracket). The 11% bracket only kicks in on the parcel after. Sometimes the cleanest play is the one big purchase that crosses the line — because every acre after pays the higher rate."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkBuyLand <farmlandId>', note: 'Finance a specific land parcel by ID. Same gates and surcharge as the in-map purchase flow — useful for previewing the breakdown without walking to the parcel on the map.' },
+      { cmd: 'farmPunkReserveSummary', note: 'Read-only. Useful before a land purchase, since the reserve check folds the surcharge into the gate math.' }
+    ],
+    fieldNote:
+      "The Cartel doesn't keep you small by saying no. They keep you small by making yes more expensive every time you say it back."
+  },
+  {
+    slug: 'asset-sell-block',
+    category: 'Money',
+    title: 'Deadweight Inventory',
+    oneLiner: "The Cartel locks every vehicle, building, and acre into your operation the moment you buy it, turning bad purchases into permanent weight. Backroom Dealers is the only escape hatch, and even then you only get a few quiet sales a year — so buy like you mean it, because you might be building a museum with working hydraulics.",
+    status: 'live',
+    href: '/field-manual/asset-sell-block',
+    version: VERSION,
+    related: [
+      { slug: 'perks', note: 'Backroom Dealers perk is the only legitimate sell channel — a small annual counter shared across vehicles, implements, and land.' },
+      { slug: 'rebel-supply-chain', note: "Reward vehicles can't be sold either — museum doctrine applies." },
+      { slug: 'rust-and-raiders', note: 'Theft is a separate system — it can still take exposed equipment off your fleet, but that is loss, not selling.' },
+      { slug: 'mandatory-financing', note: 'Every financed purchase is permanent — the loan amortizes either way.' }
+    ],
+    summary:
+      "Every machine, every building, every parcel of land that lands on your books stays there. Permanently. The dealer's Sell button is gone. The in-game menu refuses to release a vehicle. The map's Sell action on a parcel of farmland refuses to let it go. The Cartel calls it a registry; the rest of the valley calls it a museum. Once you've signed for it, you've signed for it forever — and the only way out is a perk that's rare enough to feel like a favor.",
+    whatItDoes: [
+      "Removes the Sell action from the workshop dealer entirely. The button does not exist on a FarmPunk save — there is nothing to click, no error to dismiss, no confirm dialog to refuse.",
+      "Refuses the in-game menu's Vehicles-tab sell flow with a CRITICAL HUD card. The blocked vehicle stays in your fleet; the menu refreshes to show it still there. Mod menus that hook into the same sell path are covered too.",
+      "Refuses the map's farmland Sell action with a CRITICAL HUD card. The exact message reads: 'Your farm is a museum now. Land does not leave the collection.' The parcel stays yours.",
+      "Covers the Rebel Supply Chain reward vehicles too. The free combine that showed up on the dealer's pad at L20 is still your free combine — it can't be sold any more than a financed one can. The museum doctrine doesn't make exceptions for gifts.",
+      "Theft is a separate event entirely. The Rust and Raiders system can still take a vehicle off your fleet through a theft roll on exposed equipment. That is loss, not selling. The sell block doesn't stop it, and the missing equipment doesn't refund through this system.",
+      "The Backroom Dealers perk on the Farmer Prestige rotation is the only legitimate exception. Each occurrence adds one slot to a shared annual counter — vehicles, implements, and land all draw from the same bucket. At the perk's cap of three occurrences, you have three sells of any mix per year before the museum doctrine kicks back in. The first three sells of the year quietly fall through to the standard sell flow; the fourth and beyond hit the standard refusal. The counter resets at the start of each new year (period 1)."
+    ],
+    whyItMatters:
+      "In the base game, a wrong purchase is reversible. You buy a tractor, decide it's not the one, sell it back, and your loss is just whatever value the workshop deducts on the buyback. FarmPunk closes that escape entirely. A bad combine purchase is on your books forever — the loan still amortizes, the equipment tax still bills it, the vehicle upkeep still pulls on the cash reserve, and the machine itself just sits in your shed. The pressure this creates is at the moment of purchase, not after it. Every financed deal in FarmPunk is a permanent decision, and the cost of being wrong is paying for a museum exhibit you didn't want. Backroom Dealers loosens this slightly, but never enough to make selling a normal part of farm management.",
+    howYouProgress: [
+      "Buy slowly and on purpose. The museum rule is what makes a careful purchasing discipline matter in FarmPunk — used vehicles especially are worth a long look, because every cash dollar you save on the front end is a dollar you don't owe forever.",
+      "Treat workshop modifications as the substitute for resale. A tractor you bought stripped down can be configured up later through the workshop — that's the path FarmPunk leaves open. The vehicle stays. The configuration changes.",
+      "Wait for Backroom Dealers in the perk rotation if there is something you genuinely need to offload. The perk is the only escape hatch, and the slots are precious. Spend the year's allotment on the most expensive mistakes, not the small ones.",
+      "Don't plan on selling reward vehicles. Every machine the Rebel Supply Chain delivers is permanent the same way every purchased machine is permanent. The L20 combine, the L100 combine, the free tractors at L3 and L5 — they are all yours, forever. Treat them as permanent additions to your fleet, not as cash you can convert later."
+    ],
+    importantNumbers: [
+      { label: 'Workshop Sell action', value: 'Removed entirely. No button to click.' },
+      { label: 'In-game menu Vehicles-tab sell', value: 'Refused. CRITICAL HUD card. Vehicle stays in your fleet.' },
+      { label: 'Map farmland Sell action', value: "Refused. CRITICAL HUD card: \"Your farm is a museum now. Land does not leave the collection.\"" },
+      { label: 'Rebel Supply Chain reward vehicles', value: 'Same museum rule — free vehicles cannot be sold either.' },
+      { label: 'Theft (Rust and Raiders)', value: 'Separate system. Theft can still take exposed equipment off your fleet.' },
+      { label: 'Backroom Dealers perk (per occurrence)', value: '+1 sell slot per year. Vehicles, implements, and land share one counter.' },
+      { label: 'Backroom Dealers occurrence cap', value: '3' },
+      { label: 'Maximum legitimate sells per year', value: '3 (with Backroom Dealers fully maxed, any mix of vehicles, implements, and land)' },
+      { label: 'Counter reset', value: 'Period 1 (start of the new year)' }
+    ],
+    beginnerAdvice: [
+      "The first wrong purchase is the most painful one. Take a long look at every used-vehicle option before clicking Buy on a financed new machine. Used equipment is cheaper, isn't financed, and still goes into the museum the same way — but at least the museum exhibit was less expensive.",
+      "Workshop modifications are not financed and not permanent in the same way. If your tractor needs a different front loader or a wider tire setup, the workshop is where to make the change. The vehicle itself you're stuck with; its configuration you can keep editing.",
+      "Once Backroom Dealers shows up on the perk rotation, recognize what it is: the only legitimate sell channel in the game. Treat the slots like any limited annual resource — spend them on real mistakes, not minor ones.",
+      "Plan for the long arc. The longer your save runs, the bigger your fleet becomes, and the museum gets more crowded over time. There is no end-of-year cleaning house. Every machine you buy is a vote in favor of needing it forever."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkPerks', note: "Read-only. Shows current Prestige level + title, every perk's level/cap, and the Backroom Dealers per-year counter status." },
+      { cmd: 'farmPunkResetBackroom', note: 'Testing tool. Zeroes the Backroom Dealers per-year sell counter for the current year.' }
+    ],
+    fieldNote:
+      "The Cartel will gladly sell you anything. They just don't believe in returns."
+  },
+  {
+    slug: 'no-generators',
+    category: 'Money',
+    title: 'Energy Dependence',
+    oneLiner: "The Cartel refuses permits for solar panels and wind turbines, keeping passive income and off-grid independence locked out of reach. They keep the meter, they keep the bill, and they make sure every dollar you earn still comes from work they can pressure.",
+    status: 'live',
+    href: '/field-manual/no-generators',
+    version: VERSION,
+    related: [
+      { slug: 'mandatory-financing', note: 'Generators are refused by the same construction-screen flow that financed placeables run through.' },
+      { slug: 'cartel-franchise-fee', note: "The franchise fee is the reason the Cartel keeps every revenue stream taxable — passive generator income would punch a hole in the design." }
+    ],
+    summary:
+      "FarmPunk has no off-grid power. Solar collectors, wind turbines, and every other generator placeable in the construction menu are refused at the moment you try to place one. The Cartel doesn't want passive income on the farm. They want every dollar you earn to come from work they can audit, license, tax, and pressure — and a wind turbine that quietly mints money in the background gives them nothing to grip. So the permits don't exist. The placement fails. The grid stays the only game in town.",
+    whatItDoes: [
+      "Refuses every placeable in the GENERATORS category at the moment of placement. The construction menu still lists the items — solar panels, wind turbines, and the rest — but committing to a placement fires a CRITICAL HUD refusal and nothing gets built.",
+      "Covers every base-game item in the category. Vanilla Farming Simulator 25 ships five generator placeables, all under the single GENERATORS category, and all five are blocked.",
+      "Map mods that follow the same category convention are covered automatically. A new map that adds another generator placeable to the GENERATORS category is refused the same way without any extra work — if it's filed as a generator, FarmPunk recognizes it as a generator.",
+      "There is no list to manage, no toggle, no per-year reset. Generators are simply gone. No save file, no settings, no command to flip."
+    ],
+    whyItMatters:
+      "FarmPunk's economy depends on the Cartel having something to pressure. Crops can be licensed. Vehicles can be financed. Land can be surcharged. Every revenue stream on a normal farm has a Cartel hand on it — but generators in the base game are passive income that doesn't go through any of those systems. A wind turbine doesn't pay a license fee, doesn't trip the franchise bracket, and doesn't depend on a worked field. Letting them through would punch a hole in the rest of the design. The block exists to keep the pressure intact: every dollar on a FarmPunk farm has to come from work the Cartel can touch.",
+    howYouProgress: [
+      "You don't. There is no progression here. There is no perk that unlocks generators, no skill that loosens the rule, no reputation tier that buys an exception.",
+      "Off-grid power is not in the game. The Cartel hands out no permits, and the Field Manual has no advice for getting around them — only the reminder that every other revenue path in FarmPunk is a path you take through their paperwork on purpose."
+    ],
+    importantNumbers: [
+      { label: 'GENERATORS category', value: 'Categorically refused at placement' },
+      { label: 'Base-game items affected', value: '5 (every solar / wind / etc. placeable in vanilla FS25)' },
+      { label: 'Map-mod coverage', value: 'Any placeable filed under the GENERATORS category is blocked automatically' },
+      { label: 'Refusal style', value: 'CRITICAL HUD card on placement attempt. The placeable does not get built.' },
+      { label: 'Save file footprint', value: 'None. The block is stateless.' },
+      { label: 'Perk or skill that unlocks generators', value: 'None.' },
+      { label: 'Per-period or annual reset', value: 'None. The block does not vary across the calendar.' }
+    ],
+    beginnerAdvice: [
+      "The construction menu still lists solar panels and wind turbines. They are not buyable in any meaningful sense — placement will refuse. Don't budget for them and don't plan a power-positive farm layout.",
+      "Every other passive-feeling revenue stream in FarmPunk has been routed through a Cartel system on purpose. Dividends pay through the franchise ledger. Rebel Supply Chain rewards arrive through Farmer Prestige. Black Market completions pay scrip and cash on Cartel-watched routes. The path of least resistance is to use those — not to look for one that isn't there."
+    ],
+    consoleCommands: [
+      { cmd: '—', note: 'The No Generators rule is stateless. There is no list, counter, toggle, or save file — and therefore no dedicated console command. Attempting to place a generator simply fails with a CRITICAL HUD card.' }
+    ],
+    fieldNote:
+      "The grid is the only meter the Cartel knows how to read. They keep it the only meter on the farm."
   }
 ];
 
@@ -1374,44 +1538,11 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
 ];
 
 // ── Stubs — shipped, but no deep wiki page yet ──────────────────
-export const STUBS: CatalogEntry[] = [
-  // RPG & Progression
-  // Resistance
-  // (Shares, Dividends, and Black Markets are full dossiers — see MECHANICS above.)
-
-  // Production & Markets
-  // (Crop Licensing, Crop Novelty, Crop Spoilage, and Weather are full
-  // dossiers — see MECHANICS above.)
-
-  // Money & Credit
-  // (Annual Taxes, Mandatory Financing, Debt Cap, Credit Rating, Vanilla Loan
-  // Override, and Minimum Cash Reserve are full dossiers — see MECHANICS above.)
-  {
-    slug: 'farmland-surcharge', category: 'Money', title: 'Farmland Surcharge',
-    oneLiner: "The Farmland Surcharge is the Cartel’s anti-expansion tax, climbing from 2% on your first plot to 40% as your acreage grows. Your first field is tolerated; your tenth is punished. The Cartel does not want farmers consolidating land, and every acre you reclaim makes the next one more expensive.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'mandatory-financing', note: 'Land buys run through the same financing flow plus this surcharge.' },
-      { slug: 'perks', note: 'Negotiator perk reduces the surcharge by up to 30%.' },
-      { slug: 'skills', note: 'Land BOGO skill discounts land prices, applied before the surcharge calc.' }
-    ]
-  },
-  {
-    slug: 'asset-sell-block', category: 'Money', title: 'Deadweight Inventory',
-    oneLiner: "The Cartel locks every vehicle, building, and acre into your operation the moment you buy it, turning bad purchases into permanent weight. Backroom Dealers is the only escape hatch, and even then you only get a few quiet sales a year — so buy like you mean it, because you might be building a museum with working hydraulics.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'perks', note: 'Backroom Dealers perk is the only way around it — N sells per year.' },
-      { slug: 'rebel-supply-chain', note: "Reward vehicles can't be sold either — museum doctrine applies." }
-    ]
-  },
-  {
-    slug: 'no-generators', category: 'Money', title: 'Energy Dependence',
-    oneLiner: "The Cartel refuses permits for solar panels and wind turbines, keeping passive income and off-grid independence locked out of reach. They keep the meter, they keep the bill, and they make sure every dollar you earn still comes from work they can pressure.",
-    status: 'pending', version: VERSION,
-    related: []
-  }
-];
+// All shipped systems currently have full dossiers in MECHANICS above or
+// custom pages in CUSTOM_PAGES. Future systems that ship without a deep
+// dossier yet should land here as { slug, title, oneLiner, status: 'pending',
+// version, related } entries.
+export const STUBS: CatalogEntry[] = [];
 
 // ── Combined catalog for the Field Manual index ─────────────────
 export const ALL_CATALOG: CatalogEntry[] = [...MECHANICS, ...CUSTOM_PAGES, ...STUBS];
