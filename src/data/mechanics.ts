@@ -52,7 +52,7 @@ export const MECHANICS: Mechanic[] = [
     category: 'RPG',
     title: 'Win Condition',
     oneLiner:
-      'There are two. You have to satisfy both to win FarmPunk: own all 100 shares AND fill the Reclamation Warchest.',
+      "FarmPunk has two endgame requirements. Buy back all 100 of the Cartel's shares to break their grip on your farm. Fill the Reclamation Warchest with $1 billion to bankroll the rest of the valley's fight. They're designed to pressure each other into balance, and you'll need both to win.",
     status: 'live',
     href: '/field-manual/win-condition',
     version: VERSION,
@@ -106,7 +106,7 @@ export const MECHANICS: Mechanic[] = [
     category: 'Money',
     title: 'Cartel Franchise Extortion Fee',
     oneLiner:
-      "The Cartel's annual cut. Pays per revenue bracket. Each share owned shaves 1% off the bill.",
+      "The Cartel Franchise Extortion Fee is their annual cut of your gross revenue, dressed up as paperwork and collected like tribute. Buying shares reduces the fee, but every share you reclaim makes the Cartel angrier — freedom gets cheaper on paper and more dangerous in the field.",
     status: 'live',
     href: '/field-manual/cartel-franchise-fee',
     version: VERSION,
@@ -160,7 +160,7 @@ export const MECHANICS: Mechanic[] = [
     category: 'Resistance',
     title: 'Reclamation Warchest',
     oneLiner:
-      'A one-way savings fund that funds the resistance. Cap is one billion dollars. The money never comes back.',
+      "The Reclamation Warchest is a one-way fund for the valley’s fight, bankrolling the people and networks pushing back against the Cartel’s grip. Filling it is half the win condition, and every dollar sabotages their hostilities.",
     status: 'live',
     href: '/field-manual/reclamation-warchest',
     version: VERSION,
@@ -211,7 +211,7 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
     slug: 'skills',
     category: 'RPG',
     title: 'Manager Skill Tree',
-    oneLiner: '17 scrip-purchased skills × 10 levels each. Yield, sale price, vehicle stats, finance, resilience.',
+    oneLiner: "The Manager Skill Tree turns scrip into personal development, training, favors, and hard-earned expertise that make you better at running the farm. Seventeen skills with ten levels each improve everything from yields and prices to loans, wear, weather, and storage — because the Cartel can tax your land, but it cannot repossess what you know.",
     status: 'live',
     href: '/field-manual/skills',
     version: VERSION,
@@ -230,7 +230,7 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
     slug: 'perks',
     category: 'RPG',
     title: 'Farmer Prestige Perks',
-    oneLiner: 'A 12-perk rotation that fires as Farmer Prestige climbs. Each lap through the rotation gets one level slower than the last.',
+    oneLiner: "Farmer Prestige Perks represent what happens when the valley learns your name and the Cartel starts saying it through clenched teeth. As your reputation grows, twelve repeating bonuses unlock automatically, turning fame, trust, notoriety, and local momentum into real advantages.",
     status: 'live',
     href: '/field-manual/perks',
     version: VERSION,
@@ -254,7 +254,7 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
     slug: 'cartel-attacks',
     category: 'Resistance',
     title: 'Cartel Attacks',
-    oneLiner: 'Ten distinct retaliations. Pressure score (shares minus Warchest defense) drives how many activate per year.',
+    oneLiner: "Cartel Attacks are the yearly price of becoming dangerous: license revocations, smear campaigns, rate hikes, audits, goon visits, silo poisoning, and every other trick they use to keep farmers small. Buying shares makes them angrier, but funding the Reclamation Warchest dulls their teeth before the damage lands.",
     status: 'live',
     href: '/field-manual/cartel-attacks',
     version: VERSION,
@@ -274,7 +274,7 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
     slug: 'black-markets',
     category: 'Resistance',
     title: 'Black Markets',
-    oneLiner: '5-tier underground buyer roster. Refreshes annually. Interactive simulator included.',
+    oneLiner: "Black Markets are off-the-books crop orders from private buyers who know the Cartel is not the only game in the valley. They reroll every March across five tiers, paying cash, scrip, and Prestige at once — and the more famous you become, the better the buyers willing to risk dealing with you.",
     status: 'live',
     href: '/black-markets',
     version: VERSION,
@@ -292,7 +292,7 @@ export const STUBS: CatalogEntry[] = [
   // RPG & Progression
   {
     slug: 'crop-mastery', category: 'RPG', title: 'Crop Mastery',
-    oneLiner: 'Per-crop fame counter. Yield + price tier every 5/10 levels. Uncapped.',
+    oneLiner: "Crop Mastery is your reputation written in seed, soil, and receipts: every crop you sell teaches you how to grow it better and proves to buyers you know what you are doing. Each crop levels separately, permanently boosting its yield and sale price with no cap — because the Cartel can control the market, but it cannot stop you from getting dangerously good.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'skills', note: 'Crop Yield + Sale Price skills compound with mastery yield/price tiers.' },
@@ -304,7 +304,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'farmer-prestige', category: 'RPG', title: 'Farmer Prestige',
-    oneLiner: 'Global level. Vehicle gifts at L3, 5, 10, 15… up to L100.',
+    oneLiner: "Farmer Prestige tracks how loudly your name travels through the valley — trusted by locals, watched by buyers, and cursed by the Cartel. Higher Prestige unlocks perks, better Black Market access, and occasional one-time support from people who believe your farm might become the crack in their empire.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'crop-mastery', note: 'Both grow per liter sold. Prestige is global, mastery is per-crop.' },
@@ -317,7 +317,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'prestige-rewards', category: 'RPG', title: 'Prestige Reward Catalog',
-    oneLiner: '13 default vehicle gifts at preset prestige levels. Authoring tool included.',
+    oneLiner: "The Cartel calls it fraud, theft, and unauthorized redistribution. The valley calls it field support. As your Farmer Prestige rises, people start betting on you with the only things that matter out here: machines, parts, trailers, and trust.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'farmer-prestige', note: 'Reward vehicles deliver at preset prestige levels.' },
@@ -327,7 +327,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'farmer-titles', category: 'RPG', title: 'Farmer Titles',
-    oneLiner: 'Field Serf → Rebel Baron, derived from Prestige.',
+    oneLiner: "Farmer Titles are what the valley calls you as your reputation grows, from another operator in the dirt to a name the Cartel cannot ignore. They do not change the math — they mark how far you have climbed in a world that was built to keep you small.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'farmer-prestige', note: 'Title is purely a derived display from your current prestige level.' }
@@ -335,7 +335,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'vehicle-storage', category: 'RPG', title: 'Vehicle Storage Enforcement',
-    oneLiner: 'Wear, vandals, theft on exposed gear every month. Build sheds.',
+    oneLiner: 'The weather is cruel, the nights are worse, and exposed gear does not stay untouched for long. Store vehicles in sheds or garages to protect them from damage, vandals, and thieves looking to turn your machinery into someone else’s payday.',
     status: 'pending', version: VERSION,
     related: [
       { slug: 'cartel-attacks', note: "Goon Visit wrecks one tractor regardless of shelter — the only attack that ignores storage." },
@@ -348,7 +348,7 @@ export const STUBS: CatalogEntry[] = [
   // Resistance
   {
     slug: 'shares', category: 'Resistance', title: 'Shares',
-    oneLiner: '0–100. Each weakens Cartel grip 1%. The franchise-fee escape hatch.',
+    oneLiner: "The Cartel starts every run holding 100 shares of your farm, and buying them back with scrip is how you claw your family’s future out of their ledger. Every share weakens their control and makes them angrier, so keep the Reclamation Warchest funded before they turn your ownership push into a war.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'cartel-franchise-fee', note: 'Each share knocks 1% off the fee. The only way to reduce it.' },
@@ -360,7 +360,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'dividends', category: 'Resistance', title: 'Dividends',
-    oneLiner: 'Cash. Lifetime-fund tier ladder $2k → $10k per share.',
+    oneLiner: "The Cartel built the dividend system so absentee owners, banks, and corporate partners could skim annual value from farms they never worked. When you buy shares, you force your name into that same ledger, redirecting part of the extraction pipeline back to the farmer. Dividends are not charity — they are the Cartel’s own machine turned against them.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'shares', note: 'Pays per share owned. No shares, no dividends.' },
@@ -372,7 +372,7 @@ export const STUBS: CatalogEntry[] = [
   // Production & Markets
   {
     slug: 'crop-licensing', category: 'Production', title: 'Crop Licensing',
-    oneLiner: '6-tier per-crop sell volume cap. −80% over the cap.',
+    oneLiner: "Crop Licensing is the Cartel’s way of deciding how much of each crop you are allowed to sell before they crush the price. Upgrade licenses with scrip to raise your annual caps, because anything sold past the line gets punished hard — unapproved abundance is still disobedience.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'crop-novelty', note: 'Both modify per-station sale price through the same writer.' },
@@ -383,7 +383,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'crop-novelty', category: 'Production', title: 'Crop Novelty Bonus',
-    oneLiner: '+15% / +25% rotation incentive. Locked at year start.',
+    oneLiner: "The Crop Novelty Bonus rewards farmers who keep the market guessing instead of feeding the Cartel the same predictable harvest every year. Crops you skipped last year sell for more, and crops absent for five years hit even harder — rotation is not just soil sense, it is market misdirection.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'crop-licensing', note: 'Both modify per-station sale price through the same writer.' },
@@ -394,7 +394,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'crop-spoilage', category: 'Production', title: 'Crop Spoilage',
-    oneLiner: "3% of grain per month. Don't hoard.",
+    oneLiner: "Crop Spoilage makes hoarding dangerous: every month, stored grain rots, leaks, or disappears into whatever lives in the silo walls. Skills can slow the loss, but bad weather and Cartel poisoning can turn patience into rot — sell with a plan before the rats collect their dividend.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'skills', note: 'Spoilage Immunity skill reduces the monthly rot rate.' },
@@ -404,7 +404,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'weather', category: 'Production', title: 'Weather System',
-    oneLiner: '45 entries × 5 rarity tiers. One year = one weather, locked at P1.',
+    oneLiner: "The Weather System turns each year into a sentence the sky hands down: forty-five patterns across five rarity tiers, from common drizzle to once-a-decade dust storms. One pattern locks in for the full year, forcing you to plan crops, storage, hauling, and survival around whatever the season decides to become.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'crop-spoilage', note: 'Weather modifier adds to the monthly spoilage rate.' },
@@ -417,7 +417,7 @@ export const STUBS: CatalogEntry[] = [
   // Money & Credit
   {
     slug: 'annual-taxes', category: 'Money', title: 'Annual Taxes',
-    oneLiner: 'Land + equipment, fired at Feb each year. Exponential land curve.',
+    oneLiner: "Annual Taxes hit every February as the county takes its cut on your equipment and land, with acreage getting brutally more expensive as your footprint grows. Prestige Perks can soften the bill, because once the valley knows your name, even local tax collectors start finding reasons to treat you like someone worth keeping alive.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'cartel-franchise-fee', note: 'Both fire at the same period-12 tick.' },
@@ -428,7 +428,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'mandatory-financing', category: 'Money', title: 'Mandatory Financing',
-    oneLiner: '20% down, 12% interest, 36 months. Lease is gone.',
+    oneLiner: "The Cartel killed leasing because temporary access gives farmers too much flexibility and too little leverage for the banks. Every major purchase is forced through financing so expansion means debt, paperwork, interest, and another hook in your operation. You can still grow — but every machine you buy comes with someone else’s hand on the ledger.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'debt-cap', note: 'Every new loan checks the cap before going through.' },
@@ -441,7 +441,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'debt-cap', category: 'Money', title: 'Debt Cap',
-    oneLiner: 'Scales with land + equipment + balance. Min $100k.',
+    oneLiner: "A ceiling on how much total debt the Cartel will let you carry, calculated from your land value, equipment value, and current cash balance.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'mandatory-financing', note: 'All financed purchases check the cap.' },
@@ -451,7 +451,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'credit-rating', category: 'Money', title: 'Credit Rating F→A',
-    oneLiner: 'Drops on default. Climbs on a clean year.',
+    oneLiner: "Your credit rating is the bank’s leash: a letter grade from F to A that rises when you survive a clean year and falls when missed bills, fees, or loan payments push you below zero. Better ratings unlock better rates on new loans, but every bad year gives the lenders another excuse to tighten the trap.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'mandatory-financing', note: 'Rating affects new-loan interest rate. Existing loans keep their rate.' },
@@ -463,7 +463,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'vanilla-loan', category: 'Money', title: 'Vanilla Loan Override',
-    oneLiner: '$50k cap, 3× interest. Emergency only.',
+    oneLiner: "The Emergency Credit Line is the old bank’s last-resort money: capped at $50,000 and charged at triple the rate of proper equipment financing. Use it only when the bills are due, the machines are broken, and you have no cleaner way to survive the gap.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'credit-rating', note: 'Vanilla interest deductions can push you negative and downgrade your rating.' },
@@ -473,7 +473,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'cash-reserve', category: 'Money', title: 'Minimum Cash Reserve',
-    oneLiner: '3× monthly obligations. Purchases blocked below.',
+    oneLiner: "The Cartel will not approve a financed purchase unless you still have three months of loan and tax pressure sitting in reserve after the down payment. Fall below that line and the deal is blocked — not because they want you safe, but because they want you desperate without letting the ledger break.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'mandatory-financing', note: 'Reserve gates every financed purchase.' },
@@ -482,7 +482,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'farmland-surcharge', category: 'Money', title: 'Farmland Surcharge',
-    oneLiner: '2% to 40% acquisition fee. Scales with acres held.',
+    oneLiner: "The Farmland Surcharge is the Cartel’s anti-expansion tax, climbing from 2% on your first plot to 40% as your acreage grows. Your first field is tolerated; your tenth is punished. The Cartel does not want farmers consolidating land, and every acre you reclaim makes the next one more expensive.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'mandatory-financing', note: 'Land buys run through the same financing flow plus this surcharge.' },
@@ -492,7 +492,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'profit-tracking', category: 'Money', title: 'Annual Profit & Expenditure Tracking',
-    oneLiner: 'Per-year revenue + expense ledger. Drives bonuses, brackets, dividends.',
+    oneLiner: "The Profit Ledger tracks what the farm earns, what it spends, and how much value the Cartel thinks it can squeeze from the year. It drives your year-end scrip bonus, fee pressure, and dividend growth — but Warchest deposits stay off the books, because the rebellion is funded by the farmer, not the farm.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'annual-taxes', note: 'Records the tax deduction as expenditure.' },
@@ -503,7 +503,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'wallet-scrip', category: 'Money', title: 'Farmer Wallet (Scrip)',
-    oneLiner: 'Secondary currency for skills, shares, licenses. Cannot be exchanged.',
+    oneLiner: "Scrip is the farmer’s private leverage, kept separate from farm cash and impossible to launder back into the operation. It flows through the systems the Cartel cannot fully price in — skills, share buybacks, license upgrades, and Black Market work — then pays out each year as a small salary plus a profit-based bonus for surviving the ledger.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'skills', note: 'All 17 skills are bought with scrip.' },
@@ -515,7 +515,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'asset-sell-block', category: 'Money', title: 'Asset Sell Block',
-    oneLiner: 'Once bought, always bought. The museum doctrine.',
+    oneLiner: "The Cartel locks every vehicle, building, and acre into your operation the moment you buy it, turning bad purchases into permanent weight. Backroom Dealers is the only escape hatch, and even then you only get a few quiet sales a year — so buy like you mean it, because you might be building a museum with working hydraulics.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'perks', note: 'Backroom Dealers perk is the only way around it — N sells per year.' },
@@ -524,7 +524,7 @@ export const STUBS: CatalogEntry[] = [
   },
   {
     slug: 'no-generators', category: 'Money', title: 'No Generators',
-    oneLiner: 'Solar + wind placeables refused. The company keeps the meter.',
+    oneLiner: "The Cartel refuses permits for solar panels and wind turbines, keeping passive income and off-grid independence locked out of reach. They keep the meter, they keep the bill, and they make sure every dollar you earn still comes from work they can pressure.",
     status: 'pending', version: VERSION,
     related: []
   }
