@@ -1,0 +1,475 @@
+.fp-bm { padding: var(--space-7) 0 var(--space-8); }
+
+.fp-bm__head { margin-bottom: var(--space-5); }
+.fp-bm__head h1 { margin: var(--space-3) 0 var(--space-4); }
+.fp-bm__lede { color: var(--fp-bone-paper); max-width: 720px; }
+
+/* ── Controls — three panels ──────────────────────────────────── */
+.fp-bm__controls { padding: 0 0 var(--space-6); }
+
+.fp-bm__controls-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+@media (max-width: 980px) { .fp-bm__controls-inner { grid-template-columns: 1fr; } }
+
+.fp-bm__panel {
+  padding: var(--space-4) var(--space-5);
+  background: var(--fp-barnwood);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-card);
+}
+.fp-bm__panel h3 { color: var(--fp-warning-yellow); margin-bottom: var(--space-2); }
+.fp-bm__panel-sub { color: var(--fp-bone-paper); font-size: 0.92rem; margin-bottom: var(--space-4); }
+
+/* prestige slider */
+.fp-bm__slider-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.fp-bm__slider-row input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 10px;
+  background: linear-gradient(90deg, var(--fp-acid-green) 0 var(--fill, 30%), rgba(0,0,0,0.55) 0 100%);
+  border: 2px solid var(--fp-acid-green);
+  outline: none;
+  cursor: pointer;
+}
+.fp-bm__slider-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; height: 20px;
+  background: var(--fp-acid-green);
+  border: 2px solid var(--fp-ink-black);
+  cursor: grab;
+}
+.fp-bm__slider-row input[type="range"]::-moz-range-thumb {
+  width: 20px; height: 20px;
+  background: var(--fp-acid-green);
+  border: 2px solid var(--fp-ink-black);
+  cursor: grab;
+}
+.fp-bm__slider-value {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--fp-acid-green);
+  min-width: 50px;
+  text-align: right;
+}
+
+.fp-bm__tier-pips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.fp-bm__pip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 8px;
+  font-family: var(--font-stamp);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fp-weathered-gray);
+  border: 1px solid var(--fp-weathered-gray);
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0.45;
+}
+.fp-bm__pip small {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  margin-top: 1px;
+  opacity: 0.7;
+}
+.fp-bm__pip--on { opacity: 1; }
+.fp-bm__pip--on.fp-bm__pip--backroad    { color: var(--fp-bone-paper); border-color: var(--fp-weathered-gray); }
+.fp-bm__pip--on.fp-bm__pip--off_book    { color: var(--fp-warning-yellow); border-color: var(--fp-warning-yellow); }
+.fp-bm__pip--on.fp-bm__pip--underground { color: var(--fp-rust); border-color: var(--fp-rust); }
+.fp-bm__pip--on.fp-bm__pip--insurgent   { color: var(--fp-hot-magenta); border-color: var(--fp-hot-magenta); }
+.fp-bm__pip--on.fp-bm__pip--liberating  { color: var(--fp-acid-green); border-color: var(--fp-acid-green); box-shadow: 0 0 12px rgba(124, 255, 43, 0.35); }
+
+/* year row */
+.fp-bm__year-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+.fp-bm__year-label {
+  font-family: var(--font-stamp);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--fp-warning-yellow);
+}
+.fp-bm__year-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--fp-acid-green);
+  line-height: 1;
+}
+.fp-bm__year-summary {
+  font-size: 0.82rem;
+  color: var(--fp-weathered-gray);
+}
+
+/* ledger counters */
+.fp-bm__panel--ledger { background: var(--fp-rotted-brown); }
+.fp-bm__ledger {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+.fp-bm__counter {
+  padding: var(--space-3);
+  background: var(--fp-ink-black);
+  border-left: 4px solid var(--fp-weathered-gray);
+}
+.fp-bm__counter-label {
+  font-family: var(--font-stamp);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  color: var(--fp-weathered-gray);
+  text-transform: uppercase;
+}
+.fp-bm__counter-value { font-size: 1.05rem; margin-top: 2px; }
+.fp-bm__counter--acid { border-color: var(--fp-acid-green); }
+.fp-bm__counter--acid .fp-bm__counter-value { color: var(--fp-acid-green); }
+.fp-bm__counter--yellow { border-color: var(--fp-warning-yellow); }
+.fp-bm__counter--yellow .fp-bm__counter-value { color: var(--fp-warning-yellow); }
+.fp-bm__counter--magenta { border-color: var(--fp-hot-magenta); }
+.fp-bm__counter--magenta .fp-bm__counter-value { color: var(--fp-hot-magenta); }
+.fp-bm__counter--white { border-color: var(--fp-flash-white); }
+.fp-bm__counter--white .fp-bm__counter-value { color: var(--fp-flash-white); }
+
+/* ── The corkboard ────────────────────────────────────────────── */
+.fp-bm__board {
+  position: relative;
+  padding: var(--space-6) 0 var(--space-7);
+}
+
+.fp-bm__board-head {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.fp-bm__board-head .fp-stamp {
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: var(--fp-warning-yellow);
+  border: 1px solid var(--fp-warning-yellow);
+  padding: 4px 10px;
+}
+
+/* the actual cork wall */
+.fp-bm__cork {
+  position: relative;
+  min-height: 480px;
+  padding: var(--space-6) var(--space-5);
+  background-color: #6b4a2a;
+  background-image:
+    /* tack holes scattered */
+    radial-gradient(circle at 12% 18%, rgba(0, 0, 0, 0.25) 1.5px, transparent 2px),
+    radial-gradient(circle at 78% 62%, rgba(0, 0, 0, 0.22) 1.5px, transparent 2px),
+    radial-gradient(circle at 33% 88%, rgba(0, 0, 0, 0.2) 1.5px, transparent 2px),
+    radial-gradient(circle at 90% 22%, rgba(0, 0, 0, 0.2) 1.5px, transparent 2px),
+    /* cork grain */
+    radial-gradient(rgba(60, 35, 12, 0.55) 1px, transparent 1.5px),
+    radial-gradient(rgba(40, 25, 8, 0.45) 1.5px, transparent 2px),
+    /* base color variation */
+    linear-gradient(135deg, #6b4a2a 0%, #5b3e22 100%);
+  background-size: auto, auto, auto, auto, 6px 6px, 11px 11px, auto;
+  border: 8px solid var(--fp-blacksoil);
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.6),
+    0 16px 40px rgba(0, 0, 0, 0.6);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5) var(--space-4);
+  align-items: start;
+  transition: opacity 0.3s var(--ease-snap);
+}
+.fp-bm__cork--rolling { opacity: 0.3; }
+
+.fp-bm__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: var(--font-stamp);
+  letter-spacing: 0.1em;
+  color: var(--fp-bone-paper);
+  padding: var(--space-7) 0;
+}
+
+/* ── Market card — paper pinned to cork ───────────────────────── */
+.fp-bm__card {
+  --tilt: 0deg;
+  --delay: 0ms;
+  position: relative;
+  padding: 36px var(--space-4) var(--space-4);
+  background: var(--fp-bone-paper);
+  background-image:
+    radial-gradient(rgba(74, 51, 38, 0.06) 1px, transparent 1px),
+    radial-gradient(rgba(74, 51, 38, 0.04) 1.5px, transparent 1.5px);
+  background-size: 4px 4px, 9px 9px;
+  color: var(--fp-ink-black);
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.05) inset;
+  transform: rotate(var(--tilt));
+  cursor: default;
+  transition: transform 0.18s var(--ease-snap), box-shadow 0.18s var(--ease-snap);
+  animation: fp-bm-drop 0.45s var(--ease-snap) both;
+  animation-delay: var(--delay);
+  isolation: isolate;
+}
+
+@keyframes fp-bm-drop {
+  0%   { opacity: 0; transform: translateY(-22px) rotate(calc(var(--tilt) - 8deg)) scale(0.96); }
+  60%  { opacity: 1; transform: translateY(2px) rotate(calc(var(--tilt) + 1.5deg)); }
+  100% { opacity: 1; transform: translateY(0) rotate(var(--tilt)); }
+}
+
+/* the thumbtack */
+.fp-bm__pin {
+  position: absolute;
+  top: -6px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--fp-flash-white) 0 2px, var(--fp-danger-red) 3px 60%, #6b1810 60% 100%);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+.fp-bm__pin--left { left: 22px; }
+.fp-bm__pin--right { right: 22px; }
+
+/* clickable affordance */
+.fp-bm__card[role="button"] { cursor: pointer; }
+.fp-bm__card[role="button"]:hover {
+  transform: rotate(calc(var(--tilt) - 1deg)) translateY(-4px);
+  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.6);
+}
+.fp-bm__card[role="button"]:focus-visible {
+  outline: 3px solid var(--fp-acid-green);
+  outline-offset: 4px;
+}
+
+.fp-bm__card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: var(--space-2);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+  padding-bottom: 6px;
+}
+.fp-bm__card-tier {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--fp-warning-yellow);
+  border: 1px solid var(--fp-ink-black);
+  padding: 2px 8px;
+}
+.fp-bm__card-kicker {
+  font-family: var(--font-stamp);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--fp-rotted-brown);
+  text-transform: uppercase;
+}
+
+.fp-bm__card-vendor {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 6px 0 4px;
+  color: var(--fp-ink-black);
+  line-height: 1.05;
+}
+.fp-bm__card-mood {
+  font-family: var(--font-stamp);
+  font-size: 0.86rem;
+  margin: 0 0 var(--space-3);
+  color: var(--fp-rotted-brown);
+}
+
+.fp-bm__card-fields {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 0.86rem;
+}
+.fp-bm__card-fields > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: var(--space-3);
+  padding: 3px 0;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.18);
+}
+.fp-bm__card-fields > div:last-child { border-bottom: 0; }
+.fp-bm__card-fields dt {
+  font-family: var(--font-stamp);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--fp-rotted-brown);
+  text-transform: uppercase;
+}
+.fp-bm__card-fields dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  color: var(--fp-ink-black);
+  font-weight: 700;
+}
+
+.fp-bm__card-action {
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 2px dashed var(--fp-spray-purple);
+  text-align: center;
+}
+.fp-bm__card-action .fp-stamp {
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--fp-spray-purple);
+}
+
+/* DELIVERED stamp */
+.fp-bm__card--done {
+  filter: grayscale(0.4);
+  cursor: default;
+}
+.fp-bm__card-stamp {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.18em;
+  color: var(--fp-acid-green);
+  border: 4px solid var(--fp-acid-green);
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 1px rgba(124, 255, 43, 0.7);
+  box-shadow: inset 0 0 4px rgba(124, 255, 43, 0.4);
+  z-index: 5;
+  animation: fp-bm-stamp-in 0.35s var(--ease-snap) both;
+}
+@keyframes fp-bm-stamp-in {
+  0%   { opacity: 0; transform: translate(-50%, -50%) rotate(15deg) scale(2); }
+  100% { opacity: 1; transform: translate(-50%, -50%) rotate(-12deg) scale(1); }
+}
+
+/* LOCKED state */
+.fp-bm__card--locked { opacity: 0.6; }
+.fp-bm__card-lock {
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 2px dashed var(--fp-danger-red);
+  text-align: center;
+}
+.fp-bm__card-lock .fp-stamp {
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--fp-danger-red);
+}
+
+/* ── Tier-specific paper treatments ───────────────────────────── */
+/* Backroad — napkin scrawl. Lighter, slightly torn edge feel. */
+.fp-bm__card--backroad .fp-bm__card-tier { background: var(--fp-weathered-gray); color: var(--fp-ink-black); }
+
+/* Off-Book — index card with a single ruled line. */
+.fp-bm__card--off_book {
+  background-image:
+    linear-gradient(to bottom, transparent 0 96px, rgba(199, 53, 36, 0.4) 96px 97px, transparent 97px 100%),
+    radial-gradient(rgba(74, 51, 38, 0.06) 1px, transparent 1px),
+    radial-gradient(rgba(74, 51, 38, 0.04) 1.5px, transparent 1.5px);
+  background-size: auto, 4px 4px, 9px 9px;
+}
+.fp-bm__card--off_book .fp-bm__card-tier {
+  background: var(--fp-warning-yellow);
+}
+
+/* Underground — torn newspaper clipping with a darker ground. */
+.fp-bm__card--underground {
+  background-color: #c4a87d;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 14px,
+      rgba(0, 0, 0, 0.06) 14px 15px
+    );
+}
+.fp-bm__card--underground .fp-bm__card-tier {
+  background: var(--fp-rust);
+  color: var(--fp-flash-white);
+  border-color: var(--fp-blacksoil);
+}
+
+/* Insurgent — corporate doc with hot-pink graffiti tag accents. */
+.fp-bm__card--insurgent {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 16px,
+      rgba(107, 44, 131, 0.08) 16px 32px
+    ),
+    radial-gradient(rgba(74, 51, 38, 0.08) 1px, transparent 1px);
+  background-size: auto, 4px 4px;
+  border-color: var(--fp-spray-purple);
+  box-shadow: 0 6px 14px rgba(255, 47, 163, 0.25), 0 0 22px rgba(255, 47, 163, 0.08);
+}
+.fp-bm__card--insurgent .fp-bm__card-tier {
+  background: var(--fp-hot-magenta);
+  color: var(--fp-flash-white);
+  border-color: var(--fp-spray-purple);
+}
+.fp-bm__card--insurgent .fp-bm__card-vendor {
+  color: var(--fp-spray-purple);
+}
+
+/* Liberating — fully tagged poster, acid-green glow. */
+.fp-bm__card--liberating {
+  background-color: #1a1a16;
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(124, 255, 43, 0.1), transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(255, 47, 163, 0.08), transparent 60%);
+  color: var(--fp-flash-white);
+  border-color: var(--fp-acid-green);
+  box-shadow:
+    0 0 0 1px rgba(124, 255, 43, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.6),
+    0 0 36px rgba(124, 255, 43, 0.25);
+}
+.fp-bm__card--liberating .fp-bm__card-tier {
+  background: var(--fp-acid-green);
+  color: var(--fp-ink-black);
+  border-color: var(--fp-ink-black);
+}
+.fp-bm__card--liberating .fp-bm__card-kicker { color: var(--fp-acid-green); }
+.fp-bm__card--liberating .fp-bm__card-vendor {
+  font-family: var(--font-graffiti);
+  color: var(--fp-acid-green);
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  text-shadow: 2px 3px 0 rgba(0, 0, 0, 0.6);
+}
+.fp-bm__card--liberating .fp-bm__card-mood { color: var(--fp-bone-paper); }
+.fp-bm__card--liberating .fp-bm__card-fields dt { color: var(--fp-warning-yellow); }
+.fp-bm__card--liberating .fp-bm__card-fields dd { color: var(--fp-flash-white); }
+.fp-bm__card--liberating .fp-bm__card-action { border-top-color: var(--fp-acid-green); }
+.fp-bm__card--liberating .fp-bm__card-action .fp-stamp { color: var(--fp-acid-green); }

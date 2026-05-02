@@ -6,6 +6,7 @@ import { FieldManual } from './pages/FieldManual';
 import { MechanicPage } from './pages/MechanicPage';
 import { QuickReference } from './pages/QuickReference';
 import { Endgame } from './pages/Endgame';
+import { BlackMarkets } from './pages/BlackMarkets';
 import { ConsoleCommands } from './pages/ConsoleCommands';
 import { EarlyAccess } from './pages/EarlyAccess';
 import { NotFound } from './pages/NotFound';
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/field-manual/:slug" element={<MechanicPage />} />
         <Route path="/quick-reference" element={<QuickReference />} />
         <Route path="/endgame" element={<Endgame />} />
+        <Route path="/black-markets" element={<BlackMarkets />} />
         <Route path="/console" element={<ConsoleCommands />} />
         <Route path="/early-access" element={<EarlyAccess />} />
         <Route path="*" element={<NotFound />} />
