@@ -278,10 +278,11 @@
   margin-top: var(--space-5);
 }
 
-/* ── Features grid ─────────────────────────────────────────────── */
+/* ── Features grid — mirrors the Field Manual catalog grid so featured
+   mechanics on the home page read identically to their wiki entries. */
 .fp-features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-4);
 }
 

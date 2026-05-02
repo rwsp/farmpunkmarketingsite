@@ -47,54 +47,8 @@
   gap: var(--space-4);
 }
 
-.fp-fm__link {
-  text-decoration: none;
-  display: block;
-  color: inherit;
-}
-
-.fp-fm__link:hover .fp-dossier {
-  outline: 2px solid var(--fp-acid-green);
-  outline-offset: 4px;
-}
-
-/* Pending cards have slightly less ink to communicate "docs incomplete" without disabling them. */
-.fp-fm__link .fp-dossier:has(.fp-fm__chip--pending) {
-  opacity: 0.92;
-}
-
-/* Status chip — used in lede + on each card foot */
-.fp-fm__chip {
-  display: inline-block;
-  font-family: var(--font-stamp);
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border: 1px solid;
-  white-space: nowrap;
-}
-.fp-fm__chip--live {
-  color: var(--fp-acid-green);
-  border-color: var(--fp-acid-green);
-  background: rgba(124, 255, 43, 0.08);
-}
-.fp-fm__chip--pending {
-  color: var(--fp-warning-yellow);
-  border-color: var(--fp-warning-yellow);
-  background: rgba(242, 194, 48, 0.06);
-}
-.fp-fm__card-foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-}
-.fp-fm__card-cta {
-  font-size: 0.78rem;
-  color: var(--fp-bone-paper);
-}
+/* Catalog-card link wrapper, status chips, and card-foot styles live in
+   src/components/ui/catalog-card.css and are shared with the Home page. */
 
 .fp-fm__placeholder {
   font-family: var(--font-stamp);

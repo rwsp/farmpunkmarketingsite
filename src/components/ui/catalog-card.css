@@ -1,0 +1,53 @@
+/* Shared catalog-card styles. Used by the Field Manual index and the
+   featured-systems section on the Home page so cards render identically
+   across the site. */
+
+.fp-cat-card__link {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.fp-cat-card__link:hover .fp-dossier {
+  outline: 2px solid var(--fp-acid-green);
+  outline-offset: 4px;
+}
+
+/* Pending cards have slightly less ink to communicate "docs incomplete"
+   without disabling them. */
+.fp-cat-card__link .fp-dossier:has(.fp-cat-card__chip--pending) {
+  opacity: 0.92;
+}
+
+.fp-cat-card__chip {
+  display: inline-block;
+  font-family: var(--font-stamp);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.fp-cat-card__chip--live {
+  color: var(--fp-acid-green);
+  border-color: var(--fp-acid-green);
+  background: rgba(124, 255, 43, 0.08);
+}
+.fp-cat-card__chip--pending {
+  color: var(--fp-warning-yellow);
+  border-color: var(--fp-warning-yellow);
+  background: rgba(242, 194, 48, 0.06);
+}
+
+.fp-cat-card__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.fp-cat-card__cta {
+  font-size: 0.78rem;
+  color: var(--fp-bone-paper);
+}

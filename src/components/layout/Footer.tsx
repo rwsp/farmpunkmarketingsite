@@ -16,17 +16,11 @@ export function Footer() {
             <h4>The Mod</h4>
             <ul>
               <li><a href="/field-manual">Field Manual</a></li>
-              <li><a href="/black-markets">Black Markets</a></li>
+              <li><a href="/quick-reference">Quick Reference</a></li>
+              <li><a href="/calculators">Calculators</a></li>
               <li><a href="/console">Console Commands</a></li>
               <li><a href="/early-access">Early Access</a></li>
               <li><a href="/test-cases">Test Cases</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4>The Fight</h4>
-            <ul>
-              <li><a href="/quick-reference">Quick Reference</a></li>
-              <li><a href="/calculators">Calculators</a></li>
             </ul>
           </div>
           <div>

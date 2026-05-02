@@ -1,62 +1,29 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { GraffitiTag } from '../components/ui/GraffitiTag';
-import { DossierCard, Callout } from '../components/ui/Card';
-import { TOTAL_SHIPPED_BEHAVIOURS } from '../data/mechanics';
+import { Callout } from '../components/ui/Card';
+import { CatalogCard } from '../components/ui/CatalogCard';
+import {
+  ALL_CATALOG,
+  TOTAL_SHIPPED_BEHAVIOURS,
+  type CatalogEntry
+} from '../data/mechanics';
 import farmpunkIconSmall from '../assets/farmpunk-icon@small.webp';
 import farmpunkIcon from '../assets/farmpunk-icon.png';
 import './home.css';
 
-const KEY_FEATURES = [
-  {
-    badge: 'FIN-01',
-    stamp: 'ACTIVE',
-    title: 'Cartel Franchise Extortion Fee',
-    body:
-      'A progressive cut on annual revenue. Up to 20% on top earners. Each share you own shaves 1% off the bill. Buy them out or pay forever.',
-    rule: 'Pays once a year, every February.'
-  },
-  {
-    badge: 'DBT-02',
-    stamp: 'ENFORCED',
-    title: 'Mandatory Financing',
-    body:
-      'Every vehicle, building, and acre over $1,000 is debt. 20% down, 12% interest, 36 months. Lease is gone. The bank is the new boss.',
-    rule: 'Default once and your credit rating drops on the spot.'
-  },
-  {
-    badge: 'RPG-03',
-    stamp: 'CLIMBING',
-    title: 'Crop Mastery & Farmer Prestige',
-    body:
-      '17 skills × 10 levels each, plus per-crop mastery and a global Prestige track that unlocks vehicles, perks, and titles up to "Rebel Baron."',
-    rule: 'Geometric curve. Uncapped. Every liter sold counts.'
-  },
-  {
-    badge: 'OPS-04',
-    stamp: 'WATCHED',
-    title: 'Rust and Raiders',
-    body:
-      'Park outside and the Cartel sends vandals (10%) or thieves (5%) every month. Build a shed or watch your fleet vanish into someone else\'s ledger.',
-    rule: 'Insurance Policy perk claws back part of the loss.'
-  },
-  {
-    badge: 'OPP-05',
-    stamp: 'HOSTILE',
-    title: 'Opposition Events',
-    body:
-      'The more shares you buy, the harder the Cartel pushes back. Ten distinct retaliations: tariffs, embargoes, audits, smear campaigns, goon visits.',
-    rule: 'The Warchest is your defense. Every $10M cancels one share of pressure.'
-  },
-  {
-    badge: 'WIN-06',
-    stamp: 'GOAL',
-    title: 'Reclamation Warchest',
-    body:
-      'A one-way fund that frees the valley. Cap is $1B. Combined with all 100 shares, this is Valley Liberation. The money never comes back.',
-    rule: 'You do not inherit freedom. You buy it back.'
-  }
+const FEATURED_SLUGS = [
+  'valley-liberation',
+  'skills',
+  'farmer-prestige',
+  'reclamation-warchest',
+  'shares',
+  'crop-licensing'
 ];
+
+const FEATURED: CatalogEntry[] = FEATURED_SLUGS
+  .map(slug => ALL_CATALOG.find(e => e.slug === slug))
+  .filter((e): e is CatalogEntry => e !== undefined);
 
 export function Home() {
   return (
@@ -124,9 +91,6 @@ export function Home() {
 
               <ul className="fp-hero__stats">
                 <li><span>{TOTAL_SHIPPED_BEHAVIOURS}+</span> Systems &amp; skills</li>
-                <li><span>100</span> Shares</li>
-                <li><span>$1B</span> Warchest cap</li>
-                <li><span>10</span> Cartel retaliations</li>
               </ul>
             </div>
           </div>
@@ -181,20 +145,8 @@ export function Home() {
           </header>
 
           <div className="fp-features-grid">
-            {KEY_FEATURES.map((f, i) => (
-              <DossierCard
-                key={f.badge}
-                badge={f.badge}
-                stamp={f.stamp}
-                tilt={i % 2 === 0 ? -0.6 : 0.6}
-              >
-                <h3>{f.title}</h3>
-                <p>{f.body}</p>
-                <hr className="fp-rule" />
-                <p className="fp-stamp" style={{ fontSize: '0.78rem', margin: 0 }}>
-                  {f.rule}
-                </p>
-              </DossierCard>
+            {FEATURED.map(entry => (
+              <CatalogCard key={entry.slug} entry={entry} />
             ))}
           </div>
         </div>
@@ -222,7 +174,6 @@ export function Home() {
                 The valley does.
               </li>
             </ol>
-            <Button to="/endgame" variant="rebel">Walk the Reclamation Sequence</Button>
           </div>
 
           <Callout kind="rebellion" title="From the back of a tax notice">
@@ -237,7 +188,7 @@ export function Home() {
         <div className="fp-content fp-ea__inner">
           <div className="fp-ea__copy">
             <span className="fp-eyebrow">Status — v0.0.34 · Early Access</span>
-            <h2>Forty-plus systems shipped. More incoming.</h2>
+            <h2>{TOTAL_SHIPPED_BEHAVIOURS}+ systems shipped. More incoming.</h2>
             <p>
               Annual taxes, financing, credit ratings, scrip, shares, dividends,
               skills, mastery, perks, licensing, novelty, spoilage, weather,
@@ -246,7 +197,6 @@ export function Home() {
             </p>
             <div className="fp-ea__ctas">
               <Button to="/early-access" variant="primary">What's in EA →</Button>
-              <Button to="/console" variant="ghost">Console reference</Button>
             </div>
           </div>
           <div className="fp-ea__changelog">

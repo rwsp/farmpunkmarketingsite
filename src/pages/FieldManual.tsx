@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GraffitiTag } from '../components/ui/GraffitiTag';
-import { DossierCard, Callout } from '../components/ui/Card';
+import { Callout } from '../components/ui/Card';
+import { CatalogCard } from '../components/ui/CatalogCard';
 import {
   CATALOG_BY_CATEGORY,
   TOTAL_SHIPPED_SYSTEMS,
@@ -35,9 +36,9 @@ export function FieldManual() {
             <strong>{TOTAL_SHIPPED_SYSTEMS} top-level systems</strong>{' '}
             ({TOTAL_SHIPPED_BEHAVIOURS}+ distinct behaviours when you count
             individual skills, perks, and cartel attacks). Cards tagged{' '}
-            <span className="fp-fm__chip fp-fm__chip--live">v0.0.34</span>{' '}
+            <span className="fp-cat-card__chip fp-cat-card__chip--live">v0.0.34</span>{' '}
             have a complete dossier; cards tagged{' '}
-            <span className="fp-fm__chip fp-fm__chip--pending">DOCS PENDING</span>{' '}
+            <span className="fp-cat-card__chip fp-cat-card__chip--pending">DOCS PENDING</span>{' '}
             still have a stub page with related-system links while the full
             write-up is in progress.
           </p>
@@ -68,7 +69,7 @@ export function FieldManual() {
               </header>
               <div className="fp-fm__grid">
                 {sorted.map(entry => (
-                  <CatalogCard key={entry.slug} entry={entry} category={cat} />
+                  <CatalogCard key={entry.slug} entry={entry} />
                 ))}
               </div>
             </section>
@@ -81,30 +82,4 @@ export function FieldManual() {
 
 function sortPriority(entry: CatalogEntry): number {
   return entry.status === 'live' ? 0 : 1;
-}
-
-function CatalogCard({ entry, category }: { entry: CatalogEntry; category: Category }) {
-  const href = entry.href ?? `/field-manual/${entry.slug}`;
-
-  return (
-    <Link to={href} className="fp-fm__link">
-      <DossierCard
-        badge={category.toUpperCase()}
-        badgeTone={category.toLowerCase() as 'rpg' | 'resistance' | 'production' | 'money'}
-        tilt={0}
-      >
-        <h3>{entry.title}</h3>
-        <p style={{ margin: 0 }}>{entry.oneLiner}</p>
-        <hr className="fp-rule" />
-        <div className="fp-fm__card-foot">
-          <span
-            className={`fp-fm__chip fp-fm__chip--${entry.status === 'live' ? 'live' : 'pending'}`}
-          >
-            {entry.status === 'live' ? `v${entry.version}` : 'DOCS PENDING'}
-          </span>
-          <span className="fp-mono fp-fm__card-cta">Open dossier →</span>
-        </div>
-      </DossierCard>
-    </Link>
-  );
 }
