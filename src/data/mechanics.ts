@@ -407,7 +407,7 @@ export const MECHANICS: Mechanic[] = [
       "Vandal cascade: when vandals show up, they start with the top-value target and roll for additional victims — a 1-in-2 chance for the second piece, 1-in-3 for the third, 1-in-4 for the fourth, and so on. The expected number of pieces hit per visit is around 1.7. A bad night can lose you several machines.",
       "Theft permanently deletes the equipment. No cash recovered by default. Anything attached to the stolen vehicle (header, plow, trailer, weight) detaches and survives — they can only carry off one chassis.",
       "Pallet event: a separate monthly roll, independent of the vehicle event. 33% chance pallet thieves come through. If they do, they always take one pallet, then roll a 1-in-2 for a second, 1-in-2 for a third, and so on. Average around two items per visit. Bales, fuel in tanks, and trailer fill levels are never targeted — these are dumb thieves.",
-      "Damage cutoff: equipment already at 80% damage or worse is invisible to vandals and thieves. The Cartel does not bother with broken-down crap. Wear still applies regardless.",
+      "Damage cutoff: equipment already at 80% damage or worse is invisible to vandals and thieves. These dummies only care about shiny stuff. Wear still applies regardless.",
       "Empty-handed flavor: when an event rolls but every eligible piece is sheltered, the HUD still tells you. 'Vandals came prowling but found nothing worth wrecking' is its own small reward."
     ],
     whyItMatters:
@@ -437,7 +437,7 @@ export const MECHANICS: Mechanic[] = [
     ],
     beginnerAdvice: [
       "Do not store anything you care about outside. The 5% theft chance every month sounds small until you do the math over a 12-month year on a $400,000 combine.",
-      "Old, beat-up starter equipment is safer parked outside than a new combine — anything past 80% damage is not on the menu. Use that, but do not rely on it.",
+      "Old, beat-up starter equipment is safer parked outside than a new combine — anything past 80% damage is not on the menu.",
       "Shed coverage is the cheapest insurance in the game. Pallets included — pallet thieves hit unsheltered pallets too, so a small pallet shed earns its cost back fast.",
       "Empty-handed messages mean the system rolled an attack and your sheds blocked it. Each one is a reminder that the cost of the shed already paid for itself."
     ],
