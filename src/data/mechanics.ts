@@ -1130,6 +1130,180 @@ export const MECHANICS: Mechanic[] = [
     ],
     fieldNote:
       "The Cartel won't lend on a dream. They'll lend on what you've already got — and only enough to make sure they can still take it back."
+  },
+  {
+    slug: 'credit-rating',
+    category: 'Money',
+    title: 'Credit Rating F→A',
+    oneLiner: "Your credit rating is the bank's leash: a letter grade from F to A that rises when you survive a clean year and falls when missed bills, fees, or loan payments push you below zero. Better ratings unlock better rates on new loans, but every bad year gives the lenders another excuse to tighten the trap.",
+    status: 'live',
+    href: '/field-manual/credit-rating',
+    version: VERSION,
+    related: [
+      { slug: 'mandatory-financing', note: 'Rating affects new-loan interest rate. Existing loans keep their rate.' },
+      { slug: 'vanilla-loan', note: 'Vanilla loan interest payments can also push balance negative and trigger downgrade.' },
+      { slug: 'annual-taxes', note: 'Tax bill that goes negative triggers downgrade.' },
+      { slug: 'skills', note: 'Loan Interest skill stacks with the rating discount on new loans.' },
+      { slug: 'perks', note: 'Credit Indemnity perk widens the negative-balance floor before downgrade fires.' }
+    ],
+    summary:
+      "Credit Rating is the bank's quiet judgment of your farm, written as a single letter from F to A. It moves on one rule: did you make it through the year without ever going broke? A clean year buys you a tier. A single negative balance — even for a moment — costs you one. Every tier above F shaves a percent off the interest charged on your next loan, but the math is asymmetrical. Downgrades fire the instant you cross zero. Upgrades wait until the year is over and the books are settled. The lenders are slow to forgive and quick to punish.",
+    whatItDoes: [
+      "Tracks a single letter rating on your farm, from F at the bottom to A at the top — six tiers in total. Fresh saves start at F.",
+      "Climbs one tier at the start of every new year (period 1, March), but only if your farm balance never dipped below zero at any point in the year that just ended.",
+      "Drops one tier the instant your farm balance crosses below zero. Any transaction that pushes you negative — a tax bill, a franchise fee, a loan payment, a shop purchase, a vanilla loan interest deduction — counts. The downgrade fires immediately on that tick, not at year-end.",
+      "Each tier above F shaves 1% off the interest rate on every new loan you take out. F charges the full 12% base. A charges 7%. The discount stacks with the Loan Interest skill, so at A rating + L10 Loan Interest the rate floors at 2%.",
+      "The rate is locked at the moment a loan is created. Climbing to A in April doesn't make February's combine cheaper. Falling to F in November doesn't make a clean tractor loan more expensive. Only future loans see the new rate.",
+      "Once a year is spoiled, it stays spoiled. A 'went-negative' flag locks the moment your balance crosses zero, and recovering a positive balance later in the year does not clear it. The downgrade you just took stands, and the next March can't bring an upgrade — even if you finish the rest of the year clean.",
+      "The HUD warns you on every move. A red CRITICAL card fires the moment a downgrade lands. A green OK card at the year flip tells you whether you earned an upgrade, kept your tier, or stayed where you were because the year was already spoiled."
+    ],
+    whyItMatters:
+      "The whole financing system runs through this rating. Every interest rate on every new loan is set by it, and every loan is on a three-year schedule — a downgrade in March is on your books until that combine is paid off thirty-six months later. Going negative in FarmPunk is rarely just a bad day. Big transactions land all at once: the franchise fee, the year-end taxes, a 20% down payment on a new tractor, a vanilla loan interest deduction at triple rate. Any of them can clip you below zero in the moment. The rating is the cost of getting clipped, and the cost is paid by everything you finance afterward.",
+    howYouProgress: [
+      "Survive clean years. Every March, the bank checks whether your balance ever went negative in the year that just ended. If it didn't, you climb one tier. F → A is at minimum a five-year clean-balance climb.",
+      "Plan around the year-end bills. The franchise fee, the equipment tax, the land tax, and the wallet payout all fire in the same period-12 tick. Your balance has to survive that tick clean. Preview the bills earlier in the year — `farmPunkFranchiseFee` and the tax preview commands print the exact numbers — so the size of the hit is never a surprise.",
+      "Be careful with the vanilla loan. Its interest deductions come out of your balance like any other transaction, and at triple rate they bite hard. A vanilla interest payment on a thin month is one of the most common ways farmers accidentally clip below zero.",
+      "Pick up Credit Indemnity once it shows up on the perk rotation. Every occurrence widens the negative-balance threshold by $5,000 — the rating only drops once you cross the (lower) line. At cap (ten occurrences), you can dip as low as -$50,000 without losing a tier.",
+      "Stack a Loan Interest skill climb against the rating climb. Both shave the same axis on the same loan. An A rating with L10 Loan Interest hits the 2% floor — the cheapest financing the bank will ever cut you."
+    ],
+    importantNumbers: [
+      { label: 'Rating tiers', value: 'F (worst) → E → D → C → B → A (best)' },
+      { label: 'Starting rating', value: 'F' },
+      { label: 'F effective new-loan rate', value: '12%' },
+      { label: 'E effective new-loan rate', value: '11%' },
+      { label: 'D effective new-loan rate', value: '10%' },
+      { label: 'C effective new-loan rate', value: '9%' },
+      { label: 'B effective new-loan rate', value: '8%' },
+      { label: 'A effective new-loan rate', value: '7%' },
+      { label: 'Discount per tier above F', value: '-1% on new loans only' },
+      { label: 'Stacks with Loan Interest skill', value: 'Yes (-0.5% per skill level, max -5% at L10)' },
+      { label: 'Best-case rate floor', value: '2% (A rating + L10 Loan Interest)' },
+      { label: 'Downgrade trigger', value: 'Farm balance crosses below zero — fires immediately' },
+      { label: 'Upgrade trigger', value: 'Period 1 (March) after a year with no negative balance' },
+      { label: 'Mid-year recovery', value: 'A positive balance later in the year does NOT clear the spoiled-year flag' },
+      { label: 'Minimum F → A climb', value: '5 clean years' },
+      { label: 'Effect on existing loans', value: 'None. Only future loans get the new rate.' },
+      { label: 'Credit Indemnity perk (per occurrence)', value: '-$5,000 wider survivable threshold' },
+      { label: 'Credit Indemnity perk (cap)', value: '10 occurrences — survivable floor down to -$50,000' }
+    ],
+    beginnerAdvice: [
+      "Don't cut it close. A purchase that leaves you at one dollar is a purchase one bad transaction away from a downgrade. Treat zero like a wall, not a finish line.",
+      "Watch the year-end bills. February (period 12) is the tick where the franchise fee and the taxes both land. Use `farmPunkFranchiseFee` and the tax preview commands earlier in the year so the size of the bills is never a surprise.",
+      "Once a year is spoiled, it stays spoiled. There is no way to rehabilitate a defaulted year by being careful for the rest of it. If you've already gone negative, the next dip costs nothing further this year — but the next upgrade is a full clean year away.",
+      "Existing loans are safe from your rating. Climbing to a better tier doesn't refinance them, and a downgrade doesn't punish them either. The rating only writes to the next loan you sign — so the timing of when you finance matters more than the timing of when you climb."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkCredit', note: "Read-only. Current rating, the year-to-date 'went negative' flag, the current effective new-loan rate (after skill + rating), and the full tier ladder." },
+      { cmd: 'farmPunkSetCredit <A-F>', note: 'Testing tool. Forces a specific rating and clears the year flag.' }
+    ],
+    fieldNote:
+      "The bank has a long memory and a short patience. Five clean years on the books, you finally get the letter. One bad afternoon, and you're back where you started — and they still send the bill the same week."
+  },
+  {
+    slug: 'vanilla-loan',
+    category: 'Money',
+    title: 'Vanilla Loan Override',
+    oneLiner: "The Emergency Credit Line is the old bank's last-resort money: capped at $50,000 and charged at triple the rate of proper equipment financing. Use it only when the bills are due, the machines are broken, and you have no cleaner way to survive the gap.",
+    status: 'live',
+    href: '/field-manual/vanilla-loan',
+    version: VERSION,
+    related: [
+      { slug: 'credit-rating', note: 'Vanilla interest deductions can push you negative and downgrade your rating.' },
+      { slug: 'mandatory-financing', note: 'Vanilla is a separate emergency channel — runs in parallel to FarmPunk financing.' },
+      { slug: 'perks', note: 'Super Payday Advance perk raises the vanilla cap.' }
+    ],
+    summary:
+      "FarmPunk doesn't kill the old bank loan — it leaves it in place as the world's most expensive emergency cash drawer. The cap is clamped to fifty thousand dollars no matter how big your farm gets, and every interest payment comes out at three times the normal rate. It is a deliberate trap with a use case: when the bills are due, the equipment is broken, and the proper financing channel won't lend on what you need, the emergency line is still open. So is the price for using it. The vanilla loan is the most punishing money in FarmPunk, and it is meant to be.",
+    whatItDoes: [
+      "Keeps the base game's bank loan in place as a parallel emergency channel. The slider in the bank UI still works the same way — open the menu, drag, borrow — but the slider is now capped at $50,000 regardless of how valuable your land or fleet has become.",
+      "Charges three times the base game's normal interest rate on every periodic deduction. Each time the engine takes its scheduled cut, FarmPunk takes another two on top, for a net 3× burn rate.",
+      "Runs in parallel to the FarmPunk financing system. The emergency loan does NOT count toward the FarmPunk debt cap — it has its own separate ceiling. You can have a maxed FarmPunk debt schedule and still draw a vanilla loan, or vice versa. They're two different lenders watching two different ledgers.",
+      "Does not interact with the rate side of the Loan Interest skill or the Credit Rating discount. Both of those reduce FarmPunk financing only. The vanilla rate stays at 3× regardless of which tier you've climbed to or how many skill levels you've bought.",
+      "Does interact with the Credit Rating downgrade trigger. Every interest deduction is a real transaction against your balance, like any other. If a vanilla interest payment is the thing that pushes you below zero, your rating takes the same downgrade hit it would have taken from a tax bill or a missed payment.",
+      "The cap can be widened by the Super Payday Advance perk on the Farmer Prestige rotation. Each occurrence adds $10,000 to the ceiling, capped at five occurrences for a $100,000 maximum vanilla loan."
+    ],
+    whyItMatters:
+      "There are moments in FarmPunk where the proper financing channel won't help you. A combine breaks at the wrong end of February, the franchise fee is a week away, and the next harvest is two periods out. The FarmPunk debt cap is full. The cash reserve gate is blocking the financed deal. The vanilla loan is the channel that exists for exactly that month — a small, fast, painfully expensive bridge across a bad gap. Most farmers never need it. The ones who do almost always need it because something else has already gone wrong, and the 3× rate is the price of being out of better options.",
+    howYouProgress: [
+      "Avoid using it. The cleanest progression on the vanilla loan is the one where you never open the menu. Every other channel — used vehicles, the Land BOGO skill on land, the Down Payment Reduction skill on financed gear — is cheaper money than this one.",
+      "Pay it down fast when you do use it. The interest is daily and triple. A $50,000 emergency that sits on the books for weeks will quietly cost more than the gap it was meant to bridge.",
+      "Watch your balance while a vanilla loan is active. The triple-rate deductions are the most common surprise downgrade in FarmPunk — a thin month plus a vanilla interest payment is the exact transaction sequence that clips a credit rating.",
+      "Pick up Super Payday Advance only if the perk rotation lands it on a save where the cap genuinely matters. Each occurrence raises the ceiling by $10,000; at cap (five occurrences), the line tops out at $100,000. It's a quality-of-life bump, not a strategy."
+    ],
+    importantNumbers: [
+      { label: 'Cap (default)', value: '$50,000' },
+      { label: 'Cap scales with farm size', value: 'No. Flat regardless of land or equipment value.' },
+      { label: 'Interest rate', value: "3× the base game's vanilla loan rate" },
+      { label: 'Counts toward FarmPunk debt cap', value: 'No. Separate channel.' },
+      { label: 'Loan Interest skill discount', value: 'Does not apply. FarmPunk financing only.' },
+      { label: 'Credit Rating discount', value: 'Does not apply. FarmPunk financing only.' },
+      { label: 'Triggers Credit Rating downgrade if balance goes negative', value: 'Yes. Same as any other transaction.' },
+      { label: 'Super Payday Advance perk (per occurrence)', value: '+$10,000 to the cap' },
+      { label: 'Super Payday Advance occurrence cap', value: '5' },
+      { label: 'Cap with Super Payday Advance maxed', value: '$100,000' }
+    ],
+    beginnerAdvice: [
+      "Don't treat the vanilla loan as a cheap line of credit. It isn't. Triple the base rate on a small balance still hurts; on a maxed $50,000 balance, the periodic deductions are a real expense line on your books.",
+      "If you're using it because the FarmPunk reserve gate refused a financed purchase, take the refusal seriously. The reserve exists because the deal would have been a stretch — borrowing through the emergency channel to clear it is the kind of move that leads to a credit downgrade two months later.",
+      "The vanilla loan is the most common reason people accidentally lose a credit tier mid-year. The triple-rate deductions don't show up on the year-end bill calendar with the franchise fee and taxes — they fire on their own schedule, and they're easy to forget about until one lands on the wrong day.",
+      "Run `farmPunkVanillaLoan` before you draw on the line. The summary tells you exactly what the daily interest is going to be and what the engine has on file as your max — useful both for planning and for confirming the cap is sitting where it should be."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkVanillaLoan', note: 'Read-only summary. Current cap, the 3× interest multiplier, your current vanilla loan balance, the engine-reported max (verifies the clamp landed), the base daily interest, and the effective 3× daily.' }
+    ],
+    fieldNote:
+      "The vanilla loan is what the old bank still wants you to think of as 'normal' borrowing. It is the most expensive money on the farm. They never stopped offering it. They just stopped pretending it was a deal."
+  },
+  {
+    slug: 'cash-reserve',
+    category: 'Money',
+    title: 'Minimum Cash Reserve',
+    oneLiner: "The Cartel will not approve a financed purchase unless you still have three months of loan and upkeep pressure sitting in reserve after the down payment. Fall below that line and the deal is blocked — not because they want you safe, but because they want you desperate without letting the ledger break.",
+    status: 'live',
+    href: '/field-manual/cash-reserve',
+    version: VERSION,
+    related: [
+      { slug: 'mandatory-financing', note: 'Reserve gates every financed purchase.' },
+      { slug: 'debt-cap', note: 'Both are pre-purchase gates — debt cap on total debt, reserve on liquidity.' }
+    ],
+    summary:
+      "The Minimum Cash Reserve is a rolling floor on your farm balance, enforced not as an alarm but as a closed door. Every financed purchase in FarmPunk runs through it. The Cartel looks at what you owe per month — every active loan payment, plus a small upkeep figure for every machine on your fleet — and multiplies the total by three. That number is the floor. If a down payment would leave you below it, the deal is refused. The Cartel does not want you broke. They want you obligated. The reserve is the line that keeps the obligation from breaking the ledger.",
+    whatItDoes: [
+      "Calculates a minimum required balance from your farm's monthly burn. Add up every active loan's monthly payment. Add the upkeep figure for every owned vehicle, where each vehicle's upkeep is its store price multiplied by 0.001. Multiply the sum by three. That's the reserve.",
+      "Gates every financed purchase. Before any deal goes through, the Cartel checks whether your balance minus the down payment would still clear the reserve. If it wouldn't, the purchase is blocked outright — no Buy button, no override.",
+      "On a land purchase, the surcharge is included in the downward pressure. The check becomes: balance minus down payment minus surcharge has to clear the reserve.",
+      "Moves with your farm. The reserve goes up the moment a new loan is created (its monthly payment is added to the calculation) or a new vehicle is bought (its upkeep is added). It comes back down as loans are paid off and as vehicles leave the fleet.",
+      "Runs alongside the Debt Cap as one of two pre-purchase gates. Both gates have to clear before a deal is allowed. The Debt Cap asks 'do you have enough collateral to support this debt?' The reserve asks 'will you still have three months of breathing room after the down payment?'"
+    ],
+    whyItMatters:
+      "The reserve is what keeps FarmPunk's economy from being a series of cascading defaults. Without it, a player could spend down to their last dollar on a combine, miss the next month's tax bill by twenty cents, and watch a credit downgrade fire on the same week as a debt-cap refusal. With it, the floor is high enough that the next quarter is survivable even if a few things go wrong. The frustration is real — a deal you can technically afford gets refused because you'd be cutting it too fine — but the frustration is doing a job. Every refused purchase is a default that didn't happen.",
+    howYouProgress: [
+      "Stack cash before big purchases. The reserve is a fixed floor; the only way to pass the gate is to have more cash on hand at the moment of purchase. A profitable harvest right before a financed deal is the cleanest way to clear the check.",
+      "Pay down active loans when you can. Every FarmPunk loan you finish removes its monthly payment from the obligations input, which lowers the reserve floor. A retiring three-year loan in February makes every March purchase a little easier.",
+      "Take the Down Payment Reduction skill seriously. Cutting the down payment from 20% to 8% (at L10) means the reserve check is comparing a much smaller deduction against the same floor. A purchase that almost cleared the gate at full down payment can clear comfortably at the reduced one.",
+      "Use `farmPunkReserveSummary` before any big shop trip. The print-out tells you the current reserve, the current balance, and whether the gate is clearing — with the math laid out so you can see exactly what would have to change for a refused deal to go through."
+    ],
+    importantNumbers: [
+      { label: 'Formula', value: 'reserve = monthly obligations × 3' },
+      { label: 'Monthly obligations', value: "Sum of every active loan's monthly payment + upkeep for every owned vehicle" },
+      { label: 'Vehicle upkeep per vehicle', value: 'store price × 0.001' },
+      { label: 'Vehicle / building purchase gate', value: 'balance − downPayment ≥ reserve' },
+      { label: 'Land purchase gate', value: 'balance − (downPayment + surcharge) ≥ reserve' },
+      { label: 'Behavior on failed check', value: 'Purchase refused. No override.' },
+      { label: 'Other gate that has to clear', value: 'Debt Cap. Both gates must pass.' }
+    ],
+    beginnerAdvice: [
+      "When a purchase gets refused, run `farmPunkReserveSummary` first. The reason is almost always the reserve, not the debt cap, on a small or mid-sized farm. The summary tells you exactly how much short you are.",
+      "If the reserve is the wall, sell a trailer of grain before you walk into the dealer's. Even a small cash bump can push you over the line — the reserve doesn't care where the cash came from, only that it's there at the moment of purchase.",
+      "Watch the upkeep side of the calculation as you grow. Every machine you buy raises the monthly obligations input by 0.1% of its store price. The reserve is three times that — so a million-dollar combine adds $1,000 to the monthly burn the moment it lands on your shed pad, and $3,000 to the floor on top of every other obligation.",
+      "Don't expect the Debt Cap and the reserve to behave the same way. They're two separate gates with two separate formulas. You can clear one comfortably and still get refused at the other. Check both before any major deal."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkReserveSummary', note: 'Read-only. The current reserve floor, the current balance, the breakdown of monthly obligations, and a clear pass/fail indicator on whether the gate is clearing.' },
+      { cmd: 'farmPunkLoanSummary', note: 'Read-only. Every active loan with its monthly payment — useful for understanding why the reserve floor is sitting where it is, since loan payments are usually the biggest chunk of monthly obligations.' }
+    ],
+    fieldNote:
+      "The Cartel will refuse a deal you can technically afford. Then they'll refuse the next one too. The line they draw isn't to keep you safe — it's to make sure that when you finally fail, the failure is theirs to collect on."
   }
 ];
 
@@ -1210,38 +1384,8 @@ export const STUBS: CatalogEntry[] = [
   // dossiers — see MECHANICS above.)
 
   // Money & Credit
-  // (Annual Taxes, Mandatory Financing, and Debt Cap are full dossiers — see MECHANICS above.)
-  {
-    slug: 'credit-rating', category: 'Money', title: 'Credit Rating F→A',
-    oneLiner: "Your credit rating is the bank’s leash: a letter grade from F to A that rises when you survive a clean year and falls when missed bills, fees, or loan payments push you below zero. Better ratings unlock better rates on new loans, but every bad year gives the lenders another excuse to tighten the trap.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'mandatory-financing', note: 'Rating affects new-loan interest rate. Existing loans keep their rate.' },
-      { slug: 'vanilla-loan', note: 'Vanilla loan interest payments can also push balance negative and trigger downgrade.' },
-      { slug: 'annual-taxes', note: 'Tax bill that goes negative triggers downgrade.' },
-      { slug: 'skills', note: 'Loan Interest skill stacks with the rating discount on new loans.' },
-      { slug: 'perks', note: 'Credit Indemnity perk widens the negative-balance floor before downgrade fires.' }
-    ]
-  },
-  {
-    slug: 'vanilla-loan', category: 'Money', title: 'Vanilla Loan Override',
-    oneLiner: "The Emergency Credit Line is the old bank’s last-resort money: capped at $50,000 and charged at triple the rate of proper equipment financing. Use it only when the bills are due, the machines are broken, and you have no cleaner way to survive the gap.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'credit-rating', note: 'Vanilla interest deductions can push you negative and downgrade your rating.' },
-      { slug: 'mandatory-financing', note: 'Vanilla is a separate emergency channel — runs in parallel to FarmPunk financing.' },
-      { slug: 'perks', note: 'Super Payday Advance perk raises the vanilla cap.' }
-    ]
-  },
-  {
-    slug: 'cash-reserve', category: 'Money', title: 'Minimum Cash Reserve',
-    oneLiner: "The Cartel will not approve a financed purchase unless you still have three months of loan and tax pressure sitting in reserve after the down payment. Fall below that line and the deal is blocked — not because they want you safe, but because they want you desperate without letting the ledger break.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'mandatory-financing', note: 'Reserve gates every financed purchase.' },
-      { slug: 'debt-cap', note: 'Both are pre-purchase gates — debt cap on total debt, reserve on liquidity.' }
-    ]
-  },
+  // (Annual Taxes, Mandatory Financing, Debt Cap, Credit Rating, Vanilla Loan
+  // Override, and Minimum Cash Reserve are full dossiers — see MECHANICS above.)
   {
     slug: 'farmland-surcharge', category: 'Money', title: 'Farmland Surcharge',
     oneLiner: "The Farmland Surcharge is the Cartel’s anti-expansion tax, climbing from 2% on your first plot to 40% as your acreage grows. Your first field is tolerated; your tenth is punished. The Cartel does not want farmers consolidating land, and every acre you reclaim makes the next one more expensive.",
