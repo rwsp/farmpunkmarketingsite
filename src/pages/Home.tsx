@@ -117,7 +117,6 @@ export function Home() {
               <div className="fp-hero__ctas">
                 <Button to="/field-manual" variant="primary">Field Manual</Button>
                 <Button to="/quick-reference" variant="ghost">Quick Reference</Button>
-                <Button to="/endgame" variant="rebel">Reclamation Sequence</Button>
                 <Button href="https://www.farming-simulator.com/mods.php" variant="rust">
                   ModHub ↗
                 </Button>

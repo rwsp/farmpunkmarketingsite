@@ -107,7 +107,7 @@ export function NotFound() {
             <Button to="/" variant="primary">Return to base</Button>
             <Button to="/field-manual" variant="rebel">Open Field Manual</Button>
             <Button to="/quick-reference" variant="ghost">Quick Reference</Button>
-            <Button to="/endgame" variant="rust">Reclamation Sequence</Button>
+            <Button to="/calculators" variant="rust">Calculators</Button>
           </div>
           <p className="fp-404__legal">
             <Link to="/console">Or browse every console command</Link>{' '}

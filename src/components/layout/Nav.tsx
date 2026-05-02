@@ -6,7 +6,6 @@ import './nav.css';
 const LINKS = [
   { to: '/field-manual', label: 'Field Manual' },
   { to: '/quick-reference', label: 'Quick Reference' },
-  { to: '/endgame', label: 'Endgame' },
 ];
 
 export function Nav() {

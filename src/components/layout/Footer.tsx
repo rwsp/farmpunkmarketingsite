@@ -26,7 +26,7 @@ export function Footer() {
             <h4>The Fight</h4>
             <ul>
               <li><a href="/quick-reference">Quick Reference</a></li>
-              <li><a href="/endgame">Reclamation Sequence</a></li>
+              <li><a href="/calculators">Calculators</a></li>
             </ul>
           </div>
           <div>

@@ -514,21 +514,6 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
       { slug: 'mandatory-financing', note: 'Loan Rate Hike adds +3% to new loans for the active year.' },
       { slug: 'valley-liberation', note: 'Owning all 100 shares with no Warchest = peak harassment.' }
     ]
-  },
-  {
-    slug: 'black-markets',
-    category: 'Resistance',
-    title: 'Black Markets',
-    oneLiner: "Black Markets are off-the-books crop orders from private buyers who know the Cartel is not the only game in the valley. They reroll every March across five tiers, paying cash, scrip, and Prestige at once — and the more famous you become, the better the buyers willing to risk dealing with you.",
-    status: 'live',
-    href: '/black-markets',
-    version: VERSION,
-    related: [
-      { slug: 'crop-mastery', note: 'Higher tier markets gate on per-crop mastery levels.' },
-      { slug: 'farmer-prestige', note: 'Higher tier markets gate on Prestige. Completions also pay prestige fame.' },
-      { slug: 'crop-licensing', note: 'License penalty applies to ALL sales — including Black Market deliveries.' },
-      { slug: 'wallet-scrip', note: 'Completions pay scrip in addition to cash and fame.' }
-    ]
   }
 ];
 
@@ -536,6 +521,17 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
 export const STUBS: CatalogEntry[] = [
   // RPG & Progression
   // Resistance
+  {
+    slug: 'black-markets', category: 'Resistance', title: 'Black Markets',
+    oneLiner: "Black Markets are off-the-books crop orders from private buyers who know the Cartel is not the only game in the valley. They reroll every March across five tiers, paying cash, scrip, and Prestige at once — and the more famous you become, the better the buyers willing to risk dealing with you.",
+    status: 'pending', version: VERSION,
+    related: [
+      { slug: 'crop-mastery', note: 'Higher tier markets gate on per-crop mastery levels.' },
+      { slug: 'farmer-prestige', note: 'Higher tier markets gate on Prestige. Completions also pay prestige fame.' },
+      { slug: 'crop-licensing', note: 'License penalty applies to ALL sales — including Black Market deliveries.' },
+      { slug: 'wallet-scrip', note: 'Completions pay scrip in addition to cash and fame.' }
+    ]
+  },
   {
     slug: 'shares', category: 'Resistance', title: 'Shares',
     oneLiner: "The Cartel starts every run holding 100 shares of your farm, and buying them back with scrip is how you claw your family’s future out of their ledger. Every share weakens their control and makes them angrier, so keep the Reclamation Warchest funded before they turn your ownership push into a war.",
