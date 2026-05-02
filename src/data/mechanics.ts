@@ -156,6 +156,66 @@ export const MECHANICS: Mechanic[] = [
       "The Cartel's books record every dollar they tried to take. The longer that ledger gets, the more dividends they're forced to cough up. Buying out doesn't soft-lock the dividend tier — the cartel keeps assessing the fee, you just don't owe any of it. That's the joke."
   },
   {
+    slug: 'crop-mastery',
+    category: 'RPG',
+    title: 'Crop Mastery',
+    oneLiner:
+      "Crop Mastery is your reputation written in seed, soil, and receipts: every crop you sell teaches you how to grow it better and proves to buyers you know what you are doing. Each crop levels separately, permanently boosting its yield and sale price with no cap — because the Cartel can control the market, but it cannot stop you from getting dangerously good.",
+    status: 'live',
+    href: '/field-manual/crop-mastery',
+    version: VERSION,
+    related: [
+      { slug: 'skills', note: 'Crop Yield + Sale Price skills compound with mastery yield/price tiers.' },
+      { slug: 'perks', note: 'Mastery Catalyst perk speeds up fame gain.' },
+      { slug: 'farmer-prestige', note: 'Both grow on the same sale ticks. Prestige is global; mastery is per-crop.' },
+      { slug: 'crop-novelty', note: 'Mastery price tier stacks with the novelty rotation bonus.' },
+      { slug: 'black-markets', note: 'Higher tier markets gate on per-crop mastery levels.' }
+    ],
+    summary:
+      "The Cartel sets the prices, writes the licenses, and decides what your harvest is worth on paper. Crop Mastery is the one number on the farm they cannot tax, throttle, or revoke. Every liter of a specific crop you push through the scales makes you permanently better at that crop — better yields out of the dirt, better prices at the silo. It is slow, quiet progression that rewards farmers who actually learn their crops instead of chasing whatever the market is paying that month. The longer you grow something, the more dangerous you become at growing it.",
+    whatItDoes: [
+      "Tracks one independent level per harvestable crop. Every liter you sell of that specific crop adds 1 fame to that crop's mastery counter — selling wheat does not raise corn mastery.",
+      "Awards a yield tier every ten levels starting at level 5 (so L5, L15, L25, L35, …). Each tier adds +5% to that crop's yield per square meter.",
+      "Awards a price tier every ten levels starting at level 10 (so L10, L20, L30, L40, …). Each tier adds +5% to that crop's sale price at every station.",
+      "Has no level cap. Mastery counters never reset across years or saves — once you have earned the fame, it is yours."
+    ],
+    whyItMatters:
+      "This is the only progression system in FarmPunk that is permanent, free, and quietly compounding in the background while you do everything else. The Cartel can revoke licenses, smear novelty, audit your books, and embargo a crop for the year — but they cannot take a yield tier off your records. Mastery also gates the higher-paying Black Markets: the deep-cash buyers will not deal with someone who cannot prove they know the crop. And because mastery levels each crop independently, it pays farmers who specialize. The valley remembers what you are good at.",
+    howYouProgress: [
+      "Sell the crop. There is no menu, no purchase, no console step — fame ticks up automatically with every liter that crosses the scale at a selling station.",
+      "Specialize. Because mastery is per-crop, focusing on two or three crops levels them far faster than spreading harvests across the whole catalog.",
+      "Pick up the Mastery Catalyst perk as Farmer Prestige climbs. It is one of only two uncapped perks in the game: every occurrence adds another +5% to crop fame gained per liter sold, forever.",
+      "Stack mastery with the Crop Yield and Sale Price skills from the Manager Skill Tree. They modify the same yield and price the mastery tiers do, so the bonuses compound."
+    ],
+    importantNumbers: [
+      { label: 'Fame per liter sold', value: "1 (of that crop's mastery counter)" },
+      { label: 'Liters to reach L1', value: '10,000' },
+      { label: 'Liters from L1 to L2', value: '11,000' },
+      { label: 'Curve', value: 'Each level costs 10% more fame than the last (geometric, growth 1.10)' },
+      { label: 'Yield tier cadence', value: 'Every 10 levels, starting at L5' },
+      { label: 'Yield bonus per tier', value: '+5% per square meter on that crop' },
+      { label: 'Price tier cadence', value: 'Every 10 levels, starting at L10' },
+      { label: 'Price bonus per tier', value: '+5% sale price on that crop, every station' },
+      { label: 'Level cap', value: 'None' },
+      { label: 'WHEAT at L5', value: '+5% yield, +0% price' },
+      { label: 'WHEAT at L25', value: '+15% yield, +10% price' },
+      { label: 'WHEAT at L100', value: '+50% yield, +50% price' },
+      { label: 'Black Market mastery gates', value: 'Backroad: none · Off-Book: 1–15 · Underground: 5–20 · Insurgent: 10–30 · Liberating: 15–40' }
+    ],
+    beginnerAdvice: [
+      "Pick your crops on purpose. Two or three crops grown deliberately will outpace eight crops grown casually, because every liter you spread thin is a liter not compounding a tier you actually want.",
+      "Crossing a yield tier mid-harvest does not retroactively rescale a crop already in the ground. The bigger numbers show up on the next grow cycle, not the field you are currently combining. Plan accordingly.",
+      "Black Market completions do not grow Crop Mastery — that fame goes to Farmer Prestige instead. If you want a specific crop's mastery to climb, you have to sell that crop yourself.",
+      "Mastery is sale-driven, not harvest-driven. Grain sitting in a silo does nothing for your level. Move the crop to count it."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkMastery', note: "Read-only. Prints Farmer Prestige level and fame, plus every crop's current mastery level, fame, and progress to the next level. Also shows the active +X% yield / +Y% price for each crop." },
+      { cmd: 'farmPunkSetMastery <CROPNAME> <level>', note: 'Testing tool. Sets a single crop’s mastery to exactly the requested level (uppercase crop name, e.g. WHEAT). Reapplies the new yield and price tiers immediately.' }
+    ],
+    fieldNote:
+      "The Cartel keeps an inventory of everything they think they own — your land, your machines, your debt, your future. They do not have a column for what you have learned. Every liter you sell scrawls another tally on a ledger they cannot read, and the only people who can read it are the buyers willing to pay you what the crop is actually worth."
+  },
+  {
     slug: 'reclamation-warchest',
     category: 'Resistance',
     title: 'Reclamation Warchest',
@@ -290,18 +350,6 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
 // ── Stubs — shipped, but no deep wiki page yet ──────────────────
 export const STUBS: CatalogEntry[] = [
   // RPG & Progression
-  {
-    slug: 'crop-mastery', category: 'RPG', title: 'Crop Mastery',
-    oneLiner: "Crop Mastery is your reputation written in seed, soil, and receipts: every crop you sell teaches you how to grow it better and proves to buyers you know what you are doing. Each crop levels separately, permanently boosting its yield and sale price with no cap — because the Cartel can control the market, but it cannot stop you from getting dangerously good.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'skills', note: 'Crop Yield + Sale Price skills compound with mastery yield/price tiers.' },
-      { slug: 'perks', note: 'Mastery Catalyst perk speeds up fame gain.' },
-      { slug: 'farmer-prestige', note: 'Both grow on the same sale ticks. Prestige is global; mastery is per-crop.' },
-      { slug: 'crop-novelty', note: 'Mastery price tier stacks with the novelty rotation bonus.' },
-      { slug: 'black-markets', note: 'Higher tier markets gate on per-crop mastery levels.' }
-    ]
-  },
   {
     slug: 'farmer-prestige', category: 'RPG', title: 'Farmer Prestige',
     oneLiner: "Farmer Prestige tracks how loudly your name travels through the valley — trusted by locals, watched by buyers, and cursed by the Cartel. Higher Prestige unlocks perks, better Black Market access, and occasional one-time support from people who believe your farm might become the crack in their empire.",

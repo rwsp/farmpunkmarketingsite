@@ -174,7 +174,7 @@
 
 .fp-mech__numbers {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: 6px var(--space-4);
   font-family: var(--font-mono);
   font-size: 0.92rem;
@@ -183,7 +183,17 @@
   padding: var(--space-3) var(--space-4);
 }
 .fp-mech__numbers dt { color: var(--fp-rotted-brown); }
-.fp-mech__numbers dd { margin: 0; color: var(--fp-ink-black); font-weight: 700; text-align: right; }
+.fp-mech__numbers dd {
+  margin: 0;
+  color: var(--fp-ink-black);
+  font-weight: 700;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .fp-mech__numbers { grid-template-columns: 1fr; }
+  .fp-mech__numbers dd { text-align: left; margin-bottom: var(--space-2); }
+}
 
 .fp-mech__cmds {
   display: grid;
