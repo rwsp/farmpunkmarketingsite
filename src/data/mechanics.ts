@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Catalog of every FarmPunk system.
  *
  *   - MECHANICS — full wiki dossiers with the standard 9-section schema,
@@ -942,6 +942,194 @@ export const MECHANICS: Mechanic[] = [
     ],
     fieldNote:
       "The Cartel writes the contracts. The sky writes the year."
+  },
+  {
+    slug: 'annual-taxes',
+    category: 'Money',
+    title: 'Annual Taxes',
+    oneLiner: "Annual Taxes hit every February as the county takes its cut on your equipment and land, with acreage getting brutally more expensive as your footprint grows. Prestige Perks can soften the bill, because once the valley knows your name, even local tax collectors start finding reasons to treat you like someone worth keeping alive.",
+    status: 'live',
+    href: '/field-manual/annual-taxes',
+    version: VERSION,
+    related: [
+      { slug: 'cartel-franchise-fee', note: 'Both fire in the same February tick. The franchise fee is a separate bill on revenue, not what you own.' },
+      { slug: 'dividends', note: 'Dividends pay in farm cash inside the same year-end tick, after the franchise fee.' },
+      { slug: 'cartel-attacks', note: "When active, Cartel Audit fires from inside the year-end tax block as a 5% revenue skim." },
+      { slug: 'perks', note: 'Tax Shelter knocks down the equipment tax. Land Lawyer knocks down the land tax. Both stack up to 50% off at the cap.' },
+      { slug: 'credit-rating', note: 'A tax bill that pushes your balance below zero triggers a credit downgrade, like any other negative-pushing transaction.' }
+    ],
+    summary:
+      "Once a year, in February, the system shows up to count your land, count your machines, and bill you for both. There is no mailbox, no receipt to sign, no exemption to file. The numbers come out of your account on the last tick before the year rolls over, before you've sold a single bushel of the new season's crop. Land Tax is what you owe for owning dirt. Equipment Tax is what you owe for owning the tools that work it. The two halves are separate calculations with separate rules, and they both hit on the same day.",
+    whatItDoes: [
+      "Fires once a year, on the last period of the year (February). The land amount and the equipment amount are computed separately, then summed and deducted from your farm cash in a single transaction. A HUD card lays out the full breakdown — your acreage, the land rate, the land amount, your fleet's resale value, the equipment rate, the equipment amount, and the total.",
+      "Land Tax scales up with how much dirt you own. A small farm at ten acres or under owes nothing at all. Past that, the rate climbs gradually toward a 10% ceiling — gradually enough that even a five-hundred-acre operation is still well under 5%. Big farms pay more in dollars, but the curve eases up to its limit and stops.",
+      "Equipment Tax is a step function on the resale value of every vehicle you own. Cross a threshold and the rate jumps to the next tier, applied against the whole fleet's value. A $501,000 fleet pays a different rate than a $499,000 one — the line is real, not blended.",
+      "The bill is a real expense on your books. It comes out of farm cash and registers as expenditure for the year. If a tax bill pushes your balance below zero, your credit rating takes a downgrade hit the same way any other negative-pushing transaction would.",
+      "Annual Taxes share their February tick with the rest of the year-end paperwork. The order is fixed: land + equipment tax first, then the Cartel Franchise Fee, then the dividend payout from any shares you own, then the Cartel Audit if it activated this year. Each one is its own line on the books, but they all land in the same week."
+    ],
+    whyItMatters:
+      "Annual Taxes are the steady scale-pressure of FarmPunk's money game. The franchise fee scales on revenue, so a quiet year softens it. Annual Taxes don't care whether you sold a single liter — they bite on what you own, not what you earned. That makes February the single most expensive month in a FarmPunk year, and the only month where every Cartel-adjacent ledger bills you at once.",
+    howYouProgress: [
+      "Plan your year so February has cash on hand. The bill comes out before the new season's sales begin. A thin January and a hungry combine waiting on warm weather is a credit downgrade waiting to happen.",
+      "Watch what you buy at year-end. Equipment Tax is on resale value, and a new combine in January means a bigger bill the very next month. The tax is computed on the fleet at the moment of assessment, not the average across the year.",
+      "Climb Farmer Prestige to unlock the right perks. Tax Shelter knocks 5% off the equipment tax per occurrence, up to half off at the cap of ten. Land Lawyer does the same for the land tax. Both compete with the rest of the perk rotation, so they show up over time, not on demand.",
+      "If the Cartel rolled a Cartel Audit attack against you this year, expect a third bill in the same February tick — a 5% skim of your gross revenue, fired from inside the tax block. Check the Cartel Attacks page if you want to know whether this year is one of the bad ones."
+    ],
+    importantNumbers: [
+      { label: 'When it fires', value: 'Once a year, period 12 (February)' },
+      { label: 'Land Tax — small-farm exemption', value: '≤ 10 acres owe nothing' },
+      { label: 'Land Tax — ceiling', value: '10% (asymptotic — climbs slowly toward this cap)' },
+      { label: 'Land Tax — example at 500 acres', value: 'Well under 5% effective' },
+      { label: 'Equipment Tax — fleet < $500,000', value: '1%' },
+      { label: 'Equipment Tax — $500,000 to $1M', value: '2%' },
+      { label: 'Equipment Tax — $1M to $5M', value: '5%' },
+      { label: 'Equipment Tax — $5M to $10M', value: '7%' },
+      { label: 'Equipment Tax — > $10M', value: '10%' },
+      { label: 'Tax Shelter perk (cap)', value: '50% off the equipment tax bill' },
+      { label: 'Land Lawyer perk (cap)', value: '50% off the land tax bill' },
+      { label: 'Cartel Audit (when active)', value: '5% of gross revenue, in the same February tick' },
+      { label: 'February sequence', value: 'Land + Equipment Tax → Franchise Fee → Dividend Payout → Cartel Audit (if active)' }
+    ],
+    beginnerAdvice: [
+      "The first tax year is the one that catches new players. February shows up faster than expected, and a fresh fleet of financed equipment can drop you into a bigger tax tier than you planned for. Keep a buffer.",
+      "If you're under ten acres, there is no land tax — full stop. Equipment Tax still applies, but at the bottom rate it's small. Use those years to grow your fleet deliberately, not just instinctively.",
+      "Don't try to dodge the equipment bill by keeping ancient gear. Equipment Tax is on resale value, not condition, and the fleet you own is the bill — there's no clever way to look smaller on paper than you actually are.",
+      "If you're approaching a tier line, know which side of it you're going to land on before February. The jump from a 2% bill to a 5% bill at the $1M fleet mark is real money."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkStats', note: 'Read-only. Year-over-year revenue, expenditure, and net profit — useful context for previewing how a tax-and-fee February is going to feel.' },
+      { cmd: 'farmPunkFranchiseFee', note: 'Read-only. Previews the Cartel Franchise Fee that fires in the same February tick — the other half of the year-end bill.' }
+    ],
+    fieldNote:
+      "Land tax bills the dirt. Equipment tax bills the tools. The franchise fee bills the work. The audit bills the books. February is the month they all show up wearing different uniforms and quote each other's paperwork."
+  },
+  {
+    slug: 'mandatory-financing',
+    category: 'Money',
+    title: 'Mandatory Financing',
+    oneLiner: "The Cartel killed leasing because temporary access gives farmers too much flexibility and too little leverage for the banks. Every major purchase is forced through financing so expansion means debt, paperwork, interest, and another hook in your operation. You can still grow — but every machine you buy comes with someone else's hand on the ledger.",
+    status: 'live',
+    href: '/field-manual/mandatory-financing',
+    version: VERSION,
+    related: [
+      { slug: 'debt-cap', note: 'Every financed purchase checks the debt cap before going through. Hit it and the deal is refused.' },
+      { slug: 'cash-reserve', note: "Every purchase also checks post-down-payment balance against the reserve. Both gates have to clear." },
+      { slug: 'credit-rating', note: 'Each tier above F shaves -1% off the rate of NEW loans only. Existing loans keep the rate they were created at.' },
+      { slug: 'vanilla-loan', note: 'A separate emergency channel — runs in parallel and does NOT count toward the FarmPunk debt cap.' },
+      { slug: 'skills', note: 'Loan Interest cuts the rate. Down Payment Reduction cuts the upfront cost.' },
+      { slug: 'cartel-attacks', note: 'Loan Rate Hike, when active, adds +3% to every new loan created during that year.' },
+      { slug: 'farmland-surcharge', note: 'Land buys run through the same financing flow with this surcharge added on top.' },
+      { slug: 'perks', note: 'Negotiator cuts the farmland surcharge. Generous Banker widens the debt cap.' }
+    ],
+    summary:
+      "FarmPunk's economy is built on the assumption that every working farm in the valley is on the hook to a lender. The lease button is gone — disabled and replaced with a refusal. There is no temporary access to anything that matters. Every new vehicle above a thousand dollars, every placeable building, every parcel of land has to come through a loan: a fifth of the price up front, the rest spread over three years of monthly payments at twelve percent interest, with a contract you can't walk away from. The Cartel doesn't sell you tools. They sell you debt that comes with tools attached.",
+    whatItDoes: [
+      "Forces every new vehicle and placeable above $1,000, plus every land parcel, through the FarmPunk financing flow. The lease button is dead — clicking it returns a refusal message, not a loan.",
+      "Used vehicles bypass financing entirely. They come out of farm cash at full price, no down payment math, no monthly payments, no interest. The same goes for any modifications you do at the workshop — those use the vanilla payment path.",
+      "Pallets, big bags, big-bag pallets, and IBCs are paid in cash up front regardless of price. They're categorically excluded from financing — you owe the full price the moment you buy.",
+      "Every financed purchase has a 20% down payment by default and an 80% loan. The down payment comes out of your cash on the spot. The loan is on a 36-month schedule (three years), with the monthly payment fixed at the moment the loan is created.",
+      "Base interest is 12%. Skills, credit rating, and one Cartel attack all push that rate around. The Loan Interest skill knocks half a percent off per level, up to -5% at L10. Each credit rating tier above F shaves another 1% off, up to -5% at A. The rate floors at 0% — the Cartel won't let you borrow at a profit, but they'll stop charging interest if you've earned it. If the Cartel rolled the Loan Rate Hike attack on you this year, every new loan gets +3% added on top.",
+      "The interest rate is locked at the moment the loan is created. Existing loans never reprice. Finance a combine at 9% in March and your credit rating climbs to A in April, the new rate only applies to your next loan — the combine keeps its 9% for its full term. The same goes the other way: a downgrade doesn't make existing payments more expensive.",
+      "Every purchase has two pre-purchase gates that have to clear before the deal goes through. The Debt Cap blocks the buy if your total active debt plus the new loan would exceed your ceiling. The Minimum Cash Reserve blocks the buy if the down payment would leave you below three months of obligations. Either gate failing kills the purchase — see those pages for the math."
+    ],
+    whyItMatters:
+      "Financing is the engine that powers the Cartel's grip. In the base game, leasing means a clever player can rent a combine for a season and walk away clean. FarmPunk closes that door so growth has to happen on credit, on a schedule, with interest, and with an asset that can't be sold once it's yours. Every new machine becomes a permanent line item on the books. Every expansion adds another monthly payment to the next year's reserve calculation. The Cartel isn't trying to keep you broke — they're trying to keep you obligated.",
+    howYouProgress: [
+      "Buy used when you can. Used vehicles skip financing entirely — they're a cash purchase, no down payment, no interest, no monthly payment cluttering the reserve calc. Every used machine you can find is a cleaner deal than the same machine new.",
+      "Pour scrip into Loan Interest and Down Payment Reduction skills as soon as you have it. Loan Interest stacks with the credit rating discount, so a maxed skill plus an A rating bottoms the rate out at 2%. Down Payment Reduction is a flat discount on the upfront cost — at the cap you pay 8% upfront with the loan still at 80% of price, so the missing 12% is real money saved, not deferred into the loan.",
+      "Climb the Credit Rating ladder. The rating moves once a year — up if you survived the year without your balance ever going negative, down the instant a transaction tips you under zero. Read the Credit Rating page before you take a big swing.",
+      "Time your purchases. The interest rate is locked at the moment the loan is created. If a level-up or rating climb is one sale away, finishing the sale before financing the tractor is real money over the life of the loan. The same logic runs in reverse for the Loan Rate Hike Cartel attack — if it's active this year, holding off on a new combine until next March can save thousands."
+    ],
+    importantNumbers: [
+      { label: 'Lease button', value: 'Disabled. Replaced with a refusal.' },
+      { label: 'Financed-purchase threshold', value: 'New vehicles and placeables above $1,000, every land parcel' },
+      { label: 'Cash-only categories', value: 'Used vehicles, workshop modifications, pallets, big bags, big-bag pallets, IBCs' },
+      { label: 'Default down payment', value: '20%' },
+      { label: 'Default loan portion', value: '80%' },
+      { label: 'Base interest', value: '12%' },
+      { label: 'Loan term', value: '3 years (36 monthly payments)' },
+      { label: 'Total owed on a new loan', value: 'principal × (1 + rate)' },
+      { label: 'Monthly payment', value: 'floor(principal × (1 + rate) / 36)' },
+      { label: 'Loan Interest skill (cap)', value: '-0.5% per level · -5% at L10' },
+      { label: 'Down Payment Reduction skill (cap)', value: 'Down payment falls 20% → 8% at L10 (real cash saved, not deferred into the loan)' },
+      { label: 'Credit Rating discount range', value: '0% at F → -5% at A (-1% per tier above F)' },
+      { label: 'Best-case rate floor', value: '2% (A rating + L10 Loan Interest skill)' },
+      { label: 'Loan Rate Hike (Cartel attack, when active)', value: '+3% on new loans for the active year' },
+      { label: 'Pre-purchase gates', value: 'Debt Cap and Minimum Cash Reserve must both clear' }
+    ],
+    beginnerAdvice: [
+      "Read the loan summary before every big purchase. Open the dealer's pad knowing exactly what your monthly payments already look like — `farmPunkLoanSummary` prints them all in one place, with debt cap status alongside.",
+      "Don't drain your account on the down payment. The Minimum Cash Reserve gate will block the deal anyway — but more importantly, the same purchase that clears the gate by a dollar is the purchase that takes one bad month to push you negative and downgrade your credit rating.",
+      "Used equipment is the cheap escape hatch in FarmPunk. Used vehicles aren't financed and don't add to your monthly obligations. A scruffy used combine in a year you can't afford a financed one is the difference between a bad season and a defaulted year.",
+      "Workshop modifications aren't financed. If you bought a tractor stripped down because you couldn't afford the loaded version, you can come back later and add the configuration through the workshop on cash terms — no new loan, no new monthly payment.",
+      "The interest you'll pay on a loan is the rate at the moment you click Buy. There is no rate-shopping after the fact. If you're one level-up away from a cheaper loan, finish the level."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkLoanSummary', note: 'Read-only. Every active loan with principal, remaining balance, monthly payment, progress, and current debt cap status.' },
+      { cmd: 'farmPunkBuyVehicle', note: 'Finance the vehicle currently configured in the shop, as an alternative to clicking Buy.' },
+      { cmd: 'farmPunkBuyLand <farmlandId>', note: 'Finance a specific land parcel by ID. Same gates and surcharge as the in-map purchase flow.' },
+      { cmd: 'farmPunkReserveSummary', note: 'Read-only. Current cash reserve requirement and whether the farm balance currently meets it.' }
+    ],
+    fieldNote:
+      "The Cartel doesn't actually own most of what's on your farm. They own the paper that says you owe them for it — and the paper outlives the tractor."
+  },
+  {
+    slug: 'debt-cap',
+    category: 'Money',
+    title: 'Debt Cap',
+    oneLiner: "A ceiling on how much total debt the Cartel will let you carry, calculated from your land value, equipment value, and current cash balance.",
+    status: 'live',
+    href: '/field-manual/debt-cap',
+    version: VERSION,
+    related: [
+      { slug: 'mandatory-financing', note: 'Every financed purchase checks the cap before going through.' },
+      { slug: 'cash-reserve', note: 'Both are pre-purchase gates — the cap measures total debt, the reserve measures liquidity after the deal.' },
+      { slug: 'perks', note: 'Generous Banker widens both multipliers — up to 30% extra room at the cap.' },
+      { slug: 'vanilla-loan', note: 'The vanilla emergency loan is a separate channel and does NOT count toward this cap.' },
+      { slug: 'farmland-surcharge', note: 'Land buys clear the cap and the surcharge in the same gate sequence.' }
+    ],
+    summary:
+      "Every farm in FarmPunk has a hard ceiling on how much active debt it can carry, and the Cartel checks that ceiling at the cash register every single time. The cap isn't a trust score or a credit grade — it's a formula on what your farm is actually worth. Land you own counts. Equipment you own counts. Cash sitting in your account counts. Anything above that line, the Cartel won't lend on. The bigger your operation, the bigger the cap. The smaller your operation, the smaller the rope. There is one minimum floor for new farms with nothing to their name, and one perk that bends the formula — past those, the cap moves only when the underlying farm does.",
+    whatItDoes: [
+      "Caps the total active FarmPunk debt your farm can carry. Every financed purchase checks whether your current debt plus the new loan would exceed the cap. Past it, the Buy button refuses the deal — no override, no exception.",
+      "The cap is computed from three pieces of the farm at the moment of purchase: 25% of land value, plus 20% of equipment value, plus your current cash balance. Whatever the formula returns is your active ceiling.",
+      "There is a minimum floor of $100,000. A brand-new farm with no land and no fleet is still allowed to take on at least that much, so the financing system isn't dead on day one.",
+      "Cash on hand directly raises the cap. Selling a year's wheat means the cap is bigger right after the sale than right before it — the same money that increased your balance also increased your borrowing room.",
+      "The vanilla emergency loan does NOT count toward this cap. It runs on its own separate ceiling and its own separate ruleset. Stacking the two is allowed; just know they're two different lenders watching different ledgers.",
+      "Generous Banker is the one perk that bends the formula. Each occurrence boosts both multipliers by 3%. At the cap of ten occurrences, the land multiplier climbs from 0.25 to 0.325 and the equipment multiplier climbs from 0.20 to 0.26 — about 30% more debt room across the board, on the same farm."
+    ],
+    whyItMatters:
+      "The cap is the reason expansion in FarmPunk feels structured rather than freewheeling. You can't lever yourself into a fleet of combines on a tiny plot — the math won't allow it. To borrow more, you have to be worth more first, which means buying small, growing the asset base, and letting the cap climb behind you. It's also one of two pre-purchase gates working in tandem with the Minimum Cash Reserve. The cap asks 'do you have collateral?' The reserve asks 'can you cover the next three months?' A purchase has to clear both. Either gate failing means no deal.",
+    howYouProgress: [
+      "Grow the asset base. Every acre you buy raises the land-value side of the formula by its full price × 0.25. Every machine on your fleet raises the equipment-value side by its sell price × 0.20. The cap climbs as the farm grows — there's no menu, no upgrade, no pacing. It just tracks.",
+      "Stack cash before a big purchase. Cash on hand is part of the cap formula at face value, so $50,000 in the bank means $50,000 of additional borrowing room, dollar for dollar. A profitable harvest right before a big financed deal is more valuable than the same harvest right after.",
+      "Pick up Generous Banker on the Farmer Prestige perk rotation. Each occurrence widens both multipliers; at the cap, the formula effectively gives you 30% more rope on the same farm. It's one of the most quietly impactful perks for serious expansion runs.",
+      "Let active loans pay themselves down. The cap measures active debt, so as a loan's remaining balance shrinks month by month, the debt side of the gate eases up — without you doing anything beyond letting the schedule run."
+    ],
+    importantNumbers: [
+      { label: 'Formula', value: '(land value × 0.25) + (equipment value × 0.20) + current balance' },
+      { label: 'Minimum guaranteed cap', value: '$100,000' },
+      { label: 'Land multiplier (default)', value: '0.25' },
+      { label: 'Equipment multiplier (default)', value: '0.20' },
+      { label: 'Generous Banker (per occurrence)', value: '+3% to both multipliers' },
+      { label: 'Generous Banker (occurrence cap)', value: '10' },
+      { label: 'Land multiplier with Generous Banker capped', value: '0.325' },
+      { label: 'Equipment multiplier with Generous Banker capped', value: '0.26' },
+      { label: 'Vanilla emergency loan', value: 'Separate channel — does NOT count toward this cap' },
+      { label: 'Equipment value source', value: 'Sum of sell prices for every owned vehicle' }
+    ],
+    beginnerAdvice: [
+      "Run `farmPunkLoanSummary` before any big shop trip. The print-out includes your current debt cap status, so you know how much room you actually have before getting to the Buy button.",
+      "Cash inflates the cap. If a purchase is just barely getting refused, sell a couple of trailer-loads of grain first — the same dollars that hit your account also hit your borrowing room.",
+      "If the cap is choking you, look at the asset side, not the cash side. A small operation with $40,000 in the bank still has the $100,000 floor, but a small operation that buys two more parcels of land has lifted the ceiling permanently.",
+      "Generous Banker won't show up the moment you start playing, but it's worth recognizing when it does. A 30% wider cap on the same farm changes what 'serious expansion' even means."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkLoanSummary', note: 'Read-only. Every active loan plus current debt cap status — the easiest way to see exactly how much room is left before the gate refuses a purchase.' },
+      { cmd: 'farmPunkReserveSummary', note: 'Read-only. The other pre-purchase gate. Worth checking together with the cap before any major financed deal.' }
+    ],
+    fieldNote:
+      "The Cartel won't lend on a dream. They'll lend on what you've already got — and only enough to make sure they can still take it back."
   }
 ];
 
@@ -1022,39 +1210,7 @@ export const STUBS: CatalogEntry[] = [
   // dossiers — see MECHANICS above.)
 
   // Money & Credit
-  {
-    slug: 'annual-taxes', category: 'Money', title: 'Annual Taxes',
-    oneLiner: "Annual Taxes hit every February as the county takes its cut on your equipment and land, with acreage getting brutally more expensive as your footprint grows. Prestige Perks can soften the bill, because once the valley knows your name, even local tax collectors start finding reasons to treat you like someone worth keeping alive.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'cartel-franchise-fee', note: 'Both fire at the same period-12 tick.' },
-      { slug: 'perks', note: 'Tax Shelter cuts equipment tax. Land Lawyer cuts land tax.' },
-      { slug: 'credit-rating', note: 'A tax bill that pushes you negative triggers a downgrade.' }
-    ]
-  },
-  {
-    slug: 'mandatory-financing', category: 'Money', title: 'Mandatory Financing',
-    oneLiner: "The Cartel killed leasing because temporary access gives farmers too much flexibility and too little leverage for the banks. Every major purchase is forced through financing so expansion means debt, paperwork, interest, and another hook in your operation. You can still grow — but every machine you buy comes with someone else’s hand on the ledger.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'debt-cap', note: 'Every new loan checks the cap before going through.' },
-      { slug: 'cash-reserve', note: 'Every purchase checks post-down-payment balance against the reserve.' },
-      { slug: 'credit-rating', note: 'Loan rate is captured at creation; rating affects only NEW loans.' },
-      { slug: 'vanilla-loan', note: "Vanilla loan is a separate emergency channel — doesn't count toward the debt cap." },
-      { slug: 'skills', note: 'Loan Interest + Down Payment skills cut new-loan cost.' },
-      { slug: 'cartel-attacks', note: 'Loan Rate Hike adds +3% to new loans for the active year.' }
-    ]
-  },
-  {
-    slug: 'debt-cap', category: 'Money', title: 'Debt Cap',
-    oneLiner: "A ceiling on how much total debt the Cartel will let you carry, calculated from your land value, equipment value, and current cash balance.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'mandatory-financing', note: 'All financed purchases check the cap.' },
-      { slug: 'perks', note: 'Generous Banker perk boosts both multipliers.' },
-      { slug: 'cash-reserve', note: 'Both gate purchases — cap is about total debt; reserve is about post-payment liquidity.' }
-    ]
-  },
+  // (Annual Taxes, Mandatory Financing, and Debt Cap are full dossiers — see MECHANICS above.)
   {
     slug: 'credit-rating', category: 'Money', title: 'Credit Rating F→A',
     oneLiner: "Your credit rating is the bank’s leash: a letter grade from F to A that rises when you survive a clean year and falls when missed bills, fees, or loan payments push you below zero. Better ratings unlock better rates on new loans, but every bad year gives the lenders another excuse to tighten the trap.",
