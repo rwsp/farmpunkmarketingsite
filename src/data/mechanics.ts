@@ -114,8 +114,7 @@ export const MECHANICS: Mechanic[] = [
       { slug: 'shares', note: 'The only way to reduce this fee. Each share knocks 1% off forever.' },
       { slug: 'annual-taxes', note: 'Both fire at the same year-end (period 12) tick.' },
       { slug: 'dividends', note: 'Paid in farm cash right after the franchise fee. Same module.' },
-      { slug: 'credit-rating', note: 'A franchise fee that pushes your balance negative triggers a credit downgrade.' },
-      { slug: 'profit-tracking', note: 'Source of the revenue number the bracket math runs on.' }
+      { slug: 'credit-rating', note: 'A franchise fee that pushes your balance negative triggers a credit downgrade.' }
     ],
     summary:
       "You lost the farm. You're leasing it back via franchise agreement. The fee is the Cartel's cut for letting you keep working your own land.",
@@ -227,8 +226,7 @@ export const MECHANICS: Mechanic[] = [
     related: [
       { slug: 'cartel-attacks', note: "Every $10M in the Warchest cancels one share's worth of Cartel anger." },
       { slug: 'shares', note: 'The other half of Valley Liberation. Shares + Warchest = reclamation.' },
-      { slug: 'valley-liberation', note: 'Filling the Warchest to $1B is half of Valley Liberation.' },
-      { slug: 'profit-tracking', note: "Deposits are intentionally invisible to your annual P&L — they don't count as expenditure." }
+      { slug: 'valley-liberation', note: 'Filling the Warchest to $1B is half of Valley Liberation.' }
     ],
     summary:
       "The Warchest is bigger than your farm. It's how you fund the rest of the valley's fight against the Cartel — paying for legal pressure, sabotage defense, community relief, underground logistics, and organizers. Money you put in is gone forever, on purpose. You're not saving it. You're spending it on the resistance.",
@@ -448,6 +446,198 @@ export const MECHANICS: Mechanic[] = [
     ],
     fieldNote:
       "The shed is not for the tractor's sake. It's for the part of the valley that learned, a generation ago, that an exposed combine after midnight is everyone's combine."
+  },
+  {
+    slug: 'shares',
+    category: 'Resistance',
+    title: 'Shares',
+    oneLiner:
+      "The Cartel starts every run holding 100 shares of your farm, and buying them back with scrip is how you claw your family's future out of their ledger. Every share weakens their control and makes them angrier, so keep the Reclamation Warchest funded before they turn your ownership push into a war.",
+    status: 'live',
+    href: '/field-manual/shares',
+    version: VERSION,
+    related: [
+      { slug: 'cartel-franchise-fee', note: 'Each share knocks 1% off the fee. The only way to reduce it.' },
+      { slug: 'dividends', note: 'Each share earns annual dividends in farm cash.' },
+      { slug: 'cartel-attacks', note: 'Buying shares makes the Cartel angrier — pressure scales linearly.' },
+      { slug: 'reclamation-warchest', note: 'Owning shares without funding the Warchest = peak harassment.' },
+      { slug: 'valley-liberation', note: 'Owning all 100 = half the win.' },
+      { slug: 'wallet-scrip', note: 'Shares are bought with scrip from your farmer wallet, not farm cash.' }
+    ],
+    summary:
+      "The Cartel doesn't pretend the farm is theirs by accident — they hold the paperwork that says it is, dressed up as a hundred shares of legal ownership. Every share you buy back is a piece of that paperwork going through the shredder. Shares are bought with scrip from your wallet, not farm cash, and they don't get cheaper as you go. The closer you get to owning your own farm, the more your remaining ownership is worth — and the more the Cartel charges you to take the next slice.",
+    whatItDoes: [
+      "Tracks how many of the Cartel's 100 shares of your farm you have reclaimed. The first 99 are paperwork; the hundredth ends the franchise agreement entirely.",
+      "Bought with scrip from your farmer wallet — not farm cash. Scrip comes from your year-end salary and bonus, skill economy, and Black Market completions.",
+      "Each share permanently knocks 1% off the Cartel Franchise Extortion Fee. At 100 shares the fee is zero, every year, forever.",
+      "Each share you own pays an annual dividend in farm cash at year-end (see Dividends), regardless of how the year went.",
+      "Each share you own also makes the Cartel angrier. Pressure scales linearly with share count, and the Reclamation Warchest is the only counterweight (see Cartel Attacks)."
+    ],
+    whyItMatters:
+      "Shares are the only door out of the Cartel's franchise agreement. Every other system in FarmPunk lets you survive the squeeze a little better — better licenses, better skills, better rates — but only shares actually shrink the bill that defines the squeeze. They are slow to come (gated by your three-year average revenue) and brutally back-loaded in cost (each one bought makes the next one more expensive), so reaching 100 is a multi-year arc, not a buying spree. And every share you reclaim costs the Cartel a piece of their leverage, which is exactly why they hit harder the closer you get.",
+    howYouProgress: [
+      "Hit the eligibility floor. Once your three-year average revenue clears $50,000 — the same line the Cartel uses to start charging the franchise fee — you can buy your first share that year. Higher revenue brackets unlock more shares per year, up to five at the top tier.",
+      "Save scrip. Shares cost scrip, not farm cash, so the path to ownership runs through your wallet — year-end bonuses, skill-tree planning, and Black Market completions are all funnels into the same pile.",
+      "Pace your buys. Each share you already own makes the next one 10% more expensive in the price formula, and stacking multiple buys in the same year multiplies the cost again (1× the first, 1.5× the second, 2× the third, and so on). Going hard in a single year burns scrip much faster than spreading purchases across years.",
+      "Fund the Warchest in lockstep. Every share you reclaim makes the Cartel measurably angrier. Without Warchest deposits, owning all 100 shares means peak harassment — roughly four attacks a year on average. Every $10 million in the Warchest cancels one share's worth of pressure (see Cartel Attacks)."
+    ],
+    importantNumbers: [
+      { label: 'Total shares', value: '100' },
+      { label: 'Reduction per share', value: '1% off the Cartel Franchise Extortion Fee, forever' },
+      { label: 'Bought with', value: 'Scrip (from the farmer wallet, not farm cash)' },
+      { label: 'Eligibility floor', value: '3-year average revenue ≥ $50,000' },
+      { label: 'Per-year purchase counter resets', value: 'March (period 1)' },
+      { label: '$50k – $250k revenue → max shares/year', value: '1' },
+      { label: '$250k – $500k revenue → max shares/year', value: '2' },
+      { label: '$500k – $1M revenue → max shares/year', value: '3' },
+      { label: '$1M – $5M revenue → max shares/year', value: '4' },
+      { label: '$5M+ revenue → max shares/year', value: '5' },
+      { label: 'Farm value (for pricing)', value: 'land + cash + (equipment × 0.5) − total debt' },
+      { label: 'Base share price', value: 'farm value ÷ 100' },
+      { label: 'Ownership premium', value: '+10% on the base price for every share already owned' },
+      { label: 'Within-year multiplier', value: '1× first share this year, 1.5× second, 2× third, 2.5× fourth, …' },
+      { label: 'Pressure cost', value: '+1 to Cartel pressure per share owned (cancelled by $10M in the Warchest)' }
+    ],
+    beginnerAdvice: [
+      "Don't try to buy shares early. Your three-year revenue average will not clear the floor until the farm is producing real volume, and the price formula assumes you have value to leverage. The first share usually does not show up until the operation is established.",
+      "Spread purchases across years instead of stacking them in March. The within-year multiplier punishes greedy years brutally — the third share in the same year costs twice the first, and the fifth costs three times the first.",
+      "Treat every share as a Cartel-anger trigger. If you buy aggressively without funding the Warchest, expect the next March to bring more attacks than the last. Pair the two systems."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkBuyShare', note: 'Purchase one share if eligible. Checks scrip balance, eligibility tier, and the per-year cap.' },
+      { cmd: 'farmPunkShares', note: 'Read-only. Shares owned, eligibility tier, next share cost, wallet balance, and the dividend block.' },
+      { cmd: 'farmPunkForceShares <delta>', note: 'Testing tool — add or remove shares without spending scrip. Pass a negative number to reset back down.' }
+    ],
+    fieldNote:
+      "The Cartel sells the farm as a franchise opportunity. Every share you buy back is the franchise contract going through a paper shredder, page by page."
+  },
+  {
+    slug: 'dividends',
+    category: 'Resistance',
+    title: 'Dividends',
+    oneLiner:
+      "The Cartel built the dividend system so absentee owners, banks, and corporate partners could skim annual value from farms they never worked. When you buy shares, you force your name into that same ledger, redirecting part of the extraction pipeline back to the farmer. Dividends are not charity — they are the Cartel's own machine turned against them.",
+    status: 'live',
+    href: '/field-manual/dividends',
+    version: VERSION,
+    related: [
+      { slug: 'shares', note: 'Pays per share owned. No shares, no dividends.' },
+      { slug: 'cartel-franchise-fee', note: 'Lifetime franchise fees assessed (gross) drives the dividend tier.' },
+      { slug: 'annual-taxes', note: 'Fires at the same year-end (period 12) tick as the tax block.' },
+      { slug: 'reclamation-warchest', note: 'At max tier, dividends pay $1M/year — pure cash that can feed Warchest deposits.' }
+    ],
+    summary:
+      "Dividends are the Cartel's own extraction machinery, turned around. They built it so banks, absentee owners, and silent partners could draw an annual cut from farms they never touched. The moment you own a single share, you force your name onto the same payout sheet — and the more aggressively the Cartel has been billing you over the years, the more they have to pay out per share. Dividends are flat per share, paid in farm cash every February, and the only way to earn them is to take their shares away from them.",
+    whatItDoes: [
+      "Pays a flat dollar amount per share you own, every February (period 12), straight to your farm cash.",
+      "Skipped entirely if you own zero shares. No card, no transaction — the dividend ledger ignores farms with no ownership stake.",
+      "The per-share rate is set by a tier table driven by the Cartel's own ledger of how much franchise fee they have assessed against you over your lifetime — gross, what they billed, not what you paid after share reduction. Bigger lifetime bill means a bigger payout per share.",
+      "Pays regardless of profit. A bad farming year does not shrink the dividend — every share owned cashes for the same amount the year-end card promises.",
+      "Counts as revenue for the year. At max tier with all 100 shares, that is $1,000,000 of pure dividend revenue — large enough to push you into a higher franchise fee bracket on its own. (At 100 shares the fee is zero anyway, so the bracket push has no cash effect.)"
+    ],
+    whyItMatters:
+      "Dividends are unique among FarmPunk's revenue streams: they pay flat per share regardless of how the farm performed that year. They scale with two things — the shares you have reclaimed, and how hard the Cartel has been squeezing you across your lifetime — and the punchline is that buying out the franchise fee does not shut the dividend ladder down. The Cartel keeps assessing what they think you owe them; you just stop owing any of it. Their own paperwork keeps growing the dividend rate, and the bigger that rate gets, the more cash you can siphon back into the Reclamation Warchest.",
+    howYouProgress: [
+      "Own shares. Zero shares = zero dividend. The more shares you own, the more the per-share rate compounds into a real payout.",
+      "Survive long enough for the Cartel to bill you. The dividend tier is gated by lifetime franchise fees assessed — every year you stay in the franchise agreement adds the gross fee to that lifetime total, even when you have reduced the net you actually pay through share ownership.",
+      "Push revenue up. Bigger gross franchise fees in any given year add more to the lifetime total, which crosses dividend tiers faster.",
+      "Watch the year-end sequence. The franchise fee fires first at period 12, and the dividend pays at the previous year's tier — this year's gross gets added to the lifetime total after the dividend, so it counts toward NEXT year's tier. A tier upgrade fires its own CRITICAL HUD card so you will know before the next dividend lands."
+    ],
+    importantNumbers: [
+      { label: 'Pays at', value: 'February (period 12)' },
+      { label: 'Pays in', value: 'Farm cash (not scrip)' },
+      { label: 'Pays per', value: 'Share owned (skipped at 0 shares — no card, no transaction)' },
+      { label: 'Profit-dependent', value: 'No. Flat per share.' },
+      { label: 'Tier 1 — $0 to $250k lifetime fees assessed', value: '$2,000 / share' },
+      { label: 'Tier 2 — $250k to $750k', value: '$2,700 / share' },
+      { label: 'Tier 3 — $750k to $1.5M', value: '$3,500 / share' },
+      { label: 'Tier 4 — $1.5M to $3M', value: '$4,800 / share' },
+      { label: 'Tier 5 — $3M to $5M', value: '$6,000 / share' },
+      { label: 'Tier 6 — $5M to $8M', value: '$7,500 / share' },
+      { label: 'Tier 7 — $8M to $12M', value: '$8,800 / share' },
+      { label: 'Tier 8 — $12M+', value: '$10,000 / share (cap)' },
+      { label: 'Max annual payout', value: '$1,000,000 (Tier 8 × 100 shares)' },
+      { label: 'Lifetime ledger source', value: 'Gross franchise fee assessed (NOT what you paid net of shares)' },
+      { label: 'Sequencing at year-end', value: 'Franchise fee → dividend (at last year tier) → lifetime ledger increment → upgrade card if a tier was crossed' }
+    ],
+    beginnerAdvice: [
+      "Do not skip the first share just because $2,000 sounds small. The dividend rate climbs by tier and by share count both — it is the compounding that matters, not the early dollar figures.",
+      "Lifetime fees are based on what the Cartel BILLS you, not what you actually pay. Buying out to 100 shares does NOT freeze the dividend tier — the Cartel keeps assessing the gross fee, you just do not owe a cent of it, and the lifetime ledger keeps climbing.",
+      "At max tier with 100 shares, dividends pay $1 million a year, every year, without you growing a single bushel more. That is the number meant to feed the Reclamation Warchest in the back half of the run."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkShares', note: 'Read-only. Includes the dividend block: lifetime fund, current tier + per-share rate, next-tier threshold + delta needed, projected payout.' },
+      { cmd: 'farmPunkFranchiseFee', note: 'Read-only. Previews the franchise fee plus the dividend block, including the tier projected after this year’s gross fee is added.' },
+      { cmd: 'farmPunkForceFranchiseFund <delta>', note: 'Testing tool — bump lifetime franchise fees directly to verify dividend tier transitions without grinding 12+ in-game years.' }
+    ],
+    fieldNote:
+      "The Cartel's dividend ledger was built to pay out to people who were never on the farm. Now your name is on it, and they have to keep cutting the check."
+  },
+  {
+    slug: 'black-markets',
+    category: 'Resistance',
+    title: 'Black Markets',
+    oneLiner:
+      "Black Markets are off-the-books crop orders from private buyers who know the Cartel is not the only game in the valley. They reroll every March across five tiers, paying cash, scrip, and Prestige at once — and the more famous you become, the better the buyers willing to risk dealing with you.",
+    status: 'live',
+    href: '/field-manual/black-markets',
+    version: VERSION,
+    related: [
+      { slug: 'crop-mastery', note: 'Higher tier markets gate on per-crop mastery levels.' },
+      { slug: 'farmer-prestige', note: 'Higher tier markets gate on Prestige. Completions also pay Prestige fame.' },
+      { slug: 'crop-licensing', note: 'License penalty applies to ALL sales — including Black Market deliveries.' },
+      { slug: 'wallet-scrip', note: 'Completions pay scrip in addition to cash and fame.' },
+      { slug: 'reclamation-warchest', note: 'Insurgent and Liberating tier payouts are designed to bankroll Warchest deposits.' }
+    ],
+    summary:
+      "Black Markets are the underground delivery network — small mills, regional co-ops, syndicate fronts, insurgent supply lines, and the resistance itself, all of them willing to pay a premium for a specific crop delivered at scale and willing to do it without the Cartel's signature. Every March a fresh roster of buyers appears across five tiers. They auto-track against everything you sell at every station, and when you cross the goal volume on a market, the payout fires automatically — cash to the farm, scrip to the wallet, fame to your Prestige line, all at once.",
+    whatItDoes: [
+      "Spawns a fresh roster of off-the-books buyers every March. Each market names a specific crop, a goal volume in liters, and a vendor.",
+      "Tracks against ANY sale you make at ANY selling station, not just deliveries to the buyer's lot. Every liter of the named crop you sell anywhere on the map counts toward the goal.",
+      "Pays out automatically the moment you cross the goal — no menu, no submission step, no contract paperwork. Cash, scrip, and Prestige fame all land on the same sale tick that pushed you over the line.",
+      "Comes in five tiers. Backroad and Off-Book are common roster fillers; Underground, Insurgent, and Liberating are rarer and pay much more, gated behind both Farmer Prestige and per-crop Mastery.",
+      "Stacks across markets. If two markets want the same crop at once, every liter of that crop counts for both — you are not splitting the delivery between them.",
+      "Lapses silently at year-end. Markets you did not finish disappear when March rolls around — no penalty, no carry-over, no notification, no cost. The new roster has no memory of the old one."
+    ],
+    whyItMatters:
+      "Black Markets are the fastest cash-and-fame engine in FarmPunk once you have the Prestige to unlock the higher tiers. Selling a million liters of a crop through the silos is one number; selling that same million liters to a Liberating-tier buyer pays 1.75× the vanilla rate, plus 40 to 50 scrip, plus enough Prestige fame to clear an entire level in a single delivery. They are also the main bridge between everyday farming and the Reclamation Warchest — Insurgent and Liberating payouts are large enough to fund seven-figure Warchest deposits in a single year. And because eligibility is monotonic — once a market unlocks for you, it stays unlocked even if a level-up was the last straw — the system rewards farmers who keep climbing rather than punishing late starts.",
+    howYouProgress: [
+      "Climb Farmer Prestige. Backroad markets are open from level zero; Off-Book opens at L10, Underground at L20, Insurgent at L30, and Liberating at L40. Each tier you have unlocked adds a roll for new slots on the board every March.",
+      "Climb Crop Mastery. Each market also carries a per-crop Mastery requirement inside the tier's range — a wheat market might want Wheat Mastery 12 specifically. A high Prestige does not help you take a market when your crop is not good enough yet.",
+      "Sell the right crop at any station. Once a market is eligible for you, every liter of its crop you sell anywhere on the map adds to its progress — no special delivery route required.",
+      "Time your big sales to the active roster. Holding a silo of wheat until you see a wheat market on the board lets you cash in at the multiplier instead of selling for the vanilla price.",
+      "Take what is there. The roster is randomized — you cannot reroll, you cannot pick the crop, and an unfilled market vanishes in March. If a market on the board fits what you grow, work it before the year flips."
+    ],
+    importantNumbers: [
+      { label: 'Roster reroll', value: 'Every March (period 1)' },
+      { label: 'Year-end behaviour', value: 'Unfilled markets lapse silently — no penalty, no carry-over' },
+      { label: 'Backroad', value: 'P0+ · 2 slots · 100% spawn · 5,000–10,000 L · 1.00× cash · 1–2 scrip · 0.25× goal in fame' },
+      { label: 'Off-Book', value: 'P10+ · 2 slots · 100% spawn · 10,000–30,000 L · 1.00× cash · 3–5 scrip · 0.50× goal in fame' },
+      { label: 'Underground', value: 'P20+ · 1 slot · 30% spawn · 30,000–100,000 L · 1.25× cash · 8–12 scrip · 0.75× goal in fame' },
+      { label: 'Insurgent', value: 'P30+ · 1 slot · 20% spawn · 100,000–300,000 L · 1.50× cash · 20–30 scrip · 1.00× goal in fame' },
+      { label: 'Liberating', value: 'P40+ · 1 slot · 10% spawn · 500,000–1,000,000 L · 1.75× cash · 40–50 scrip · 1.50× goal in fame' },
+      { label: 'Per-tier Mastery range', value: 'Backroad none · Off-Book 1–15 · Underground 5–20 · Insurgent 10–30 · Liberating 15–40' },
+      { label: 'Cash payout formula', value: 'floor(goal liters × vanilla price/L × tier cash multiplier)' },
+      { label: 'Vanilla price source', value: 'Locked in at spawn time — payouts do not drift if you level Sale Price / Boutique / Mastery mid-year' },
+      { label: 'Fame credit', value: 'Counts as Farmer Prestige fame (NOT crop Mastery fame)' },
+      { label: 'Multiple same-crop markets', value: 'Each receives the full liter delta independently — no splitting' },
+      { label: 'Eligibility', value: 'Monotonic — once a market unlocks for you, it stays unlocked for the rest of its year' }
+    ],
+    beginnerAdvice: [
+      "Do not ignore Backroad markets in the early years. Two small wheat or barley deliveries a year is hundreds of scrip and a free Prestige fame bump while the farm is still small.",
+      "Eligibility unlocks once and stays unlocked. If a Wheat Mastery level-up is the only thing standing between you and a fat Insurgent wheat market already on the board, work the level-up — every liter of wheat you sell after the gate flips counts toward that market, even if you cross the gate on the very last day of the year.",
+      "Higher-tier markets only roll a chance to spawn each year — Underground 30%, Insurgent 20%, Liberating 10%. A year with no Insurgent or Liberating on the board is normal. Run what is actually there.",
+      "Black Market completions pay Prestige fame, not Crop Mastery. If you want a specific crop's Mastery line to climb, you still have to sell that crop's liters yourself — finishing a million-liter wheat market does not level Wheat Mastery, only Prestige.",
+      "License penalty still applies. If you have blown past your license cap on a crop for the year, every Black Market liter of that crop pays the same penalty as a regular sale — clear the license before pushing big deliveries."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkBlackMarkets', note: 'Read-only. The full board: per-tier spawn rolls for the year, every active market’s vendor, crop, goal/progress, eligibility, and payout preview.' },
+      { cmd: 'farmPunkRerollBlackMarkets', note: 'Testing tool — clear the active roster and re-run the March roll right now without waiting for period 1.' },
+      { cmd: 'farmPunkForceBlackMarket <tier> [crop]', note: 'Testing tool — force-spawn one market of the given tier (and optionally a specific crop). Bypasses within-year uniqueness so multiple same-tier same-crop can stack.' },
+      { cmd: 'farmPunkClaimBlackMarket <id>', note: 'Testing tool — force-complete a market by its current roster index. Fires the full payout flow (cash + scrip + fame + HUD card + roster removal).' }
+    ],
+    fieldNote:
+      "The Cartel's price sheets are the only price sheets that exist on paper. Black Markets are what happens when the rest of the valley refuses to read from them."
   }
 ];
 
@@ -521,39 +711,7 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
 export const STUBS: CatalogEntry[] = [
   // RPG & Progression
   // Resistance
-  {
-    slug: 'black-markets', category: 'Resistance', title: 'Black Markets',
-    oneLiner: "Black Markets are off-the-books crop orders from private buyers who know the Cartel is not the only game in the valley. They reroll every March across five tiers, paying cash, scrip, and Prestige at once — and the more famous you become, the better the buyers willing to risk dealing with you.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'crop-mastery', note: 'Higher tier markets gate on per-crop mastery levels.' },
-      { slug: 'farmer-prestige', note: 'Higher tier markets gate on Prestige. Completions also pay prestige fame.' },
-      { slug: 'crop-licensing', note: 'License penalty applies to ALL sales — including Black Market deliveries.' },
-      { slug: 'wallet-scrip', note: 'Completions pay scrip in addition to cash and fame.' }
-    ]
-  },
-  {
-    slug: 'shares', category: 'Resistance', title: 'Shares',
-    oneLiner: "The Cartel starts every run holding 100 shares of your farm, and buying them back with scrip is how you claw your family’s future out of their ledger. Every share weakens their control and makes them angrier, so keep the Reclamation Warchest funded before they turn your ownership push into a war.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'cartel-franchise-fee', note: 'Each share knocks 1% off the fee. The only way to reduce it.' },
-      { slug: 'dividends', note: 'Each share earns annual dividends in farm cash.' },
-      { slug: 'cartel-attacks', note: 'Buying shares makes the Cartel angrier — pressure scales linearly.' },
-      { slug: 'reclamation-warchest', note: 'Owning shares without funding the Warchest = peak harassment.' },
-      { slug: 'valley-liberation', note: 'Owning all 100 = half the win.' }
-    ]
-  },
-  {
-    slug: 'dividends', category: 'Resistance', title: 'Dividends',
-    oneLiner: "The Cartel built the dividend system so absentee owners, banks, and corporate partners could skim annual value from farms they never worked. When you buy shares, you force your name into that same ledger, redirecting part of the extraction pipeline back to the farmer. Dividends are not charity — they are the Cartel’s own machine turned against them.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'shares', note: 'Pays per share owned. No shares, no dividends.' },
-      { slug: 'cartel-franchise-fee', note: 'Lifetime franchise fees assessed (gross) drives the dividend tier.' },
-      { slug: 'annual-taxes', note: 'Fires at the same year-end tick as the tax block.' }
-    ]
-  },
+  // (Shares, Dividends, and Black Markets are full dossiers — see MECHANICS above.)
 
   // Production & Markets
   {
@@ -608,7 +766,6 @@ export const STUBS: CatalogEntry[] = [
     related: [
       { slug: 'cartel-franchise-fee', note: 'Both fire at the same period-12 tick.' },
       { slug: 'perks', note: 'Tax Shelter cuts equipment tax. Land Lawyer cuts land tax.' },
-      { slug: 'profit-tracking', note: 'Records the tax deduction as expenditure for the year.' },
       { slug: 'credit-rating', note: 'A tax bill that pushes you negative triggers a downgrade.' }
     ]
   },
@@ -677,30 +834,18 @@ export const STUBS: CatalogEntry[] = [
     ]
   },
   {
-    slug: 'profit-tracking', category: 'Money', title: 'Annual Profit & Expenditure Tracking',
-    oneLiner: "The Profit Ledger tracks what the farm earns, what it spends, and how much value the Cartel thinks it can squeeze from the year. It drives your year-end scrip bonus, fee pressure, and dividend growth — but Warchest deposits stay off the books, because the rebellion is funded by the farmer, not the farm.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'annual-taxes', note: 'Records the tax deduction as expenditure.' },
-      { slug: 'cartel-franchise-fee', note: 'Source of the revenue number the bracket math runs on.' },
-      { slug: 'reclamation-warchest', note: 'Warchest deposits are intentionally invisible to this ledger.' },
-      { slug: 'wallet-scrip', note: 'Annual scrip bonus is computed from current-year profit.' }
-    ]
-  },
-  {
-    slug: 'wallet-scrip', category: 'Money', title: 'Farmer Wallet (Scrip)',
+    slug: 'wallet-scrip', category: 'RPG', title: 'Scrip',
     oneLiner: "Scrip is the farmer’s private leverage, kept separate from farm cash and impossible to launder back into the operation. It flows through the systems the Cartel cannot fully price in — skills, share buybacks, license upgrades, and Black Market work — then pays out each year as a small salary plus a profit-based bonus for surviving the ledger.",
     status: 'pending', version: VERSION,
     related: [
       { slug: 'skills', note: 'All 17 skills are bought with scrip.' },
       { slug: 'shares', note: 'Shares are bought with scrip, not farm cash.' },
       { slug: 'crop-licensing', note: 'License upgrades cost scrip.' },
-      { slug: 'profit-tracking', note: 'Annual scrip bonus = floor(profit × 0.001).' },
       { slug: 'black-markets', note: 'Black Market completions pay scrip in addition to cash + fame.' }
     ]
   },
   {
-    slug: 'asset-sell-block', category: 'Money', title: 'Asset Sell Block',
+    slug: 'asset-sell-block', category: 'Money', title: 'Deadweight Inventory',
     oneLiner: "The Cartel locks every vehicle, building, and acre into your operation the moment you buy it, turning bad purchases into permanent weight. Backroom Dealers is the only escape hatch, and even then you only get a few quiet sales a year — so buy like you mean it, because you might be building a museum with working hydraulics.",
     status: 'pending', version: VERSION,
     related: [
@@ -709,7 +854,7 @@ export const STUBS: CatalogEntry[] = [
     ]
   },
   {
-    slug: 'no-generators', category: 'Money', title: 'No Generators',
+    slug: 'no-generators', category: 'Money', title: 'Energy Dependence',
     oneLiner: "The Cartel refuses permits for solar panels and wind turbines, keeping passive income and off-grid independence locked out of reach. They keep the meter, they keep the bill, and they make sure every dollar you earn still comes from work they can pressure.",
     status: 'pending', version: VERSION,
     related: []

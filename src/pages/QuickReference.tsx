@@ -116,8 +116,8 @@ export function QuickReference() {
                 <li><b>Spoilage</b> — 3% of grain per period. Sell, don't hoard.</li>
                 <li><b>Rust and Raiders</b> — exposed gear gets vandalized or stolen.</li>
                 <li><b>License Caps</b> — sell over and price drops to 20% for the year.</li>
-                <li><b>Asset Sell Block</b> — once bought, always bought. Nothing leaves.</li>
-                <li><b>No Generators</b> — solar/wind placeables refused at placement.</li>
+                <li><b>Deadweight Inventory</b> — once bought, always bought. Nothing leaves.</li>
+                <li><b>Energy Dependence</b> — solar/wind placeables refused at placement.</li>
                 <li><b>Vanilla loan = trap</b> — $50k cap, 3× interest. Emergency only.</li>
               </ul>
             </Block>
