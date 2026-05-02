@@ -57,6 +57,28 @@
   z-index: 2;
 }
 
+/* ── Badge tones — one per Field Manual category ────────────────── */
+/* RPG: spray cyan — slow personal leverage. */
+.fp-dossier__badge--rpg {
+  background: var(--fp-spray-cyan);
+  color: var(--fp-ink-black);
+}
+/* Resistance: hot magenta — defacement, rebellion, the fight. */
+.fp-dossier__badge--resistance {
+  background: var(--fp-hot-magenta);
+  color: var(--fp-ink-black);
+}
+/* Production: warning yellow — harvest, the actual farm. (Same as default.) */
+.fp-dossier__badge--production {
+  background: var(--fp-warning-yellow);
+  color: var(--fp-ink-black);
+}
+/* Money: acid green — cash, scrip, the ledger. */
+.fp-dossier__badge--money {
+  background: var(--fp-acid-green);
+  color: var(--fp-ink-black);
+}
+
 .fp-dossier__stamp {
   position: absolute;
   top: 14px;

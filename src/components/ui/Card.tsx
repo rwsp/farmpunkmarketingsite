@@ -1,10 +1,13 @@
 import type { ReactNode } from 'react';
 import './card.css';
 
+export type BadgeTone = 'rpg' | 'resistance' | 'production' | 'money';
+
 type DossierProps = {
   children: ReactNode;
   stamp?: string;
   badge?: string;
+  badgeTone?: BadgeTone;
   tilt?: number;
   className?: string;
 };
@@ -17,13 +20,17 @@ export function DossierCard({
   children,
   stamp,
   badge,
+  badgeTone,
   tilt = 0,
   className = ''
 }: DossierProps) {
   const style = { ['--tilt' as string]: `${tilt}deg` };
+  const badgeClass = badgeTone
+    ? `fp-dossier__badge fp-dossier__badge--${badgeTone}`
+    : 'fp-dossier__badge';
   return (
     <article className={`fp-dossier ${className}`} style={style}>
-      {badge && <span className="fp-dossier__badge">{badge}</span>}
+      {badge && <span className={badgeClass}>{badge}</span>}
       {stamp && <span className="fp-dossier__stamp">{stamp}</span>}
       <div className="fp-dossier__body">{children}</div>
     </article>

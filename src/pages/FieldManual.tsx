@@ -60,9 +60,9 @@ export function FieldManual() {
           const sorted = [...entries].sort((a, b) => sortPriority(a) - sortPriority(b));
 
           return (
-            <section key={cat} className="fp-fm__cat">
+            <section key={cat} className={`fp-fm__cat fp-fm__cat--${cat.toLowerCase()}`}>
               <header>
-                <span className="fp-eyebrow">{cat}</span>
+                <span className="fp-eyebrow fp-fm__cat-eyebrow">{cat}</span>
                 <h2>{cat}</h2>
                 <p className="fp-fm__cat-blurb">{CATEGORY_BLURB[cat]}</p>
               </header>
@@ -90,6 +90,7 @@ function CatalogCard({ entry, category }: { entry: CatalogEntry; category: Categ
     <Link to={href} className="fp-fm__link">
       <DossierCard
         badge={category.toUpperCase()}
+        badgeTone={category.toLowerCase() as 'rpg' | 'resistance' | 'production' | 'money'}
         tilt={0}
       >
         <h3>{entry.title}</h3>

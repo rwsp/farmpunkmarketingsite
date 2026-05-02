@@ -34,6 +34,13 @@
   letter-spacing: 0.04em;
 }
 
+/* Section eyebrow color follows the category badge color, so the section
+   header and the cards under it read as the same colorway. */
+.fp-fm__cat--rpg        .fp-fm__cat-eyebrow { color: var(--fp-spray-cyan); }
+.fp-fm__cat--resistance .fp-fm__cat-eyebrow { color: var(--fp-hot-magenta); }
+.fp-fm__cat--production .fp-fm__cat-eyebrow { color: var(--fp-warning-yellow); }
+.fp-fm__cat--money      .fp-fm__cat-eyebrow { color: var(--fp-acid-green); }
+
 .fp-fm__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
