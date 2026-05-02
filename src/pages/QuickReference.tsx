@@ -18,9 +18,9 @@ export function QuickReference() {
               <GraffitiTag color="yellow" rotate={2} size="md">CARD</GraffitiTag>
             </h1>
             <p className="fp-qr__lede">
-              The dirty laminated card you tape next to the monitor.
-              Built to be read at a glance during play. One page, dense,
-              practical. Print it out and forget the website exists.
+              The plain-language survival card. New to FarmPunk? Read this once
+              before you start, then come back any time you need a refresher.
+              Print it out and tape it next to the screen.
             </p>
           </div>
           <div className="fp-qr__head-actions">
@@ -38,113 +38,113 @@ export function QuickReference() {
             <div>
               <h2 className="fp-qr__card-title">FARMPUNK · FIELD CARD v0.0.34</h2>
               <p className="fp-qr__card-sub">
-                Tape next to monitor. Refer constantly. Survive the year.
+                Built for new players. Read once. Survive the year.
               </p>
             </div>
             <div className="fp-qr__stamp">EARLY ACCESS</div>
           </div>
 
           <div className="fp-qr__grid">
-            <Block title="What You Are Managing" tone="warn">
+            <Block title="The Numbers That Run Your Farm" tone="warn">
               <ul>
-                <li><b>Cash reserve</b> = monthly obligations × 3. Every purchase blocks if you cross it.</li>
-                <li><b>Debt cap</b> = (land × 0.25) + (equip × 0.20) + balance. Min $100k.</li>
-                <li><b>Credit rating</b> F → A. Drops the moment balance dips negative.</li>
-                <li><b>Scrip</b> wallet. Buys skills, shares, licenses. Cannot be exchanged.</li>
-                <li><b>Shares</b> 0–100. Each = 1% off franchise fee. Win at 100.</li>
-                <li><b>Warchest</b> 0 → $1B. One-way. Defends against opposition.</li>
+                <li><b>Cash on hand</b> — your spending money. Most deals check this before they go through, so always know roughly where it sits.</li>
+                <li><b>Debt ceiling</b> — there's a hard cap on how much you can owe at one time. Bigger farm, bigger ceiling. Hit it and the bank stops lending.</li>
+                <li><b>Credit rating</b> — a letter from F (worst) to A (best). One bad transaction that pushes you below zero drops it a tier on the spot.</li>
+                <li><b>Scrip wallet</b> — a separate currency you earn yearly. Buys skills, shares, and licenses. Can't be traded for cash.</li>
+                <li><b>Shares</b> — out of 100 the Cartel "owns" of your farm. Every one you buy back is a permanent 1% off your franchise fee. Owning all 100 is half the win.</li>
+                <li><b>Warchest</b> — a one-way fund for the resistance. It only goes up. Filling it to a billion dollars is the other half of the win.</li>
               </ul>
             </Block>
 
-            <Block title="Every Year Checklist" tone="alert">
+            <Block title="What Happens Through the Year" tone="alert">
               <ol>
-                <li>Period 1 — opposition rolls. Check <code>farmPunkOpposition</code>.</li>
-                <li>Period 1 — weather rolls. Check <code>farmPunkWeather</code>.</li>
-                <li>Period 1 — black markets refresh. Check <code>farmPunkBlackMarkets</code>.</li>
-                <li>Period 1 — share counter resets.</li>
-                <li>Mid-year — sell smart, watch crop license caps.</li>
-                <li>Period 12 — taxes + franchise fee + dividends + audit.</li>
-                <li>Period 12 — wallet payout (10 + profit/1000 scrip).</li>
-                <li>Year roll — credit rating upgrades if you didn't default.</li>
+                <li><b>Spring (the year flip).</b> A fresh round of pressure begins — new weather rolls, fresh black-market jobs, and any Cartel retaliations get rolled for the year.</li>
+                <li><b>Spring through fall.</b> Regular farm work. Plant, harvest, sell. Watch your crop license caps as you go — go over and your prices drop hard for the rest of the year.</li>
+                <li><b>Late winter (year-end).</b> The bills land all at once: property tax, equipment tax, the franchise fee, and (if you own shares) your dividend payout. Your scrip salary lands then too.</li>
+                <li><b>Year flip again.</b> If your balance never went negative through the whole year, your credit rating ticks up by one tier. If it did, the year was spoiled — you start over clean next March.</li>
               </ol>
             </Block>
 
-            <Block title="Early Game Priorities (Y1–Y3)" tone="grow">
+            <Block title="Early Game (Years 1–3)" tone="grow">
               <ul>
-                <li>Stay above zero. One default = credit downgrade, immediate.</li>
-                <li>Build a shed before parking anything expensive outside.</li>
-                <li>Buy first share as soon as eligible (crosses $50k revenue).</li>
-                <li>Skill up <code>cropYield</code> and <code>salePrice</code> first — cheap, broad effect.</li>
-                <li>License up your top 2 crops before you cap them.</li>
-                <li>Don't take vanilla loan unless emergency. 3× interest.</li>
+                <li>Stay above zero. Even a brief negative balance costs you a credit tier — and the only way back is a full clean year.</li>
+                <li>Build a shed before parking anything expensive outside. Exposed equipment gets weathered, vandalized, and stolen.</li>
+                <li>Buy your first share as soon as you're eligible. Eligibility unlocks once your three-year average revenue crosses $50,000.</li>
+                <li>Spend early scrip on the broadest skills first — better yields and better sale prices apply to every crop, every sale.</li>
+                <li>License up your top one or two crops before you outgrow the default cap.</li>
+                <li>Avoid the emergency vanilla loan unless you're truly out of options. The interest is brutal.</li>
               </ul>
             </Block>
 
-            <Block title="Mid Game Priorities (Y4–Y10)" tone="grow">
+            <Block title="Mid Game (Years 4–10)" tone="grow">
               <ul>
-                <li>Cross the $1M revenue bracket — unlocks 4 shares/year.</li>
-                <li>Stack <code>downPayment</code> and <code>loanInterest</code> for cheaper financing.</li>
-                <li>Diversify crops for novelty bonus — 5+ year gap = +25%.</li>
-                <li>Climb Farmer Prestige for vehicle gifts at L3, 5, 10, 15…</li>
-                <li>Begin Warchest deposits before crossing 25 shares.</li>
-                <li>Keep an eye on lifetime franchise fees — drives dividend tier.</li>
+                <li>Push past the $1M revenue bracket. That's where you start being allowed to buy more shares per year.</li>
+                <li>Stack the financing skills — cheaper loans and smaller down payments compound on every purchase from then on.</li>
+                <li>Rotate your crops. Coming back to a crop after a few years off pays a novelty bonus on its sale price.</li>
+                <li>Watch your Farmer Prestige climb. Free vehicles drop onto the dealer's pad at preset levels.</li>
+                <li>Start putting cash in the Warchest before you cross 25 shares — the pressure ramp gets steeper from there.</li>
+                <li>Keep an eye on your lifetime franchise-fee total. It quietly drives your dividend tier up over time.</li>
               </ul>
             </Block>
 
-            <Block title="Late Game Priorities (Y10+)" tone="rebel">
+            <Block title="Late Game (Year 10+)" tone="rebel">
               <ul>
-                <li>Front-load Warchest before each 25-share milestone.</li>
-                <li>$10M Warchest = 1 share of pressure cancelled. Plan accordingly.</li>
-                <li>Black Markets — chase Insurgent + Liberating tier payouts.</li>
-                <li>At 100 shares + $1B Warchest you've won. Both, not either.</li>
+                <li>Front-load Warchest deposits before each big share milestone. A fat Warchest at the year flip dampens that year's attacks.</li>
+                <li>Rule of thumb: every $10 million in the Warchest cancels out one share's worth of Cartel pressure.</li>
+                <li>Chase the higher-tier Black Market jobs. Those are the deals that pay enough to fund Warchest deposits.</li>
+                <li>The win is exact: 100 shares <b>and</b> $1 billion in the Warchest. Either alone doesn't end the game.</li>
               </ul>
             </Block>
 
-            <Block title="What To Spend Scrip On" tone="grow">
+            <Block title="What To Spend Scrip On (in order)" tone="grow">
               <ul>
-                <li><b>First:</b> <code>cropYield</code>, <code>salePrice</code> — universal multipliers.</li>
-                <li><b>Then:</b> shares (only escape from franchise fee).</li>
-                <li><b>Then:</b> <code>bulkStorage</code>, <code>combineCapacity</code>, <code>headerWidth</code>.</li>
-                <li><b>Then:</b> <code>maintenance</code>, <code>fuelUsage</code>, <code>traction</code>.</li>
-                <li><b>Save for:</b> licenses on your top 3 crops.</li>
-                <li><b>Avoid:</b> spreading thin across all 17 skills early.</li>
+                <li><b>First:</b> the universal yield and sale-price skills. They apply to every crop, every sale.</li>
+                <li><b>Then:</b> shares. Every one is forever off your franchise fee.</li>
+                <li><b>Then:</b> bigger silos, wider headers, larger combine tanks. Storage and harvest skills.</li>
+                <li><b>Then:</b> vehicle skills — slower wear, lower fuel use, better traction.</li>
+                <li><b>Save for:</b> license upgrades on your top three crops.</li>
+                <li><b>Avoid:</b> spreading scrip thin across all the skills early. Specialize first.</li>
               </ul>
             </Block>
 
             <Block title="Systems You Cannot Ignore" tone="alert">
               <ul>
-                <li><b>Spoilage</b> — 3% of grain per period. Sell, don't hoard.</li>
-                <li><b>Rust and Raiders</b> — exposed gear gets vandalized or stolen.</li>
-                <li><b>License Caps</b> — sell over and price drops to 20% for the year.</li>
-                <li><b>Deadweight Inventory</b> — once bought, always bought. Nothing leaves.</li>
-                <li><b>Energy Dependence</b> — solar/wind placeables refused at placement.</li>
-                <li><b>Vanilla loan = trap</b> — $50k cap, 3× interest. Emergency only.</li>
+                <li><b>Spoilage</b> — grain in storage rots a few percent every month. Sell, don't hoard.</li>
+                <li><b>Rust and Raiders</b> — exposed equipment takes weather damage, vandalism, and theft. Sheds make most of it go away.</li>
+                <li><b>License caps</b> — sell more than your license allows and the rest of the year's prices drop hard.</li>
+                <li><b>Deadweight inventory</b> — once you buy something, you own it forever. The Sell button is gone.</li>
+                <li><b>No off-grid power</b> — solar panels and wind turbines are refused at placement. The Cartel keeps the meter.</li>
+                <li><b>Vanilla loan = trap</b> — capped at $50,000, charged at triple the normal rate. Emergency only.</li>
               </ul>
             </Block>
 
             <Block title="Common Mistakes" tone="warn">
               <ul>
-                <li>Hoarding grain "for a better price." It rots, every month.</li>
-                <li>Buying a tractor you can't afford the upkeep on (vehicle upkeep = price × 0.001/month).</li>
-                <li>Skipping the Warchest because "I'll do it later." Opposition stacks.</li>
-                <li>Forgetting period 12 hits all at once: tax + franchise + audit + dividend.</li>
-                <li>Selling something. You can't. Plan purchases like they're permanent.</li>
-                <li>Parking anything outside. The Cartel is watching.</li>
+                <li>Hoarding grain "for a better price." It rots, every month, every silo.</li>
+                <li>Buying a tractor you can't afford the upkeep on. Every machine bumps your monthly burn.</li>
+                <li>Skipping Warchest deposits because "I'll do it later." The pressure stacks while you wait.</li>
+                <li>Forgetting that the year-end is everything at once: taxes, franchise fee, audit (if rolled), and dividends.</li>
+                <li>Trying to sell something. You can't. Plan every purchase like it's permanent.</li>
+                <li>Parking equipment outside. The Cartel is watching, and so are the thieves.</li>
               </ul>
             </Block>
 
-            <Block title="Key Console Commands" tone="grow" wide>
+            <Block title="Console Cheats for Checking Up on Things" tone="grow" wide>
+              <p className="fp-qr__cmd-intro">
+                Open the in-game console (default key <code>~</code>) and type any of these.
+                They're all read-only — they print info, they don't change anything.
+              </p>
               <div className="fp-qr__cmd-grid">
-                <div><code>farmPunkStats</code> — title + revenue/expense/profit summary</div>
-                <div><code>farmPunkWallet</code> — scrip + projected year-end bonus</div>
-                <div><code>farmPunkSkills</code> — all skill levels + costs</div>
-                <div><code>farmPunkShares</code> — shares + dividend tier</div>
-                <div><code>farmPunkWarchest</code> — balance + percent to win</div>
-                <div><code>farmPunkOpposition</code> — pressure score + active effects</div>
-                <div><code>farmPunkLoanSummary</code> — every active loan</div>
-                <div><code>farmPunkCredit</code> — rating + effective new-loan rate</div>
-                <div><code>farmPunkSpoilage</code> — projected next-period loss</div>
-                <div><code>farmPunkStorageStatus</code> — exposed gear preview</div>
+                <div><code>farmPunkStats</code> — your title, year-by-year revenue, expenses, and profit</div>
+                <div><code>farmPunkWallet</code> — scrip balance and projected year-end bonus</div>
+                <div><code>farmPunkSkills</code> — every skill, current level, cost to next</div>
+                <div><code>farmPunkShares</code> — shares owned and current dividend tier</div>
+                <div><code>farmPunkWarchest</code> — balance and percent toward the win</div>
+                <div><code>farmPunkOpposition</code> — current pressure score and active attacks</div>
+                <div><code>farmPunkLoanSummary</code> — every active loan with monthly payment</div>
+                <div><code>farmPunkCredit</code> — your rating and the rate you'd get on a new loan today</div>
+                <div><code>farmPunkSpoilage</code> — grain on hand and how much will rot next month</div>
+                <div><code>farmPunkStorageStatus</code> — what's exposed and what would get hit if vandals showed up</div>
               </div>
             </Block>
           </div>

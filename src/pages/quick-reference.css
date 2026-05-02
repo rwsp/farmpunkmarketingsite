@@ -154,6 +154,19 @@
 }
 .fp-qr__block-body b { color: var(--fp-warning-yellow); }
 
+.fp-qr__cmd-intro {
+  margin: 0 0 var(--space-3);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.fp-qr__cmd-intro code {
+  background: var(--fp-ink-black);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: var(--fp-acid-green);
+  padding: 0 4px;
+  font-size: 0.86em;
+}
+
 .fp-qr__cmd-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

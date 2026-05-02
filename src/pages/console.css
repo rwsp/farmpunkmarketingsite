@@ -58,7 +58,7 @@
 }
 
 .fp-console__table thead {
-  background: var(--fp-rotted-brown);
+  background: var(--fp-blacksoil);
   color: var(--fp-flash-white);
 }
 .fp-console__table th {
@@ -69,11 +69,13 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+/* PaperPanel is a dark surface (rotted-brown #4A3326), not a light one,
+   so all table foregrounds are colored for legibility on dark. */
 .fp-console__table td {
   padding: 8px 12px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.25);
+  border-top: 1px dashed rgba(255, 255, 255, 0.10);
   vertical-align: top;
-  color: var(--fp-ink-black);
+  color: var(--fp-bone-paper);
 }
 .fp-console__table tbody tr:hover {
   background: rgba(124, 255, 43, 0.08);
@@ -82,26 +84,33 @@
 .fp-console__table code {
   background: transparent;
   border: none;
-  color: var(--fp-spray-purple);
+  color: var(--fp-acid-green);
   padding: 0;
   font-weight: 700;
 }
-.fp-console__args { color: var(--fp-rust) !important; }
+/* Args sit between the command (acid green) and description (bone paper) —
+   warning yellow is the third readable color on dark brown and keeps the
+   column visually distinct. */
+.fp-console__args { color: var(--fp-warning-yellow) !important; }
 
 .fp-console__empty {
   text-align: center;
   font-family: var(--font-stamp);
-  color: var(--fp-rotted-brown);
+  color: var(--fp-weathered-gray);
   padding: var(--space-5);
 }
 
+/* Category stamp on each row — yellow text on dark brown reads as a
+   rubber-stamped label. Border is a tinted yellow so the stamp outline is
+   visible against the panel background. */
 .fp-console__table .fp-stamp {
   font-family: var(--font-stamp);
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fp-warning-yellow);
-  border: 1px solid var(--fp-rotted-brown);
+  border: 1px solid rgba(242, 194, 48, 0.45);
   padding: 2px 6px;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.30);
+  font-weight: 700;
 }
