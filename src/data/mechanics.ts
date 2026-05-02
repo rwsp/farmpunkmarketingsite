@@ -638,6 +638,307 @@ export const MECHANICS: Mechanic[] = [
     ],
     fieldNote:
       "The Cartel's price sheets are the only price sheets that exist on paper. Black Markets are what happens when the rest of the valley refuses to read from them."
+  },
+  {
+    slug: 'wallet-scrip',
+    category: 'RPG',
+    title: 'Scrip',
+    oneLiner:
+      "Scrip is the farmer's private leverage, kept separate from farm cash and impossible to launder back into the operation. It flows through the systems the Cartel cannot fully price in — skills, share buybacks, license upgrades, and Black Market work — then pays out each year as a small salary plus a profit-based bonus for surviving the ledger.",
+    status: 'live',
+    href: '/field-manual/wallet-scrip',
+    version: VERSION,
+    related: [
+      { slug: 'skills', note: 'All 17 skills are bought with scrip from the wallet.' },
+      { slug: 'shares', note: 'Shares are bought with scrip, not farm cash.' },
+      { slug: 'crop-licensing', note: 'Every license tier upgrade is paid in scrip.' },
+      { slug: 'black-markets', note: 'Black Market completions pay scrip alongside cash and fame.' },
+      { slug: 'perks', note: 'Industrial Subsidy perk adds +10 scrip to the year-end base salary, every occurrence.' }
+    ],
+    summary:
+      "Farm cash is what the Cartel can see. Scrip is what they can't. It is the farmer's own pocket money — earned every year as a small salary plus a cut of profits that survived the year's bills, spent on the few escape valves the franchise agreement does not control. Scrip never converts back to farm cash. You cannot use it to pay debts, taxes, fees, or the dealer. Its only purpose is to buy your way out: skill levels, license upgrades, and the Cartel's own shares back, one paper sliver at a time.",
+    whatItDoes: [
+      "Pays once per year at period 12 (February), at the same year-end tick that fires the tax block. The base salary is a flat 10 scrip, paid every year regardless of how the farm did.",
+      "Adds an annual bonus on top of the salary equal to one-thousandth of that year's net profit (floor of profit × 0.001). A $500,000 profit year pays 10 base + 500 bonus = 510 scrip. A losing year pays the 10 base salary and no bonus — the bonus floors at zero, never goes negative.",
+      "Spends only on a small set of farmer-side purchases: the 17 levels of every Manager Skill, share buybacks against the Cartel's 100 shares of your farm, and crop license tier upgrades. None of these transactions touch farm cash; none of them appear on the farm's books.",
+      "Pays out separately on Black Market completions — every off-the-books delivery dumps a tier-scaled scrip payout into the wallet on top of the farm-cash payment.",
+      "Cannot be converted, sold, traded, or laundered back into farm cash. The wallet is one-way. Money that lands in scrip stays in scrip until it is spent on a farmer-side purchase.",
+      "Pays separately from share dividends. Share dividends are paid in farm cash at the same period 12 tick — they do NOT flow into the scrip wallet."
+    ],
+    whyItMatters:
+      "Every other currency in FarmPunk is a leash. Farm cash flows through the Cartel's books — they tax it, fee it, surcharge it, and audit it. Scrip is the channel they have not figured out how to bill. The skills that make you better at growing, the shares that take their farm back, the licenses that lift the over-cap penalty — all four of these escape valves are gated by scrip, not cash. That is why the wallet matters: it is the only number on the farm that the Cartel cannot directly skim. The catch is that scrip is small and slow. The base salary alone barely covers a single L1 skill. The real wealth comes from the bonus, which means scrip ramps with profit — and profit is exactly what every system in FarmPunk is engineered to compress.",
+    howYouProgress: [
+      "Survive a profitable year. The bonus is one-thousandth of that year's net profit, paid in February. Every $1,000 of profit you keep through the franchise fee, taxes, surcharges, and spoilage adds another scrip to the bonus.",
+      "Pick up the Industrial Subsidy perk as Farmer Prestige climbs. Every occurrence adds another +10 scrip to the year-end base salary, on top of the 10 already paid. It is one of only two perks with no occurrence cap, so it keeps stacking forever.",
+      "Run Black Market deliveries. Every tier pays a scrip bonus on completion: Backroad pays 1–2, Off-Book 3–5, Underground 8–12, Insurgent 20–30, Liberating 40–50. A single Liberating completion can outpay an entire year's salary plus bonus.",
+      "Spend on purpose. Skill levels, share buybacks, and license upgrades all draw from the same pile, and you will run out faster than feels fair. Sequence the buys instead of stacking them — the within-year share multiplier punishes greedy spending hard."
+    ],
+    importantNumbers: [
+      { label: 'Base salary (yearly)', value: '10 scrip, paid every February' },
+      { label: 'Annual bonus formula', value: 'floor(net profit × 0.001) scrip' },
+      { label: 'Bonus example at $500,000 profit', value: '10 + 500 = 510 scrip' },
+      { label: 'Negative-profit year', value: '10 scrip salary, 0 bonus (clamped at 0)' },
+      { label: 'Industrial Subsidy perk', value: '+10 scrip on the year-end base salary, per occurrence (uncapped)' },
+      { label: 'Black Market scrip payouts', value: 'Backroad 1–2 · Off-Book 3–5 · Underground 8–12 · Insurgent 20–30 · Liberating 40–50' },
+      { label: 'Share dividends', value: 'Paid in farm cash, NOT scrip' },
+      { label: 'Convertible to farm cash', value: 'No. The wallet is one-way.' },
+      { label: 'Spends on', value: 'Manager Skills, FarmPunk shares, crop license tier upgrades' }
+    ],
+    beginnerAdvice: [
+      "Do not drain the wallet on day one. The first 10 scrip salary tempts you into a single L1 skill, but a long-term plan that holds onto scrip until it can buy a tier you actually need will outperform spreading it thin across a dozen L1s.",
+      "Profitable years are the engine. Every bill the Cartel does not collect this year is another scrip in the bonus. Spoilage, surcharges, the franchise fee, and tax bills all compress the bonus directly — staying lean in February is what feeds the wallet.",
+      "Black Market scrip stacks fast in the late game. The Insurgent and Liberating tiers pay more scrip per delivery than a strong farm year's full salary plus bonus combined.",
+      "Plan share buybacks against the wallet, not the calendar. A single share in the high-revenue years can cost more than a full year's wallet payout — save scrip across multiple years instead of trying to buy on the year it unlocks."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkWallet', note: 'Read-only. Current wallet balance, base salary, and projected year-end bonus based on this year\'s profit-so-far.' },
+      { cmd: 'farmPunkAddScrip <amount>', note: 'Testing tool — add (or subtract via a negative number) scrip directly. Bypasses the period-12 salary/bonus path so testers can engineer a known balance for skill / share / license purchase rows. Result floors at 0.' }
+    ],
+    fieldNote:
+      "Farm cash is what they tax. Scrip is what you keep."
+  },
+  {
+    slug: 'crop-licensing',
+    category: 'Production',
+    title: 'Crop Licensing',
+    oneLiner:
+      "Crop Licensing is the Cartel's way of deciding how much of each crop you are allowed to sell before they crush the price. Upgrade licenses with scrip to raise your annual caps, because anything sold past the line gets punished hard — unapproved abundance is still disobedience.",
+    status: 'live',
+    href: '/field-manual/crop-licensing',
+    version: VERSION,
+    related: [
+      { slug: 'crop-novelty', note: 'Both bend the per-station sale price through the same combined multiplier chain.' },
+      { slug: 'cartel-attacks', note: 'License Revocation drops one of your tiers back down for the active year.' },
+      { slug: 'black-markets', note: 'License penalty applies to ALL sales, including off-the-books deliveries.' },
+      { slug: 'crop-mastery', note: 'Both gate per-crop progression — mastery on volume sold, licensing on volume permitted.' },
+      { slug: 'wallet-scrip', note: 'Every tier upgrade is paid in scrip, not farm cash.' }
+    ],
+    summary:
+      "The Cartel does not stop you from growing food. It stops you from selling it. Every harvestable crop carries its own license — a yearly cap on how many liters of that crop the system will pay you full price for. Sell underneath the cap and the price sheet behaves normally. Cross the cap and that crop's price collapses to twenty cents on the dollar at every selling station for the rest of the year. Licenses go up to six tiers each, paid for in scrip, and they reset every March.",
+    whatItDoes: [
+      "Tracks one independent license per harvestable crop. Wheat has its own cap, corn has its own cap, sugarbeet has its own cap, and so on — selling wheat does not touch any other crop's counter.",
+      "Starts every farm at Tier 0 on every crop, with a 12,000-liter annual cap. The first tier upgrade is the cheapest the wallet will ever see (10 scrip), and the cap ladder climbs to 250,000 liters at Tier 5.",
+      "Triggers an over-cap penalty the moment your year-to-date sold volume of a crop equals or exceeds its current cap. From that tick onward, every selling station prices that crop at twenty percent of its normal multiplied price for the rest of the year.",
+      "Fires a CRITICAL HUD warning on the cap-crossing tick (\"WHEAT license cap exceeded — sale price reduced 80% for rest of year\"). The single ~40-liter tick that crosses the cap still pays full price for its over-cap portion — the engine bills that tick before the penalty kicks in. Negligible, and it favors the player.",
+      "Resets every March. At period 1 of the new year, every crop's sold-this-year counter zeros out and the penalty multiplier lifts back to normal — even on crops that were under penalty the day before.",
+      "Lifts the penalty mid-year if you upgrade a tier above your current sold volume. Cross 80,000 L of wheat under a 75,000 L Tier 3 cap, eat the penalty for a few weeks, then upgrade to Tier 4 (100,000 L cap), and the penalty multiplier lifts immediately at every station."
+    ],
+    whyItMatters:
+      "Licensing is the gate that decides whether your year ends with a fat silo or a bargain bin. The penalty is brutal — eighty percent off the sale price is more than the franchise fee, the tax bill, and most surcharges combined — and it does not just hit your storefront sales. Every Black Market delivery, every contract drop-off, every grain-truck unload at any station prices the crop through the same multiplier chain. There is no escape route once a crop tips over its cap. The system also punishes farms that try to specialize without preparing — an enormous wheat-only operation running on Tier 1 wheat licensing will cap before March is over and spend the rest of the year selling wheat at pennies. Plan licenses against your acreage, not your wallet.",
+    howYouProgress: [
+      "Run `farmPunkLicense` to see every crop's current tier, cap, year-to-date sold volume, and remaining headroom. The headroom number is the only one that matters once spring planting decisions get made.",
+      "Upgrade the licenses for the crops you actually grow at scale. Tier 1 (10 scrip) and Tier 2 (15 scrip) are cheap insurance for any crop you plan to push more than 12,000 L of; Tier 5 (70 scrip) is for the one or two crops you mean to specialize in.",
+      "Watch for the cap-crossing CRITICAL card. If it fires, do the math — sometimes a mid-year upgrade is cheaper than eating the 80% penalty for the rest of the season. The tier upgrade lifts the penalty the same tick if the new cap is above your current sold volume.",
+      "Stagger sales across the year. The penalty fires on your sold-this-year counter, not on harvest volume. Holding grain in silos until you have license headroom keeps the price multiplier intact — but watch spoilage, since stored grain rots at 3% per period.",
+      "Diversify the catalog when you can. Each crop has its own cap, so a farm split across three crops at Tier 2 has triple the headroom of a farm hammering one crop at Tier 2."
+    ],
+    importantNumbers: [
+      { label: 'Tier 0 (default)', value: '12,000 L cap · no purchase' },
+      { label: 'Tier 1', value: '25,000 L cap · 10 scrip' },
+      { label: 'Tier 2', value: '50,000 L cap · 15 scrip' },
+      { label: 'Tier 3', value: '75,000 L cap · 25 scrip' },
+      { label: 'Tier 4', value: '100,000 L cap · 45 scrip' },
+      { label: 'Tier 5', value: '250,000 L cap · 70 scrip' },
+      { label: 'Over-cap penalty', value: 'Sale price drops to 20% of normal at every station for the rest of the year (player keeps 20%)' },
+      { label: 'Penalty scope', value: 'All sales — storefront, contracts, AND Black Market deliveries' },
+      { label: 'Per-crop independence', value: 'Yes — each crop has its own counter, cap, and penalty status' },
+      { label: 'Reset', value: 'March (period 1) — counters wipe, penalty lifts on every crop' },
+      { label: 'Mid-year upgrade', value: 'Lifts the penalty immediately if the new tier cap is above your current sold volume' }
+    ],
+    beginnerAdvice: [
+      "Tier 0's 12,000 L cap is small. A single mid-sized wheat field will burn through it in one harvest. Pick up Tier 1 on your first cash crop before the first big sale — 10 scrip is a single year's salary, and a year of penalized prices is not.",
+      "If the cap-crossing CRITICAL fires mid-year, compute the math before panicking. Some years it is cheaper to take the penalty on the trickle of remaining sales; other years it pays for itself ten times over to upgrade the tier and keep the next 50,000 L at full price.",
+      "License Revocation (Cartel attack) drops one tier on one crop for the year. There is no scrip refund, no early restoration — the tier you lost comes back at the next March reset. Plan around it by running tighter caps on the crops you can afford to lose for a year.",
+      "Black Market completions pay through the same price chain. A million-liter Liberating-tier wheat market under a busted wheat license still pays at the penalty rate. Clear the license before pushing big deliveries."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkLicense', note: 'Read-only. Every crop\'s current tier, annual cap, year-to-date sold volume, and remaining headroom.' },
+      { cmd: 'farmPunkBuyLicense <CROPNAME>', note: 'Upgrade a crop license by one tier. Crop name must be uppercase (e.g. WHEAT). Costs scrip according to the tier table.' }
+    ],
+    fieldNote:
+      "The Cartel does not have to ban the harvest. They just have to refuse to buy it for what it is worth."
+  },
+  {
+    slug: 'crop-novelty',
+    category: 'Production',
+    title: 'Crop Novelty Bonus',
+    oneLiner:
+      "The Crop Novelty Bonus rewards farmers who keep the market guessing instead of feeding the Cartel the same predictable harvest every year. Crops you skipped last year sell for more, and crops absent for five years hit even harder — rotation is not just soil sense, it is market misdirection.",
+    status: 'live',
+    href: '/field-manual/crop-novelty',
+    version: VERSION,
+    related: [
+      { slug: 'crop-licensing', note: 'Both bend the per-station sale price through the same combined multiplier chain.' },
+      { slug: 'crop-mastery', note: 'Mastery price tier stacks into the same chain as a separate factor.' },
+      { slug: 'skills', note: 'Boutique skill amplifies the novelty bonus tiers — does nothing on its own.' },
+      { slug: 'cartel-attacks', note: 'Smear Campaign zeroes every novelty bonus for the year regardless of history.' }
+    ],
+    summary:
+      "Buyers in the valley have been feeding the Cartel's predictable pipeline so long they pay extra for anything they did not see last year. Crop Novelty turns crop rotation into an active income strategy: every crop on your farm carries an invisible \"last year sold\" date, and the bigger the gap since you last sold a crop, the bigger the price boost it earns. The boost is decided in March based on what you sold the previous year, then locks in for the full season — selling a crop later in the year does not retroactively shrink its bonus, it only feeds the next March's calculation.",
+    whatItDoes: [
+      "Awards a +15% sale-price boost on any crop you did not sell last year (a gap of two or more calendar years since the last sale).",
+      "Awards a +25% sale-price boost on any crop you have not sold in the last five years, OR have never sold at all on this save.",
+      "Locks every crop's boost at period 1 (March), based on the prior year's sales history. The number is set for the full year on day one and does not change mid-season.",
+      "Composes with Sale Price skill, Crop Licensing, and the Crop Mastery price tier through a single combined multiplier written to every selling station — every factor goes through one pass, so the bonuses do not race each other.",
+      "Updates last-year-sold history on every sale tick — selling a crop does not change THIS year's locked boost, but it overwrites the timer the NEXT March's boost calculation will read."
+    ],
+    whyItMatters:
+      "Novelty is the only price boost in FarmPunk that rewards what you did not do. Every other system asks for more — more skill, more mastery, more shares, more deliveries. Novelty asks you to skip a year. That makes it free leverage for any farm willing to plan harvests across multiple years instead of locking into the same crop forever. The +25% rare-crop tier, in particular, is large enough that a five-year-rest crop can outpace the per-station price multiplier of a fully-mastered, fully-licensed standby crop. The trap is that the boost is decided BEFORE the year starts. By the time you notice a crop has a +25% locked in for the year, the only thing to do is sell as much of it as you can before the next March overwrites the timer.",
+    howYouProgress: [
+      "Run `farmPunkNovelty` in March to see every crop's current boost tier, last-year-sold record, and the year gap. Crops in the +25% tier are the ones to plant heavy this year.",
+      "Plan harvests across multiple years instead of one. A two-crop or three-crop rotation keeps each crop in the +15% (or +25%) tier whenever it is your turn to grow it.",
+      "Pick up the Boutique skill once you have a stable rotation. Every level adds +1 percentage point to the +15% tier and +2 percentage points to the +25% tier; at L10 the tiers become +25% and +45%. Boutique does NOTHING on a crop with no novelty boost — it amplifies, it does not generate.",
+      "Sell a boost-bearing crop before the year ends, even if you would rather hold it. The boost is locked for THIS year regardless of when you sell. Holding the silo into next year forfeits the boost and resets the gap counter on the side that matters."
+    ],
+    importantNumbers: [
+      { label: 'Tier 1 boost (+15%)', value: 'Crop NOT sold last year (gap ≥ 2 years)' },
+      { label: 'Tier 2 boost (+25%)', value: 'Crop NOT sold in last 5 years OR never sold on this save' },
+      { label: 'Lock point', value: 'Period 1 (March) — based on prior year\'s sales history' },
+      { label: 'Lock duration', value: 'Full year. Selling mid-year does NOT change this year\'s boost.' },
+      { label: 'History update', value: 'Every sale rewrites last-year-sold for next March\'s calc' },
+      { label: 'Boutique skill on Tier 1', value: 'L10 → +25% (1.15 base + 0.10 amplification)' },
+      { label: 'Boutique skill on Tier 2', value: 'L10 → +45% (1.25 base + 0.20 amplification)' },
+      { label: 'Boutique on no-boost crops', value: '0% — Boutique requires an active novelty tier to ride on' },
+      { label: 'Smear Campaign (Cartel attack)', value: 'Zeroes every novelty bonus for the active year' },
+      { label: 'Stacks with', value: 'Sale Price skill · Crop Licensing penalty · Crop Mastery price tier (one combined multiplier)' }
+    ],
+    beginnerAdvice: [
+      "Check `farmPunkNovelty` in your first March. Brand-new saves have NEVER sold any crop, so the first year on a fresh save can carry +25% on every crop you choose to plant. Use it.",
+      "Rotate two or three crops on a multi-year cycle. A wheat-corn-soy rotation keeps each crop on a two-year gap, which means each one earns +15% the year you plant it.",
+      "Boutique is a multiplier, not a generator. Buying Boutique levels on a save where every crop sold last year does literally nothing this year — the skill needs an active novelty tier to amplify. Pair Boutique with deliberate rotation, not as a substitute for it.",
+      "Smear Campaign as a Cartel attack flat-zeroes every novelty bonus for the year — and Boutique amplification rides on top of zero, so it goes silent too. Years with Smear active are years to lean on Sale Price and Mastery, not on rotation.",
+      "Holding a stockpile of a +25% crop \"for next year\" forfeits the boost and resets the gap. The locked tier is for THIS year. Sell what carries the boost while it carries it."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkNovelty', note: 'Read-only. Per-crop novelty status: last-year sold, year gap, current boost tier, and confirmation that the tier is locked-in for this year.' }
+    ],
+    fieldNote:
+      "The Cartel knows what you grew last year. The valley pays for what you didn't."
+  },
+  {
+    slug: 'crop-spoilage',
+    category: 'Production',
+    title: 'Crop Spoilage',
+    oneLiner:
+      "Crop Spoilage makes hoarding dangerous: every month, stored grain rots, leaks, or disappears into whatever lives in the silo walls. Skills can slow the loss, but bad weather and Cartel poisoning can turn patience into rot — sell with a plan before the rats collect their dividend.",
+    status: 'live',
+    href: '/field-manual/crop-spoilage',
+    version: VERSION,
+    related: [
+      { slug: 'skills', note: 'Spoilage Immunity skill subtracts up to 5 percentage points off the per-period rate.' },
+      { slug: 'weather', note: 'Some weather years add positive or negative percentage points to the spoilage rate.' },
+      { slug: 'cartel-attacks', note: 'Crop Poisoning is a separate one-shot raid on a single silo — different system, same lesson.' },
+      { slug: 'crop-licensing', note: 'Holding grain to spread sales across the license cap is the most common reason to leave grain in storage.' }
+    ],
+    summary:
+      "Storage in FarmPunk is not a safe deposit box. Every month, the contents of every grain silo and grain-capable trailer on the farm shrink by a flat percentage — pests, rot, leaks, theft, or just the cost of doing business in a valley where nothing is allowed to sit still and earn nothing. The base rate is 3% per period, applied at the period change. Skills can soften it, weather can twist it both directions, and the Cartel's Crop Poisoning attack can wipe a silo clean in one night. The system rewards farmers who plan the move from harvest to scale.",
+    whatItDoes: [
+      "Trims a flat 3% off the current grain volume in every storage container at every period change (one calendar month). 100,000 L of wheat at month-end becomes 97,000 L at month-start. There is no time-in-storage tracking — the cut is the same on grain that just came in as on grain that has been sitting all year.",
+      "Covers placeable silos (the standard farm silos and silo extensions you place on your land) AND grain-capable vehicles — trailers, semi-trailers, and auger wagons. Combines, water trailers, livestock trailers, and mixer wagons are not affected.",
+      "Filters by content. Only grain-type fill is targeted. Manure tanks, liquid fertilizer, water trailers, and similar non-grain containers are skipped, even if they share a chassis with a grain trailer.",
+      "Reports the loss with a single OK-priority HUD notification per period, listing total liters lost across the farm with a per-crop breakdown. Quiet ticks (no grain on hand) skip the notification entirely — silence means there was nothing to lose.",
+      "Excludes the centralized farm silo (the in-game-menu logistics silo) from current scope. Planned for a future update; placeable silos and grain trailers are the current targets."
+    ],
+    whyItMatters:
+      "Spoilage is the system that punishes hoarding. Every other piece of FarmPunk pulls in the opposite direction — license caps reward staggered sales, novelty boosts reward year-long timing, mastery and prestige reward steady volume — and spoilage is the gravity underneath all of it. Three percent a month sounds harmless until you do the year-long math: a silo of grain held for twelve months loses just over thirty percent of its volume to nothing. A bad-weather year pushes that number up. A Crop Poisoning attack on a fat silo turns the loss into something far worse, in a single tick. The point of the system is to make standing inventory cost something, so the good plays in FarmPunk are the ones that move grain — to the scales, to the silo cap, to a Black Market goal — instead of sitting on it.",
+    howYouProgress: [
+      "Run `farmPunkSpoilage` to see how much grain is on hand right now and how much would be lost at the next period change. Use it to decide whether to push a sale before the month flips.",
+      "Buy levels of the Spoilage Immunity skill. Each level subtracts another 0.5 percentage points off the per-period rate, capping at 5 percentage points off the rate axis at L10 — enough to flatten a clear-weather base year to nearly zero loss.",
+      "Watch the weather forecast at year roll. Some weather rolls add positive percentage points to the spoilage axis (more rot) and some add negative (less rot). The rate is clamped at 0, so a deep negative weather mod plus L10 immunity does NOT grant bonus grain — it just floors the loss at zero.",
+      "Move grain on a schedule. The cleanest play is to harvest, sell what license headroom permits, then push the rest through Black Market deliveries while the storage clock is still ticking. Grain that leaves storage before the next period change loses nothing.",
+      "Keep tactical reserves small. The 3% loss is calculated against what is in the silo at the period flip — a 5,000-L holdback to bridge a license tier upgrade costs 150 L; a 500,000-L hoard costs 15,000 L."
+    ],
+    importantNumbers: [
+      { label: 'Base rate', value: '3% of current volume, every period change (monthly)' },
+      { label: 'Tracking', value: 'Flat — no time-in-storage, no aging curve, no \"fresh\" vs \"old\" distinction' },
+      { label: 'Scope', value: 'Placeable silos · silo extensions · grain trailers · semi-trailers · auger wagons' },
+      { label: 'Out of scope', value: 'Combines · water/manure/livestock/mixer trailers · centralized farm silo (planned follow-up)' },
+      { label: 'Spoilage Immunity skill', value: '−0.5 percentage points per level (L10 = −5% off the rate axis)' },
+      { label: 'Weather modifier', value: 'Adds (positive or negative) percentage points to the rate. Rate is clamped at 0.' },
+      { label: 'Worked example', value: '3% base − 1% favorable weather − L10 immunity → 0% (clamped, not negative)' },
+      { label: 'Worked example', value: '3% base + 2% adverse weather → 5% per period until weather lifts' },
+      { label: 'Notification', value: 'OK-priority HUD card per period · total liters lost + per-crop breakdown · silent on zero-grain ticks' },
+      { label: 'Crop Poisoning (Cartel attack)', value: 'Separate one-shot silo raid — independent of monthly spoilage' }
+    ],
+    beginnerAdvice: [
+      "Sell as soon as the license cap permits. Every month a silo sits at half-full is a month paying 3% rent on grain you already grew.",
+      "Buy Spoilage Immunity levels on any save where storage is forced — large-acreage operations holding silo loads to spread across license caps lose multiple thousand liters per month at the base rate.",
+      "Adverse-weather years are the wrong years to hoard. Some weather rolls push spoilage into the 4–5% range monthly. Move grain faster when the year-roll forecast warns of bad weather.",
+      "The HUD card going silent does not mean spoilage broke. It means there was nothing in storage to spoil that period. Empty silos cost nothing.",
+      "Crop Poisoning as a Cartel attack is its own event — a one-shot raid that wipes liters from one targeted silo regardless of how the monthly spoilage tick has been treating you. Plan against the franchise pressure system, not just the rate."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkSpoilage', note: 'Read-only. Per-crop grain on hand across all silos and trailers, with the projected liters that would spoil at the next period change.' },
+      { cmd: 'farmPunkForceSpoilage', note: 'Testing tool — manually trigger the spoilage tick now without waiting for a period change.' }
+    ],
+    fieldNote:
+      "Storage is not safety. It is rent paid by the liter, every month, to whatever lives in the silo walls."
+  },
+  {
+    slug: 'weather',
+    category: 'Production',
+    title: 'Weather System',
+    oneLiner:
+      "The Weather System turns each year into a sentence the sky hands down: forty-five patterns across five rarity tiers, from common drizzle to once-a-decade dust storms. One pattern locks in for the full year, forcing you to plan crops, storage, hauling, and survival around whatever the season decides to become.",
+    status: 'live',
+    href: '/field-manual/weather',
+    version: VERSION,
+    related: [
+      { slug: 'crop-spoilage', note: 'Some weather mods add to the monthly spoilage rate; favorable years subtract from it.' },
+      { slug: 'rust-and-raiders', note: 'Weather exposure modifier scales the per-period damage exposed equipment takes.' },
+      { slug: 'skills', note: 'Weather Shield skill absorbs negative yield modifiers up to 5 percentage points.' },
+      { slug: 'perks', note: 'Forecasting Leveraging perk amplifies the favorable side of every weather mod, +1pp per occurrence.' },
+      { slug: 'crop-mastery', note: 'Weather adds or subtracts from the same yield axis mastery + skill levels write to.' }
+    ],
+    summary:
+      "Every March the sky picks a card. The card has a name (\"Drought Belt,\" \"Hail Season,\" \"Boom Year,\" and forty-two others), a rarity, a one-line description, and three signed numbers — yield, spoilage, and exposure modifiers — that follow the farm for the full calendar year. Most cards are mild. A few are devastating. The weather is rolled at year-flip, locked for the rest of the year, and announced through a single HUD forecast card so you know what kind of year you are about to plan. The system rewards farmers who read the forecast and adjust the operation around it instead of running the same plan twelve months in a row.",
+    whatItDoes: [
+      "Rolls one weather pattern at period 1 (March) every year. The chosen pattern locks in for the full year — there is no second roll, no mid-year shift, no in-game seasonal cycle. Whatever the year became at March is what it stays.",
+      "Picks from a catalog of forty-five patterns, distributed across five rarity tiers. Tier 1 has 20 entries, Tier 2 has 10, Tiers 3–5 have 5 entries each. The roll is two-stage: first a weighted d100 picks the rarity tier, then a uniform random pick selects one specific entry from that tier's pool.",
+      "Carries three independent modifiers per pattern, each one a signed percentage-point delta (positive or negative). Yield modifies how much crop comes out of the ground per square meter. Spoilage modifies the per-period rot rate on stored grain. Exposure modifies the per-period damage taken by equipment left outside a shed.",
+      "Applies modifiers ADDITIVELY on the percentage-point axis, not multiplicatively. A year with +13% yield from skill and mastery and a −3% weather yield mod nets +10% yield total — straight subtraction, not nested multiplication.",
+      "Fires an OK-priority HUD forecast card at year-roll showing the pattern's name, rarity, description, and the three signed mods on one line. The card is the only mid-year reminder the system gives you — read it.",
+      "Persists the active pattern across saves, plus a year-by-year history of every pattern that has ever rolled on the save (visible in `farmPunkWeather`)."
+    ],
+    whyItMatters:
+      "Weather is the only system in FarmPunk that touches all three production axes at once — yield, spoilage, and exposure — and it does it without consulting you. A rare bad-weather card can compress the year's profit margin by double-digit percentage points before you have made a single decision; a rare good-weather card can do the opposite. Most years the modifiers are small and the year plays out normally. The dangerous years are the rare ones, and they appear with no warning except the March forecast card. Reading the card and adjusting — selling stored grain early on a high-spoilage year, sheltering more equipment on a high-exposure year, leaning on Mastery on a low-yield year — is the difference between a roll that costs you a season and a roll that costs you a save.",
+    howYouProgress: [
+      "Read the March forecast card. The name and the three signed numbers tell you what the year is going to do. Plan the spring around them — what to plant, what to sell first, what to push indoors.",
+      "Buy levels of the Weather Shield skill if your saves keep rolling adverse yield years. Each level absorbs another 0.5 percentage points of NEGATIVE yield modifier, capping at 5 percentage points at L10. The shield only cancels damage; it cannot strip a favorable mod or invent gains on a clear year.",
+      "Pick up the Forecasting Leveraging perk as Farmer Prestige climbs. Each occurrence adds +1 percentage point to the FAVORABLE side of every axis only — positive yield mods get bigger, negative spoilage and exposure mods get more negative. Adverse rolls pass through untouched.",
+      "Use `farmPunkWeather` to read the live mod values and the full year-by-year history. Spotting a rare card on a known save is useful intel for what to plant before the next March overwrites the roll."
+    ],
+    importantNumbers: [
+      { label: 'Roll cadence', value: 'Once per year, at March (period 1)' },
+      { label: 'Lock duration', value: 'Full calendar year — no mid-year shift' },
+      { label: 'Catalog size', value: '45 patterns' },
+      { label: 'Tier 1 (common)', value: '20 entries · 50% rarity-roll chance' },
+      { label: 'Tier 2 (uncommon)', value: '10 entries · 25% rarity-roll chance' },
+      { label: 'Tier 3 (rare)', value: '5 entries · 15% rarity-roll chance' },
+      { label: 'Tier 4 (very rare)', value: '5 entries · 8% rarity-roll chance' },
+      { label: 'Tier 5 (legendary)', value: '5 entries · 2% rarity-roll chance' },
+      { label: 'Modifiers per pattern', value: '3 signed percentage-point deltas — yield, spoilage, exposure' },
+      { label: 'Composition', value: 'Additive on the percentage-point axis (NOT multiplicative)' },
+      { label: 'Yield example', value: '+13% from skill + mastery − 3% weather = +10% net' },
+      { label: 'Spoilage example', value: '3% base + 2% weather = 5% per period until weather lifts' },
+      { label: 'Exposure example', value: '5% base wear + 5% weather = 10% per period on exposed equipment' },
+      { label: 'Weather Shield skill cap', value: '−5% absorbed off NEGATIVE yield mods only' },
+      { label: 'Forecasting Leveraging perk', value: '+1pp per occurrence on the favorable side of each axis (cap 10)' }
+    ],
+    beginnerAdvice: [
+      "Read the forecast card the moment it fires. The name is flavor; the three numbers are the year. Skipping the card means walking blind into a season the system already told you about.",
+      "Adverse-weather years are not lost — they are different. A −3% yield year still grows crop, just less of it. A +2% spoilage year still lets you store grain, just for less time. The play is to lean harder on the systems weather did not touch (Mastery, Boutique, license headroom) instead of trying to outwork the modifier.",
+      "Weather Shield only acts on NEGATIVE yield mods. Buying it on a save that keeps rolling positive-yield years buys nothing. It is insurance against bad rolls, not a permanent yield boost.",
+      "Forecasting Leveraging amplifies favorable rolls but does NOT shield bad ones. Pair it with Weather Shield if you want both directions covered.",
+      "Tier 5 cards are once-in-a-blue-moon rolls (2% chance per year). Most saves never see two of them. When one fires, treat the year as the headline year — every other plan adjusts around the modifier."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkWeather', note: 'Read-only. Current year\'s pattern (name, rarity, description, the three signed mods, locked year), full year-by-year history, and catalog counts per rarity tier.' },
+      { cmd: 'farmPunkSetWeather <id>', note: 'Testing tool — force a specific weather id and trigger the downstream re-apply. Mutates the current year\'s slot.' },
+      { cmd: 'farmPunkRerollWeather', note: 'Testing tool — roll a fresh weather pattern right now without waiting for period 1.' }
+    ],
+    fieldNote:
+      "The Cartel writes the contracts. The sky writes the year."
   }
 ];
 
@@ -714,49 +1015,8 @@ export const STUBS: CatalogEntry[] = [
   // (Shares, Dividends, and Black Markets are full dossiers — see MECHANICS above.)
 
   // Production & Markets
-  {
-    slug: 'crop-licensing', category: 'Production', title: 'Crop Licensing',
-    oneLiner: "Crop Licensing is the Cartel’s way of deciding how much of each crop you are allowed to sell before they crush the price. Upgrade licenses with scrip to raise your annual caps, because anything sold past the line gets punished hard — unapproved abundance is still disobedience.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'crop-novelty', note: 'Both modify per-station sale price through the same writer.' },
-      { slug: 'cartel-attacks', note: 'License Revocation drops one of your tiers for the year.' },
-      { slug: 'black-markets', note: 'License penalty applies to ALL sales, including Black Market deliveries.' },
-      { slug: 'crop-mastery', note: 'Both contribute to crop-specific progression.' }
-    ]
-  },
-  {
-    slug: 'crop-novelty', category: 'Production', title: 'Crop Novelty Bonus',
-    oneLiner: "The Crop Novelty Bonus rewards farmers who keep the market guessing instead of feeding the Cartel the same predictable harvest every year. Crops you skipped last year sell for more, and crops absent for five years hit even harder — rotation is not just soil sense, it is market misdirection.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'crop-licensing', note: 'Both modify per-station sale price through the same writer.' },
-      { slug: 'crop-mastery', note: 'Mastery price tier stacks multiplicatively.' },
-      { slug: 'skills', note: 'Boutique skill amplifies the novelty bonus.' },
-      { slug: 'cartel-attacks', note: 'Smear Campaign zeros novelty bonuses for the year.' }
-    ]
-  },
-  {
-    slug: 'crop-spoilage', category: 'Production', title: 'Crop Spoilage',
-    oneLiner: "Crop Spoilage makes hoarding dangerous: every month, stored grain rots, leaks, or disappears into whatever lives in the silo walls. Skills can slow the loss, but bad weather and Cartel poisoning can turn patience into rot — sell with a plan before the rats collect their dividend.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'skills', note: 'Spoilage Immunity skill reduces the monthly rot rate.' },
-      { slug: 'weather', note: 'Bad-weather years can add to the spoilage rate.' },
-      { slug: 'cartel-attacks', note: 'Crop Poisoning is a separate one-shot raid on a single silo.' }
-    ]
-  },
-  {
-    slug: 'weather', category: 'Production', title: 'Weather System',
-    oneLiner: "The Weather System turns each year into a sentence the sky hands down: forty-five patterns across five rarity tiers, from common drizzle to once-a-decade dust storms. One pattern locks in for the full year, forcing you to plan crops, storage, hauling, and survival around whatever the season decides to become.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'crop-spoilage', note: 'Weather modifier adds to the monthly spoilage rate.' },
-      { slug: 'skills', note: 'Weather Shield skill absorbs negative weather mods on yield.' },
-      { slug: 'perks', note: 'Forecasting Leveraging perk amplifies the favorable side of every weather mod.' },
-      { slug: 'rust-and-raiders', note: 'Weather modifier applies to per-period exposure damage.' }
-    ]
-  },
+  // (Crop Licensing, Crop Novelty, Crop Spoilage, and Weather are full
+  // dossiers — see MECHANICS above.)
 
   // Money & Credit
   {
@@ -831,17 +1091,6 @@ export const STUBS: CatalogEntry[] = [
       { slug: 'mandatory-financing', note: 'Land buys run through the same financing flow plus this surcharge.' },
       { slug: 'perks', note: 'Negotiator perk reduces the surcharge by up to 30%.' },
       { slug: 'skills', note: 'Land BOGO skill discounts land prices, applied before the surcharge calc.' }
-    ]
-  },
-  {
-    slug: 'wallet-scrip', category: 'RPG', title: 'Scrip',
-    oneLiner: "Scrip is the farmer’s private leverage, kept separate from farm cash and impossible to launder back into the operation. It flows through the systems the Cartel cannot fully price in — skills, share buybacks, license upgrades, and Black Market work — then pays out each year as a small salary plus a profit-based bonus for surviving the ledger.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'skills', note: 'All 17 skills are bought with scrip.' },
-      { slug: 'shares', note: 'Shares are bought with scrip, not farm cash.' },
-      { slug: 'crop-licensing', note: 'License upgrades cost scrip.' },
-      { slug: 'black-markets', note: 'Black Market completions pay scrip in addition to cash + fame.' }
     ]
   },
   {
