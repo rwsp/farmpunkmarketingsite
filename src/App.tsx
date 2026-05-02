@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
 import { Features } from './pages/Features';
@@ -15,8 +16,33 @@ import { EarlyAccess } from './pages/EarlyAccess';
 import { NotFound } from './pages/NotFound';
 import { useScrollToTop } from './hooks/useScrollToTop';
 
+// QA tool — lazy-loaded so the ~330KB of test-case markdown doesn't bloat
+// the marketing bundle. Internal route, not linked from the nav.
+const TestCases = lazy(() =>
+  import('./pages/TestCases').then(m => ({ default: m.TestCases }))
+);
+
 export default function App() {
   useScrollToTop();
+  return (
+    <Routes>
+      {/* Standalone routes — bypass FarmPunk layout (chrome-free) */}
+      <Route
+        path="/test-cases"
+        element={
+          <Suspense fallback={<div style={{ padding: 24, color: '#8b949e', background: '#0d1117', minHeight: '100vh', fontFamily: 'system-ui' }}>Loading test cases…</div>}>
+            <TestCases />
+          </Suspense>
+        }
+      />
+
+      {/* Everything else gets the FarmPunk shell */}
+      <Route path="/*" element={<MainSite />} />
+    </Routes>
+  );
+}
+
+function MainSite() {
   return (
     <Layout>
       <Routes>
