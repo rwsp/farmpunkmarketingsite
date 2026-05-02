@@ -17,8 +17,10 @@ export function Footer() {
             <ul>
               <li><a href="/features">Features</a></li>
               <li><a href="/field-manual">Field Manual</a></li>
+              <li><a href="/black-markets">Black Markets</a></li>
               <li><a href="/console">Console Commands</a></li>
               <li><a href="/early-access">Early Access</a></li>
+              <li><a href="/test-cases">Test Cases</a></li>
             </ul>
           </div>
           <div>

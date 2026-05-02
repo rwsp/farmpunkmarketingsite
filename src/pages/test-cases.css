@@ -75,6 +75,19 @@
   gap: 2px;
   flex-shrink: 0;
 }
+.qa-bar__back {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--qa-info);
+  text-decoration: none;
+  margin-bottom: 2px;
+  transition: color 0.1s;
+}
+.qa-bar__back:hover {
+  color: var(--qa-text);
+  text-decoration: underline;
+}
 .qa-bar__center {
   display: flex;
   justify-content: center;

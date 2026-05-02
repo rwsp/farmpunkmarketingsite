@@ -140,6 +140,9 @@ export function TestCases() {
       {/* ── App bar ──────────────────────────────────────────── */}
       <header className="qa-bar">
         <div className="qa-bar__brand">
+          <a className="qa-bar__back" href="/" title="Return to FarmPunk site">
+            ← Back to site
+          </a>
           <span className="qa-bar__title">FarmPunk · QA Test Runner</span>
           <span className="qa-bar__sub">
             {mode === 'smoke'
