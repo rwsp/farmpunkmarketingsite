@@ -29,7 +29,7 @@ const COMMANDS: Cmd[] = [
   { cat: 'Production', cmd: 'farmPunkBuyLicense', args: '<CROPNAME>', desc: 'Upgrade a crop license one tier.' },
   { cat: 'Production', cmd: 'farmPunkNovelty', args: '—', desc: 'Per-crop last sold, gap, current boost.' },
   { cat: 'Production', cmd: 'farmPunkMastery', args: '—', desc: 'Prestige + per-crop Mastery levels.' },
-  { cat: 'Production', cmd: 'farmPunkRewards', args: '—', desc: 'Prestige reward catalog. CLAIMED / PENDING / LOCKED.' },
+  { cat: 'Production', cmd: 'farmPunkRewards', args: '—', desc: 'Rebel Supply Chain. CLAIMED / PENDING / LOCKED.' },
   { cat: 'Production', cmd: 'farmPunkPerks', args: '—', desc: 'Active perks, levels, BD counter, next grant level.' },
   { cat: 'Production', cmd: 'farmPunkSpoilage', args: '—', desc: 'Per-crop on hand + projected next-period loss.' },
   { cat: 'Production', cmd: 'farmPunkWeather', args: '—', desc: 'Current weather, mods, history, catalog counts.' },

@@ -262,6 +262,242 @@ export const MECHANICS: Mechanic[] = [
     ],
     fieldNote:
       "The Cartel's books never see this money move. Your stats screen never shows it. Your credit rating never reacts to it. The only thing that notices is the valley. That's the whole point."
+  },
+  {
+    slug: 'farmer-prestige',
+    category: 'RPG',
+    title: 'Farmer Prestige',
+    oneLiner:
+      "Farmer Prestige tracks how loudly your name travels through the valley — trusted by locals, watched by buyers, and cursed by the Cartel. Higher Prestige unlocks perks, better Black Market access, and occasional one-time support from people who believe your farm might become the crack in their empire.",
+    status: 'live',
+    href: '/field-manual/farmer-prestige',
+    version: VERSION,
+    related: [
+      { slug: 'crop-mastery', note: 'Both grow per liter sold. Prestige is global, mastery is per-crop.' },
+      { slug: 'rebel-supply-chain', note: 'Reward vehicles unlock at preset prestige levels.' },
+      { slug: 'perks', note: 'Perks unlock automatically as prestige climbs.' },
+      { slug: 'farmer-titles', note: 'Title is derived from current prestige level.' },
+      { slug: 'black-markets', note: 'Higher tier markets gate on prestige.' },
+      { slug: 'win-condition', note: "Doesn't directly affect the win, but unlocks the perks + rewards that help you reach it." }
+    ],
+    summary:
+      "Prestige is a single global reputation level that climbs every time you sell crops. It is the line under your name in the valley's quiet ledger — every liter through the scales counts, no matter what crop, what station, or what year. Mastery is per-crop. Prestige is everywhere. The number does not go down, does not reset between years or saves, and has no ceiling. It is the slow background measure of how serious a farmer you have become.",
+    whatItDoes: [
+      "Tracks one global level driven by total liters sold across every harvestable crop. One liter sold = one point of Prestige fame, regardless of which crop, which station, or which year.",
+      "Levels up automatically as you cross fame thresholds. The first level takes 24,000 liters; each level after that costs 10% more fame than the last.",
+      "Has no level cap and never resets. Prestige keeps climbing across years and across saves — once you have earned a level, it is yours.",
+      "Drives three downstream systems: Farmer Titles (the honorific the valley uses for you), the Rebel Supply Chain (machines, parts, and trailers quietly redirected onto your dealer's pad as the valley starts betting on you), and Farmer Prestige Perks (a rotating set of recurring bonuses unlocked on every level-up).",
+      "Unlocks the higher-tier Black Markets — the deeper-cash buyers will not deal with someone the valley has not heard of yet. Black Market completions also pay direct Prestige fame on top of cash and scrip."
+    ],
+    whyItMatters:
+      "Crop Mastery makes you better at one specific crop. Prestige makes the whole valley pay attention. Every perk that softens taxes, widens loan ceilings, refunds stolen equipment, or speeds up mastery comes through this number — perks unlock automatically as Prestige climbs. At specific levels, equipment also starts showing up on the dealer's pad with no purchase, no financing, and no Cartel signoff — the Cartel calls it fraud and unauthorized redistribution; the valley calls it field support, betting on you with the only things that matter out here. And the better Black Markets — the ones that pay seven figures and feed Warchest deposits — only open up to farmers with the reputation to back the deal. Prestige is the trunk that all of FarmPunk's RPG progression branches off of.",
+    howYouProgress: [
+      "Sell crops. Any crop, at any station — every liter counts as one point of Prestige fame. There is no menu, no purchase, no console step.",
+      "Pick up the Mastery Catalyst perk on the way up. It speeds up Crop Mastery, not Prestige itself, but a faster mastery climb means more Black Market completions and more reward unlocks down the road.",
+      "Take Black Market jobs once they appear on the board. Completed deliveries pay a direct Prestige fame bonus on top of cash and scrip — far faster than grinding pure liters.",
+      "Do not chase the curve. Prestige is meant to feel earned, not farmed — keep selling, keep finishing markets, and the levels will come."
+    ],
+    importantNumbers: [
+      { label: 'Fame per liter sold (any crop)', value: '1' },
+      { label: 'Liters to reach L1', value: '24,000' },
+      { label: 'Curve', value: 'Each level costs 10% more fame than the last (geometric, growth 1.10)' },
+      { label: 'Level cap', value: 'None' },
+      { label: 'Counter resets', value: 'Never. Persists across years and saves.' },
+      { label: 'Title bands', value: 'L0 / L10 / L20 / L30 / L40 / L50 — six titles' },
+      { label: 'Reward levels (free vehicles)', value: 'L3, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100' },
+      { label: 'Black Market unlocks', value: 'Backroad 0 · Off-Book 10 · Underground 20 · Insurgent 30 · Liberating 40' }
+    ],
+    beginnerAdvice: [
+      "Do not try to grind Prestige directly — it grows on every sale anyway. Focus on running the farm well; Prestige is the receipt.",
+      "Once Prestige starts crossing Rebel Supply Chain levels, machines, headers, and trailers start appearing on the dealer's pad — the valley redirecting gear onto your operation, paperwork left vague on purpose. Check the lot after a level-up so a $400,000 combine is not sitting there for a week.",
+      "Black Market completions are the fastest way to climb after the early years. The fame payout per market dwarfs what selling a single grain trailer adds.",
+      "Title bands change every ten levels until L50. Crossing into a new band does not change any numbers — the bonuses come from perks and rewards, which are tied to the level itself, not the title."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkMastery', note: 'Read-only. Prints current Farmer Prestige level + fame and progress to the next level, alongside per-crop mastery.' },
+      { cmd: 'farmPunkPerks', note: "Read-only. Shows current Prestige level + title, every perk's level/cap, and the level of the next perk grant." },
+      { cmd: 'farmPunkStats', note: 'Read-only. Prints your farmer title (derived from Prestige) plus year-over-year revenue, expenditure, profit, and 3-year average.' }
+    ],
+    fieldNote:
+      "Mastery is what you know. Prestige is what they say about you when you walk away from the scales."
+  },
+  {
+    slug: 'rebel-supply-chain',
+    category: 'RPG',
+    title: 'Rebel Supply Chain',
+    oneLiner:
+      "The Cartel calls it fraud, theft, and unauthorized redistribution. The valley calls it field support. As your Farmer Prestige rises, people start betting on you with the only things that matter out here: machines, parts, trailers, and trust.",
+    status: 'live',
+    href: '/field-manual/rebel-supply-chain',
+    version: VERSION,
+    related: [
+      { slug: 'farmer-prestige', note: 'Reward vehicles deliver at preset prestige levels.' },
+      { slug: 'perks', note: "Perk cadence skips reward levels — they're free 'rest' levels." },
+      { slug: 'asset-sell-block', note: "Reward vehicles can't be sold — the museum doctrine applies to them too." }
+    ],
+    summary:
+      "Reaching certain Prestige levels delivers vehicles, headers, trailers, and tools to the dealer's spawn pad — free, fully configured, and registered to your farm before you set foot in the shop. Not every level has a reward; the list is hand-picked and uneven on purpose. The valley does not promote you on a schedule. They send what they think you can use, when they think you have earned it.",
+    whatItDoes: [
+      "Delivers preconfigured equipment to the dealer's spawn pad at specific Prestige levels, free of charge. Each delivery shows up where a normal purchase would, already tied to your farm.",
+      "Some levels deliver a single item; others deliver a bundle. The L20 level drops a Case IH Axial-Flow 7160 combine paired with its 3050 TerraFlex header. The L100 level drops the AF11 combine plus its FD250 FlexDraper header.",
+      "Every reward in the shipped Supply Chain is a vanilla Farming Simulator 25 storeItem — no extra mods required.",
+      "Reward levels are invisible to the Perks rotation. They do not grant a perk and do not count as a 'skip,' so the perk cadence keeps moving past them. A reward level is effectively a free rest level — equipment instead of a perk.",
+      "Catch-up on load: when a save loads, any reward level at or below your current Prestige that has not been claimed yet will be delivered. The Supply Chain can grow in future updates without skipping rewards on existing saves.",
+      "Once delivered, reward vehicles obey the same museum rule as everything else you own — they cannot be sold."
+    ],
+    whyItMatters:
+      "FarmPunk forces every major piece of equipment through financing — leasing is dead, down payments are real, and bad purchases stay parked in your shed forever. The Rebel Supply Chain is the one channel where serious gear shows up without a loan, without a surcharge, and without the Cartel's signature on the paperwork. A free combine, a free articulated tractor, a free grain cart — these are the tools that let a working farm punch above its credit rating. It is also one of the only places in FarmPunk where the game hands you something outright instead of charging for it.",
+    howYouProgress: [
+      "Climb Prestige. The reward levels are 3, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, and 100 — every level on that list delivers something.",
+      "After a level-up, walk to the dealer's spawn pad. The reward will already be there, fully configured, registered to your farm. The HUD card on level-up tells you what was delivered.",
+      "Do not sell what you cannot replace. Reward vehicles cannot be unloaded — once they arrive, they are part of your collection until the end of the save.",
+      "Treat bundled rewards as bundles. Some levels deliver a harvester paired with its specific header (L20, L100). Selling them apart is not an option anyway — the museum rule covers reward vehicles too."
+    ],
+    importantNumbers: [
+      { label: 'L3', value: 'Zetor PROXIMA HS — compact tractor with front loader' },
+      { label: 'L5', value: 'Claas ARION 570-530 — mid tractor with front loader' },
+      { label: 'L10', value: 'Mack Anthem 6x4 — semi truck, black' },
+      { label: 'L15', value: 'Deutz-Fahr Series 8 TTV — large tractor' },
+      { label: 'L20', value: 'Case IH Axial-Flow 7160 + 3050 TerraFlex 28FT header' },
+      { label: 'L25', value: 'Lode King Prestige Super-B — grain trailer' },
+      { label: 'L30', value: 'New Holland T8 GENESIS Series — large tractor' },
+      { label: 'L35', value: "Elmer's HaulMaster — grain cart" },
+      { label: 'L40', value: 'Väderstad NZ Extreme 1425 — seedbed cultivator' },
+      { label: 'L45', value: 'John Deere CP690 — cotton picker' },
+      { label: 'L50', value: 'John Deere 9RX Series 710-830 — articulated tracked tractor' },
+      { label: 'L75', value: 'Pöttinger ROTOCARE V 12400 — rotary hoe' },
+      { label: 'L100', value: 'Case IH AF11 combine + FD250 FlexDraper header' },
+      { label: 'Total levels with rewards', value: '13' },
+      { label: 'Sellable', value: 'No. Reward vehicles are permanent like every other purchase.' }
+    ],
+    beginnerAdvice: [
+      "The first three rewards (L3, L5, L10) come fast and matter — the early tractors and semi truck are real upgrades for a farm still running on starter equipment. Keep an eye on the dealer's pad.",
+      "Multi-item levels deliver every piece in the bundle. The L20 and L100 levels are designed to drop both items at once.",
+      "If you load a save on a newer version of FarmPunk and a level you already crossed was not in the Supply Chain before, you will get the reward on map load. Older saves do not miss out on new entries.",
+      "Do not expect a reward at every level-up. The Supply Chain skips most levels. The next reward level, not the next level, is what to plan around."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkRewards', note: "Read-only. Prints the full Supply Chain: each level's reward name, status (CLAIMED / PENDING / LOCKED), and source path." },
+      { cmd: 'farmPunkClaimReward <level>', note: 'Force-claim a reward for testing. Bypasses the Prestige-level gate but still respects the once-per-save claim flag.' },
+      { cmd: 'farmPunkResetReward <level>', note: "Clear a level's claimed flag so it becomes claimable again. Does not despawn or remove anything that was already delivered." }
+    ],
+    fieldNote:
+      "The Cartel mails you bills. The valley sends you a tractor."
+  },
+  {
+    slug: 'farmer-titles',
+    category: 'RPG',
+    title: 'Farmer Titles',
+    oneLiner:
+      "Farmer Titles are what the valley calls you as your reputation grows, from another operator in the dirt to a name the Cartel cannot ignore. They do not change the math — they mark how far you have climbed in a world that was built to keep you small.",
+    status: 'live',
+    href: '/field-manual/farmer-titles',
+    version: VERSION,
+    related: [
+      { slug: 'farmer-prestige', note: 'Title is purely a derived display from your current prestige level.' }
+    ],
+    summary:
+      "Titles are the names the valley uses for you as your Prestige climbs. They do not change yields, prices, or fees — they are flavor, not bonus. But they mark how far you have come in a world built to keep you small, and they are how anyone reading your save's stats line knows whether you are a debt farmer holding on or a rebel baron the Cartel can no longer ignore.",
+    whatItDoes: [
+      "Assigns one of six titles based on your current Prestige level. The title updates the moment you cross a band threshold.",
+      "Has no mechanical effect — yields, prices, taxes, and Cartel pressure ignore the title entirely. Titles do not grant perks; perks do that on their own track.",
+      "Surfaces in the farmer stats summary line. As of this version, that is the title's primary appearance — future surfaces will pull from the same source.",
+      "Recomputed on the fly from your live Prestige level. There is no separate ledger to corrupt and no migration needed when the bands are retuned in a future update."
+    ],
+    whyItMatters:
+      "Most progression in FarmPunk comes with a number attached — yield, price, fame, scrip, dollars saved on a tax bill. Titles are deliberately not that. They are the long-term mood meter of the run, the marker that turns a save from 'a small farm trying to survive' into 'the operation in the corner of the map that the Cartel is starting to take seriously.' Crossing into a new title is also a rough proxy for which Black Markets have opened, which perks have likely fired, and which reward vehicles are already in your shed — the band thresholds line up with the major shifts in what your farm can do.",
+    howYouProgress: [
+      "Climb Prestige. There is no other input — every title is a direct read off the current Prestige level.",
+      "Do not farm for the title itself. The title appears the instant you cross the band threshold; chasing the band only makes sense as a side effect of chasing the perks and rewards on those levels.",
+      "Use the band as a planning rule of thumb. Field Serf is the survival window. Debt Farmer is when the valley starts noticing. Dirt Owner means you have a real operation. Farm Operator is high-mid game. Land Boss is endgame approach. Rebel Baron is everything past L50, including the L75 and L100 rewards."
+    ],
+    importantNumbers: [
+      { label: 'L0 – L9', value: 'Field Serf' },
+      { label: 'L10 – L19', value: 'Debt Farmer' },
+      { label: 'L20 – L29', value: 'Dirt Owner' },
+      { label: 'L30 – L39', value: 'Farm Operator' },
+      { label: 'L40 – L49', value: 'Land Boss' },
+      { label: 'L50+', value: 'Rebel Baron' },
+      { label: 'Mechanical effect', value: 'None. Pure honorific.' },
+      { label: 'Persisted state', value: 'None. Recomputed live from Prestige.' }
+    ],
+    beginnerAdvice: [
+      "Field Serf is not an insult — it is the first ten levels of every save. Almost every farmer who ever ran the valley started here.",
+      "When you cross into Debt Farmer (L10), the Off-Book Black Market tier opens up. The title and the unlock land at the same Prestige level, which is part of the design.",
+      "If you load a save and the title does not match what you expected, check `farmPunkMastery` for your real Prestige level — the title is just a read-off, so the level is the truth."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkStats', note: 'Read-only. Prints your current title plus year-over-year revenue, expenditure, profit, and 3-year average.' },
+      { cmd: 'farmPunkMastery', note: 'Read-only. Shows the Prestige level your title is derived from, plus per-crop mastery.' }
+    ],
+    fieldNote:
+      "Field Serf was the line on the Cartel's intake form. Rebel Baron is the line they refuse to write."
+  },
+  {
+    slug: 'vehicle-storage',
+    category: 'RPG',
+    title: 'Vehicle Storage Enforcement',
+    oneLiner:
+      'The weather is cruel, the nights are worse, and exposed gear does not stay untouched for long. Store vehicles in sheds or garages to protect them from damage, vandals, and thieves looking to turn your machinery into someone else’s payday.',
+    status: 'live',
+    href: '/field-manual/vehicle-storage',
+    version: VERSION,
+    related: [
+      { slug: 'cartel-attacks', note: "Goon Visit wrecks one tractor regardless of shelter — the only attack that ignores storage." },
+      { slug: 'skills', note: "Maintenance skill slows vehicle wear, but doesn't prevent exposure damage." },
+      { slug: 'perks', note: 'Insurance Policy refunds part of theft loss. Guard Dogs lowers vandal/theft chance.' },
+      { slug: 'weather', note: 'Bad-weather years amplify exposure damage.' }
+    ],
+    summary:
+      "FarmPunk's outdoors is hostile in a way the base game's is not. Equipment left in the open takes weather damage every month, draws vandals, draws thieves, and occasionally just disappears. Sheds and garages are not cosmetic — they are a system you opt into the moment you buy your first piece of equipment. Park inside, and most of the pressure goes away. Park outside, and the field will start sending you reminders.",
+    whatItDoes: [
+      "Every in-game month, walks through your owned equipment and checks which pieces are sitting outside a shed. The shed itself is the only protection — sheds, barns, and garages with the right placeable category count; an animal pen with a roof does not.",
+      "Wear: every exposed vehicle and implement takes +5% damage per month, capped at fully wrecked. The Maintenance skill does not slow this down — knowing how to fix a tractor does not stop hail and rust from finding it.",
+      "Vehicle event: a single monthly roll. 85% chance nothing happens, 10% chance vandals strip the most valuable exposed piece down to wrecked condition, 5% chance thieves take the most valuable exposed piece outright and it is gone for good.",
+      "Vandal cascade: when vandals show up, they start with the top-value target and roll for additional victims — a 1-in-2 chance for the second piece, 1-in-3 for the third, 1-in-4 for the fourth, and so on. The expected number of pieces hit per visit is around 1.7. A bad night can lose you several machines.",
+      "Theft permanently deletes the equipment. No cash recovered by default. Anything attached to the stolen vehicle (header, plow, trailer, weight) detaches and survives — they can only carry off one chassis.",
+      "Pallet event: a separate monthly roll, independent of the vehicle event. 33% chance pallet thieves come through. If they do, they always take one pallet, then roll a 1-in-2 for a second, 1-in-2 for a third, and so on. Average around two items per visit. Bales, fuel in tanks, and trailer fill levels are never targeted — these are dumb thieves.",
+      "Damage cutoff: equipment already at 80% damage or worse is invisible to vandals and thieves. The Cartel does not bother with broken-down crap. Wear still applies regardless.",
+      "Empty-handed flavor: when an event rolls but every eligible piece is sheltered, the HUD still tells you. 'Vandals came prowling but found nothing worth wrecking' is its own small reward."
+    ],
+    whyItMatters:
+      "Once the farm starts holding seven-figure equipment, an unlucky theft roll on an exposed combine can erase a year of work. Vandalism is recoverable; theft is not. Sheds turn the whole system off for whatever is parked inside, which is why shed coverage is one of the first major investments a serious FarmPunk save makes. The Goon Visit Cartel attack is the only damage event in the game that ignores shelter — everything else, sheltering solves. Building enough indoor space to fit your full operation is the difference between a year of growth and a year spent reordering machines.",
+    howYouProgress: [
+      "Buy or place a shed (or barn, or garage) early. Any placeable categorized as a shed counts. Cow barns and animal pens do not, even if the model has a roof.",
+      "Park your highest-value equipment indoors first. The vehicle event always targets the most valuable exposed piece — a sheltered combine is a thieves' deal that never happens.",
+      "Run `farmPunkShelterCheck` after rearranging the lot. It lists every owned vehicle as either sheltered (with the shed name) or exposed.",
+      "Pick up the Guard Dogs perk as it appears on the Prestige rotation. Each occurrence shaves vandal and theft chance off the monthly roll. Fully perked at 8 occurrences, the spread shifts from 85/10/5 to 97/2/1.",
+      "Pick up the Insurance Policy perk for theft cover. Each occurrence refunds 25% of the stolen vehicle's sell price. At the cap of 3, that is a 75% refund. Equipment only — pallets, big bags, and IBCs are not covered.",
+      "Plan around bad-weather years. Some weather patterns add to the per-month exposure damage. The Forecasting Leveraging perk softens favorable weather but cannot reverse adverse mods."
+    ],
+    importantNumbers: [
+      { label: 'Wear per exposed piece per month', value: '+5% damage (capped at fully wrecked)' },
+      { label: 'Maintenance skill effect on exposure wear', value: 'None. Maintenance does not slow it.' },
+      { label: 'Vehicle event roll', value: '85% nothing · 10% vandals · 5% theft (mutually exclusive)' },
+      { label: 'Vandal cascade', value: '1st piece always, then 1/2, 1/3, 1/4, … for additional pieces' },
+      { label: 'Expected vandal victims per visit', value: '≈ 1.7' },
+      { label: 'Theft', value: 'Most valuable exposed piece, deleted forever' },
+      { label: 'Damage immunity threshold', value: '≥80% damage = invisible to vandals and thieves' },
+      { label: 'Pallet event roll', value: '33% chance per month' },
+      { label: 'Pallet event count', value: '1 always, then 1/2, 1/2, … for additional pallets (avg ≈ 2)' },
+      { label: 'Pallet scope', value: 'Pallets, big bags, big-bag pallets, IBCs. Bales / fuel / trailer fills excluded.' },
+      { label: 'Guard Dogs cap (8 occurrences)', value: 'Spread shifts from 85/10/5 to 97/2/1' },
+      { label: 'Insurance Policy cap (3 occurrences)', value: "75% refund of stolen vehicle's sell price" },
+      { label: 'Goon Visit (Cartel attack)', value: "Wrecks one tractor regardless of shelter — the only attack shelter can't block" }
+    ],
+    beginnerAdvice: [
+      "Do not store anything you care about outside. The 5% theft chance every month sounds small until you do the math over a 12-month year on a $400,000 combine.",
+      "Old, beat-up starter equipment is safer parked outside than a new combine — anything past 80% damage is not on the menu. Use that, but do not rely on it.",
+      "Shed coverage is the cheapest insurance in the game. Pallets included — pallet thieves hit unsheltered pallets too, so a small pallet shed earns its cost back fast.",
+      "Empty-handed messages mean the system rolled an attack and your sheds blocked it. Each one is a reminder that the cost of the shed already paid for itself."
+    ],
+    consoleCommands: [
+      { cmd: 'farmPunkShelterCheck', note: 'Read-only. Lists every owned vehicle as sheltered (with shed name) or exposed, plus a sheltered/exposed tally.' },
+      { cmd: 'farmPunkStorageStatus', note: 'Read-only preview. Shows exposed equipment ranked by sell price with the vandal cascade rank, exposed pallets, total Wearables, current event odds, and the damage threshold. No rolls fired.' },
+      { cmd: 'farmPunkForceStorage', note: 'Manually trigger a storage tick now (wear pass + vehicle event + consumable event). Testing tool.' }
+    ],
+    fieldNote:
+      "The shed is not for the tractor's sake. It's for the part of the valley that learned, a generation ago, that an exposed combine after midnight is everyone's combine."
   }
 ];
 
@@ -296,7 +532,7 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
     version: VERSION,
     related: [
       { slug: 'farmer-prestige', note: 'Perks unlock automatically as Prestige levels up.' },
-      { slug: 'prestige-rewards', note: "Reward levels are skipped by perk cadence — they're free 'rest' levels." },
+      { slug: 'rebel-supply-chain', note: "Reward levels are skipped by perk cadence — they're free 'rest' levels." },
       { slug: 'farmer-titles', note: 'Both derive from prestige levels.' },
       { slug: 'crop-mastery', note: 'Mastery Catalyst perk speeds up per-crop fame gain.' },
       { slug: 'vehicle-storage', note: 'Insurance Policy + Guard Dogs perks reduce theft and vandal pain.' },
@@ -350,49 +586,6 @@ export const CUSTOM_PAGES: CatalogEntry[] = [
 // ── Stubs — shipped, but no deep wiki page yet ──────────────────
 export const STUBS: CatalogEntry[] = [
   // RPG & Progression
-  {
-    slug: 'farmer-prestige', category: 'RPG', title: 'Farmer Prestige',
-    oneLiner: "Farmer Prestige tracks how loudly your name travels through the valley — trusted by locals, watched by buyers, and cursed by the Cartel. Higher Prestige unlocks perks, better Black Market access, and occasional one-time support from people who believe your farm might become the crack in their empire.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'crop-mastery', note: 'Both grow per liter sold. Prestige is global, mastery is per-crop.' },
-      { slug: 'prestige-rewards', note: 'Reward vehicles unlock at preset prestige levels.' },
-      { slug: 'perks', note: 'Perks unlock automatically as prestige climbs.' },
-      { slug: 'farmer-titles', note: 'Title is derived from current prestige level.' },
-      { slug: 'black-markets', note: 'Higher tier markets gate on prestige.' },
-      { slug: 'win-condition', note: "Doesn't directly affect the win, but unlocks the perks + rewards that help you reach it." }
-    ]
-  },
-  {
-    slug: 'prestige-rewards', category: 'RPG', title: 'Prestige Reward Catalog',
-    oneLiner: "The Cartel calls it fraud, theft, and unauthorized redistribution. The valley calls it field support. As your Farmer Prestige rises, people start betting on you with the only things that matter out here: machines, parts, trailers, and trust.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'farmer-prestige', note: 'Reward vehicles deliver at preset prestige levels.' },
-      { slug: 'perks', note: "Perk cadence skips reward levels — they're free 'rest' levels." },
-      { slug: 'asset-sell-block', note: "Reward vehicles can't be sold — the museum doctrine applies to them too." }
-    ]
-  },
-  {
-    slug: 'farmer-titles', category: 'RPG', title: 'Farmer Titles',
-    oneLiner: "Farmer Titles are what the valley calls you as your reputation grows, from another operator in the dirt to a name the Cartel cannot ignore. They do not change the math — they mark how far you have climbed in a world that was built to keep you small.",
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'farmer-prestige', note: 'Title is purely a derived display from your current prestige level.' }
-    ]
-  },
-  {
-    slug: 'vehicle-storage', category: 'RPG', title: 'Vehicle Storage Enforcement',
-    oneLiner: 'The weather is cruel, the nights are worse, and exposed gear does not stay untouched for long. Store vehicles in sheds or garages to protect them from damage, vandals, and thieves looking to turn your machinery into someone else’s payday.',
-    status: 'pending', version: VERSION,
-    related: [
-      { slug: 'cartel-attacks', note: "Goon Visit wrecks one tractor regardless of shelter — the only attack that ignores storage." },
-      { slug: 'skills', note: "Maintenance skill slows wear, but doesn't prevent exposure damage." },
-      { slug: 'perks', note: 'Insurance Policy refunds part of theft loss. Guard Dogs lowers vandal/theft chance.' },
-      { slug: 'weather', note: 'Bad-weather years amplify exposure damage.' }
-    ]
-  },
-
   // Resistance
   {
     slug: 'shares', category: 'Resistance', title: 'Shares',
@@ -567,7 +760,7 @@ export const STUBS: CatalogEntry[] = [
     status: 'pending', version: VERSION,
     related: [
       { slug: 'perks', note: 'Backroom Dealers perk is the only way around it — N sells per year.' },
-      { slug: 'prestige-rewards', note: "Reward vehicles can't be sold either — museum doctrine applies." }
+      { slug: 'rebel-supply-chain', note: "Reward vehicles can't be sold either — museum doctrine applies." }
     ]
   },
   {

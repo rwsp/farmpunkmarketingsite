@@ -19,7 +19,7 @@ const SHIPPED = [
   'Crop Novelty Bonus',
   'Crop Mastery & Farmer Prestige',
   'Farmer Prestige Perks (12-perk rotation)',
-  'Prestige Reward Catalog',
+  'Rebel Supply Chain',
   'Crop Spoilage',
   'Shelter Detection',
   'Vehicle Storage Enforcement',
